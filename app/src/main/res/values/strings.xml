@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">BeaconSetDemo</string>
+    <string name="uuid">UUID</string>
+    <string name="major">MAJOR</string>
+    <string name="minor">MINOR</string>
+    <string name="measured_power">Measured Distance</string>
+    <string name="transimssion_power">Transmission Power</string>
+    <string name="broadcasting_interval">Broadcasting Interval</string>
+    <string name="serial_id">Serial Number</string>
+    <string name="ibeacon_name">iBeacon Name</string>
+    <string name="connection_mode">Connection Mode</string>
+    <string name="restart_password">Reboot Password</string>
+    <string name="model">Mode</string>
+    <string name="sys_serial_id">System Serial Id</string>
+    <string name="setting">Setting</string>
+    <string name="save">save</string>
+    <string name="connecting">Connecting:</string>
+    <string name="manufacturer_name">Manufacturer</string>
+    <string name="hardware_revision">Hardware</string>
+    <string name="firmware_revision">Firmware</string>
+    <string name="software_revision">Software</string>
+    <string name="system_id">System Id</string>
+    <string name="regulatorycertifactiondata">Certifaction</string>
+</resources>
