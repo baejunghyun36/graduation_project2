@@ -4,7 +4,6 @@ package com.minew.beaconset.demo;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.minew.beaconset.MinewBeacon;
@@ -88,9 +87,6 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
         private final TextView mDevice_other1;
 
 
-
-
-
         public MyViewHolder(View itemView) {
             super(itemView);
             mDevice_name = (TextView) itemView.findViewById(R.id.device_name);
@@ -115,78 +111,31 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
                 mConnectable.setText("CONN: NO");
             }
 
-//Major:%s Minor:%s Rssi:%s Battery:%s
-            String format = String.format("Distance:%s" ,
-//                    mMinewBeacon.getMajor(),
-//                    mMinewBeacon.getMinor(),
-//                    mMinewBeacon.getRssi(),
-//                    mMinewBeacon.getBattery(),
+
+
+
+
+            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s" ,
+                    mMinewBeacon.getMajor(),
+                    mMinewBeacon.getMinor(),
+                    mMinewBeacon.getRssi(),
+                    mMinewBeacon.getBattery(),
                     mMinewBeacon.getDistance());
 
             mDevice_other.setText(format);
-            if(mMinewBeacon.getDistance()<(3)){
-                String location = String.format("현재 내 방");
+
+            if(mMinewBeacon.getRssi()>(-50)){
+                String location = String.format("지하주차장 3구역");
                 mDevice_other1.setText(location);
 
             }
             else{
-                String location = String.format("복도 진입");
-
-                if(mMinewBeacon.getDistance()<(10)&&mMinewBeacon.getDistance()>(7)){
-                    location = String.format("지금 엘레베이터 앞");
-                }
-                else if(mMinewBeacon.getDistance()>=(10)){
-                    location = String.format("그만 가!!!");
-                }
-
-
+                String location = String.format("없음");
                 mDevice_other1.setText(location);
             }
-
-
-//
-//
-//            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s" ,
-//                    mMinewBeacon.getMajor(),
-//                    mMinewBeacon.getMinor(),
-//                    mMinewBeacon.getRssi(),
-//                    mMinewBeacon.getBattery());
-//
-//            mDevice_other.setText(format);
-//
-//            if(mMinewBeacon.getDistance()>(getDistance)){
-//                String location = String.format("지하주차장 3구역");
-//                mDevice_other1.setText(location);
-//
-//            }
-//            else{
-//                String location = String.format("너 차 없잖아");
-//
-//                if(mMinewBeacon.getDistance()<(-200)&&mMinewBeacon.getRssi()>(-220)){
-//                    location = String.format("지금 엘레베이터 앞");
-//                }
-//                else if(mMinewBeacon.getDistance()<=(-220)){
-//                    location = String.format("사라짐");
-//                }
-//
-//
-//                mDevice_other1.setText(location);
-//            }
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
-
 
 
 

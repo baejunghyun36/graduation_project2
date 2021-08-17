@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/item_click_selector">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_click_selector">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,24 +42,17 @@
             android:layout_marginTop="10dp"/>
 
         <TextView
-            android:textSize="60dp"
             android:id="@+id/device_other"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"/>
-
         <TextView
-
             android:id="@+id/device_other1"
-            android:textSize="25sp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"/>
-
-
-
     </LinearLayout>
 
 </RelativeLayout>

@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

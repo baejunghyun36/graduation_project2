@@ -12,10 +12,6 @@ public class UserRssi implements Comparator<MinewBeacon> {
     public int compare(MinewBeacon minewDevice, MinewBeacon t1) {
         float floatValue1 = minewDevice.getRssi();
         float floatValue2 = t1.getRssi();
-
-
-
-
         if (floatValue1 < floatValue2) {
             return 1;
         } else if (floatValue1 == floatValue2) {

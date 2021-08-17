@@ -7,38 +7,18 @@
     android:orientation="vertical"
     tools:context=".demo.MainActivity">
 
-
-
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-
-
-        >
-
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
+        android:background="@color/colorPrimary">
 
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
-
         android:id="@+id/main_recyeler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
-
-
-
+        android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
