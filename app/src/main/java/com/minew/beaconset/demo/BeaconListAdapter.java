@@ -6,7 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.minew.beaconset.ConnectionState;
 import com.minew.beaconset.MinewBeacon;
+import com.minew.beaconset.MinewBeaconConnection;
+import com.minew.beaconset.MinewBeaconSetting;
 import com.minew.beaconset.R;
 
 import java.util.List;
@@ -27,6 +30,9 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
     public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
+
+
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -84,7 +90,11 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
         private final TextView mDevice_uuid;
         private final TextView mDevice_other;
         private final TextView mConnectable;
-        private final TextView mDevice_other1;
+
+        private final TextView mDevice_location;
+
+
+
 
 
         public MyViewHolder(View itemView) {
@@ -94,9 +104,8 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             mDevice_other = (TextView) itemView.findViewById(R.id.device_other);
             mConnectable = (TextView) itemView.findViewById(R.id.device_connectable);
 
-            mDevice_other1 = (TextView) itemView.findViewById(R.id.device_other1);
+            mDevice_location = (TextView) itemView.findViewById(R.id.device_location);
 
-//
         }
 
         public void setDataAndUi(MinewBeacon minewBeacon) {
@@ -105,52 +114,29 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             mDevice_uuid.setText("UUID:" + mMinewBeacon.getUuid());
             if (mMinewBeacon.isConnectable()) {
                 mConnectable.setText("CONN: YES");
-
-
             } else {
                 mConnectable.setText("CONN: NO");
             }
-
-
-
-
-
-            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s" ,
+            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s",
                     mMinewBeacon.getMajor(),
                     mMinewBeacon.getMinor(),
                     mMinewBeacon.getRssi(),
                     mMinewBeacon.getBattery(),
                     mMinewBeacon.getDistance());
-
             mDevice_other.setText(format);
 
-            if(mMinewBeacon.getRssi()>(-50)){
-                String location = String.format("지하주차장 3구역");
-                mDevice_other1.setText(location);
 
-            }
-            else{
-                String location = String.format("없음");
-                mDevice_other1.setText(location);
-            }
+//            if(mMinewBeacon.getSystemId()=="E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"){
+//                mDevice_location.setText("지하주차장A");
+//
+//            }
+//            else if(mMinewBeacon.getUuid()=="E2c56DB5-DFFB-48D2-B060-D0F5A71096E0"){
+//                mDevice_location.setText("지하주차JJB");
+//
+//            }
+
+
+
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

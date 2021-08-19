@@ -14,6 +14,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.minew.beaconset.BluetoothState;
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
 
+
+
+    private EditText et_test;
+    private Button  btn_move;
+    String str;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +55,29 @@ public class MainActivity extends AppCompatActivity {
         initManager();
         checkBluetooth();
         checkLocation();
-
         dialogshow();
+
         mMinewBeaconManager.startService();
+
+
+
+
+
+        et_test = findViewById(R.id.et_test);
+        btn_move = findViewById(R.id.btn_move);
+        btn_move.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                str = et_test.getText().toString();
+                Intent intent = new Intent(MainActivity.this, SubActivity.class);
+                intent.putExtra("str", str);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     private void initView() {

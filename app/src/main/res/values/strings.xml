@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BeaconSetDemo</string>
+    <string name="app_name">졸업프로젝트</string>
     <string name="uuid">UUID</string>
     <string name="major">MAJOR</string>
     <string name="minor">MINOR</string>

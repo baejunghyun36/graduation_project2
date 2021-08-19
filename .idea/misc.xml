@@ -8,7 +8,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/bae10/Desktop/BeaconSetDemo.test20200215/app/src/main/res/layout/main_item.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/bae10/Desktop/basbea2/BeaconSetDemo.test20200215/app/src/main/res/layout/activity_detil.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/bae10/Desktop/basbea2/BeaconSetDemo.test20200215/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/bae10/Desktop/basbea2/BeaconSetDemo.test20200215/app/src/main/res/layout/activity_sub.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/bae10/Desktop/basbea2/BeaconSetDemo.test20200215/app/src/main/res/layout/detil_item.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/bae10/Desktop/basbea2/BeaconSetDemo.test20200215/app/src/main/res/layout/dialog_edittext.xml" value="0.5578125" />
+        <entry key="..\:/Users/bae10/Desktop/basbea2/BeaconSetDemo.test20200215/app/src/main/res/layout/main_item.xml" value="0.33" />
       </map>
     </option>
   </component>
