@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 2;
 
 
-
     private EditText et_test;
     private Button  btn_move;
     String str;
@@ -75,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
 

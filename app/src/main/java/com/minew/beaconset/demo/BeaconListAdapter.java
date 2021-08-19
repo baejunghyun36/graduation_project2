@@ -12,21 +12,23 @@ import com.minew.beaconset.MinewBeaconConnection;
 import com.minew.beaconset.MinewBeaconSetting;
 import com.minew.beaconset.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 
 public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.MyViewHolder> {
 
+    public static String str;
+
     private List<MinewBeacon> mMinewBeacons;
 
     public interface OnItemClickLitener {
         void onItemClick(View view, int position);
-
         void onItemLongClick(View view, int position);
     }
 
     private OnItemClickLitener mOnItemClickLitener;
-
     public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
@@ -37,6 +39,10 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.main_item, null);
+
+
+
+
         return new MyViewHolder(view);
     }
 
@@ -83,6 +89,15 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
         return mMinewBeacons.get(position);
     }
 
+
+
+
+
+
+
+
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private MinewBeacon mMinewBeacon;
@@ -90,8 +105,9 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
         private final TextView mDevice_uuid;
         private final TextView mDevice_other;
         private final TextView mConnectable;
-
         private final TextView mDevice_location;
+
+
 
 
 
@@ -103,7 +119,6 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             mDevice_uuid = (TextView) itemView.findViewById(R.id.device_uuid);
             mDevice_other = (TextView) itemView.findViewById(R.id.device_other);
             mConnectable = (TextView) itemView.findViewById(R.id.device_connectable);
-
             mDevice_location = (TextView) itemView.findViewById(R.id.device_location);
 
         }
@@ -117,26 +132,31 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             } else {
                 mConnectable.setText("CONN: NO");
             }
-            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s",
+            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s NAME:%s",
                     mMinewBeacon.getMajor(),
                     mMinewBeacon.getMinor(),
                     mMinewBeacon.getRssi(),
                     mMinewBeacon.getBattery(),
-                    mMinewBeacon.getDistance());
+                    mMinewBeacon.getDistance(),
+                    mMinewBeacon.getDeviceId());
             mDevice_other.setText(format);
 
 
-//            if(mMinewBeacon.getSystemId()=="E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"){
-//                mDevice_location.setText("지하주차장A");
-//
-//            }
-//            else if(mMinewBeacon.getUuid()=="E2c56DB5-DFFB-48D2-B060-D0F5A71096E0"){
-//                mDevice_location.setText("지하주차JJB");
-//
-//            }
+            if(mMinewBeacon.getDistance()<0.1){
+                mDevice_location.setText("지하주차장A");
+
+            }
+            else{
+                mDevice_location.setText("지하주차B");
+
+            }
+            str = Float.toString(minewBeacon.getDistance());
+
 
 
 
         }
     }
+
+
 }

@@ -115,6 +115,7 @@ public class DetilActivity extends AppCompatActivity {
         listdata.add("basbea.com");//mMinewBeaconSetting.getManufacture());
         listdata.add(mMinewBeaconSetting.getModel() + "");
         listdata.add(mMinewBeaconSetting.getSN());
+
         listdata.add(mMinewBeaconSetting.getHardware());
         listdata.add(mMinewBeaconSetting.getFirmware());
         listdata.add(mMinewBeaconSetting.getSoftware());

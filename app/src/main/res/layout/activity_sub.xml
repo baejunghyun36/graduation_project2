@@ -4,11 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".demo.SubActivity">
+
 
     <TextView
         android:id="@+id/tv_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="서브앵ㄱ티비티 도착"/>
+        android:text="목적지"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="까지 걸리는 거리 "
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/dis_result"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:text="거리"
+        android:textSize="50dp" />
+
+
 </LinearLayout>
