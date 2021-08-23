@@ -30,6 +30,7 @@
 
 
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_recyeler"
         android:layout_width="match_parent"

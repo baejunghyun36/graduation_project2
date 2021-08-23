@@ -25,7 +25,7 @@
 
     <TextView
         android:id="@+id/dis_result"
-        android:layout_width="171dp"
+        android:layout_width="381dp"
         android:layout_height="wrap_content"
         android:text="거리"
         android:textSize="50dp" />

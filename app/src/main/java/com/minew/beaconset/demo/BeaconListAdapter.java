@@ -19,7 +19,8 @@ import java.util.List;
 
 public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.MyViewHolder> {
 
-    public static String str;
+    public static String distance;
+    public static String location;
 
     private List<MinewBeacon> mMinewBeacons;
 
@@ -98,6 +99,8 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
 
 
 
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private MinewBeacon mMinewBeacon;
@@ -106,11 +109,7 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
         private final TextView mDevice_other;
         private final TextView mConnectable;
         private final TextView mDevice_location;
-
-
-
-
-
+        private final TextView mDevice_who;
 
 
         public MyViewHolder(View itemView) {
@@ -120,6 +119,7 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             mDevice_other = (TextView) itemView.findViewById(R.id.device_other);
             mConnectable = (TextView) itemView.findViewById(R.id.device_connectable);
             mDevice_location = (TextView) itemView.findViewById(R.id.device_location);
+            mDevice_who = (TextView) itemView.findViewById(R.id.who_device);
 
         }
 
@@ -134,23 +134,42 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             }
             String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s NAME:%s",
                     mMinewBeacon.getMajor(),
+
                     mMinewBeacon.getMinor(),
                     mMinewBeacon.getRssi(),
                     mMinewBeacon.getBattery(),
                     mMinewBeacon.getDistance(),
                     mMinewBeacon.getDeviceId());
+
             mDevice_other.setText(format);
 
 
-            if(mMinewBeacon.getDistance()<0.1){
-                mDevice_location.setText("지하주차장A");
 
+            String s1 ="56388";
+            String s2="56877";
+            String s3= "56878";
+
+            if(s1.equals(mMinewBeacon.getMinor())){
+                mDevice_location.setText("지하주차장A");
+                mDevice_who.setText("정현이꺼");
+                location = "정현이꺼";
+            }
+            else if(s2.equals(mMinewBeacon.getMinor())){
+                mDevice_location.setText("지하주차장B");
+                mDevice_who.setText("은윤이꺼");
+                location = "은윤이꺼";
             }
             else{
-                mDevice_location.setText("지하주차B");
-
+                mDevice_location.setText("지하주차장C");
+                mDevice_who.setText("충헌이꺼");
+                location = "충헌이꺼";
             }
-            str = Float.toString(minewBeacon.getDistance());
+
+
+
+
+            distance = Float.toString(minewBeacon.getDistance());
+
 
 
 

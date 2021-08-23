@@ -21,8 +21,13 @@ public class SubActivity extends AppCompatActivity {
     private TextView tv_sub;
     private TextView dis_result;
 
-    final static BeaconListAdapter mainActivity = new BeaconListAdapter();
-    private static String str1 = mainActivity.str;
+    BeaconListAdapter mainActivity = new BeaconListAdapter();
+
+
+
+
+    private String str1 = mainActivity.distance;
+    private String str2 = mainActivity.location;
 
 
     @Override
@@ -39,7 +44,9 @@ public class SubActivity extends AppCompatActivity {
         tv_sub.setText(str);
 
 
-        dis_result.setText(str1);
+
+
+        dis_result.setText(str1+" "+str2);
 
 
     }
