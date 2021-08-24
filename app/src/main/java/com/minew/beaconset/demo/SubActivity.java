@@ -6,14 +6,22 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,18 +39,25 @@ import org.w3c.dom.Text;
 import java.util.Collections;
 import java.util.List;
 
-public class SubActivity extends AppCompatActivity {
+public class SubActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    private String TAG = "AnimationActivity";
+
+    private LinearLayout ll1;
+    private Button btn1;
+    private ImageView btn2;
+    private Button btn3;
+    private float screenWidth;
+    private float screenHeight;
+
+    private float fromX = 0, fromY = 0;
+
+
 
 
     private TextView tv_sub;
     private TextView dis_result;
-
-
-
-
-
-
-
     BeaconListAdapter SubActivity = new BeaconListAdapter();
 
     private TextView tv_id, tv_pass;
@@ -78,6 +93,8 @@ public class SubActivity extends AppCompatActivity {
         checkLocation();
 
         dialogshow();
+
+        init();
         mMinewBeaconManager.startService();
 
 
@@ -130,6 +147,133 @@ public class SubActivity extends AppCompatActivity {
 
 
     }
+
+
+
+    private void init(){
+
+
+
+        ll1 = findViewById(R.id.ll1);
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
+
+        btn1.setOnClickListener((View.OnClickListener) this);
+        btn2.setOnClickListener((View.OnClickListener) this);
+        btn3.setOnClickListener((View.OnClickListener) this);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+
+        Log.e(TAG, "Width : " + point.x + " , Height : " + point.y);
+
+        screenWidth = point.x;
+        screenHeight = point.y;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+
+            case R.id.btn1 :
+
+                fromY = screenHeight - ll1.getHeight() - btn2.getHeight();
+                Log.e(TAG, "fromX : " + fromX + ",  fromY : " +fromY);
+
+                TranslateAnimation animation = new TranslateAnimation(0, fromX , 0, fromY);
+                animation.setDuration(3000);
+                animation.setFillAfter(false);
+                animation.setFillEnabled(true);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        int[] pos = {btn2.getLeft(), btn2.getTop() + (int)fromY, btn2.getRight(), btn2.getBottom() + (int)fromY };
+                        btn2.layout(pos[0], pos[1], pos[2], pos[3]);
+                        Log.e(TAG, " 1: " + btn2.getLeft() + " , 2 : " + btn2.getTop() + "  , 3 : "  + btn2.getRight() + "  , 4 : " + btn2.getBottom());
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                btn2.startAnimation(animation);
+
+                break;
+
+
+            case R.id.btn3 :
+
+                Log.e(TAG, "fromX : " + fromX + ",  fromY : " +fromY);
+
+                TranslateAnimation animation3 = new TranslateAnimation(0,  -fromX, 0, -fromY);
+                animation3.setDuration(3000);
+                animation3.setFillAfter(false);
+                animation3.setFillEnabled(true);
+                animation3.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        btn2.layout(0, 0, btn2.getWidth(), btn2.getHeight());
+                        Log.e(TAG, " 1: " + btn2.getLeft() + " , 2 : " + btn2.getTop() + "  , 3 : "  + btn2.getRight() + "  , 4 : " + btn2.getBottom());
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                btn2.startAnimation(animation3);
+
+                fromX = 0;
+                fromY = 0;
+
+                break;
+
+            default:
+
+                break;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void initView() {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
