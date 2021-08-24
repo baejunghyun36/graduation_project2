@@ -20,6 +20,6 @@
         android:gravity="right"
         android:singleLine="true"
         android:text="20M"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
 </RelativeLayout>

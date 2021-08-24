@@ -95,7 +95,7 @@ public class DetilListAdapter extends RecyclerView.Adapter<DetilListAdapter.MyVi
         }
 
         public void setDataAndUi(String data) {
-            mNmae.setText(mListname.get(getPosition()));
+            mNmae.setText(mListname.get(getLayoutPosition()));
             mData.setText(data);
         }
     }

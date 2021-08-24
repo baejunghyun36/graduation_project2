@@ -17,7 +17,10 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 
-public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.MyViewHolder> {
+public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdapter.MyViewHolder> {
+
+    public static float[] i = new float[3];
+
 
     public static String distance;
     public static String location;
@@ -39,10 +42,7 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.main_item, null);
-
-
-
+        View view = View.inflate(parent.getContext(), R.layout.sub_item, null);
 
         return new MyViewHolder(view);
     }
@@ -51,6 +51,17 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.setDataAndUi(mMinewBeacons.get(position));
 
+        if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56388){
+            i[0] = mMinewBeacons.get(position).getDistance();;
+        }
+        else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56877){
+            i[1] = mMinewBeacons.get(position).getDistance();
+        }
+        else{
+            i[2]= mMinewBeacons.get(position).getDistance();
+        }
+
+//        i[position] = mMinewBeacons.get(position).getDistance();
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -94,46 +105,56 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private MinewBeacon mMinewBeacon;
-        private final TextView mDevice_name;
-        private final TextView mDevice_uuid;
+//        private final TextView mDevice_name;
+//        private final TextView mDevice_uuid;
         private final TextView mDevice_other;
-        private final TextView mConnectable;
+//        private final TextView mConnectable;
         private final TextView mDevice_location;
         private final TextView mDevice_who;
+        private final TextView distance1;
+//        private final TextView hi1;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            mDevice_name = (TextView) itemView.findViewById(R.id.device_name);
-            mDevice_uuid = (TextView) itemView.findViewById(R.id.device_uuid);
+//            mDevice_name = (TextView) itemView.findViewById(R.id.device_name);
+//            mDevice_uuid = (TextView) itemView.findViewById(R.id.device_uuid);
             mDevice_other = (TextView) itemView.findViewById(R.id.device_other);
-            mConnectable = (TextView) itemView.findViewById(R.id.device_connectable);
+//            mConnectable = (TextView) itemView.findViewById(R.id.device_connectable);
             mDevice_location = (TextView) itemView.findViewById(R.id.device_location);
             mDevice_who = (TextView) itemView.findViewById(R.id.who_device);
+            distance1= (TextView) itemView.findViewById(R.id.distance1);
+//            hi1= (TextView) itemView.findViewById(R.id.hi);
 
         }
 
+
         public void setDataAndUi(MinewBeacon minewBeacon) {
             mMinewBeacon = minewBeacon;
-            mDevice_name.setText(mMinewBeacon.getName());
-            mDevice_uuid.setText("UUID:" + mMinewBeacon.getUuid());
-            if (mMinewBeacon.isConnectable()) {
-                mConnectable.setText("CONN: YES");
-            } else {
-                mConnectable.setText("CONN: NO");
-            }
-            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s Distance:%s NAME:%s",
-                    mMinewBeacon.getMajor(),
 
-                    mMinewBeacon.getMinor(),
+
+
+//            mDevice_name.setText(mMinewBeacon.getName());
+//            mDevice_uuid.setText("UUID:" + mMinewBeacon.getUuid());
+//            if (mMinewBeacon.isConnectable()) {
+//                mConnectable.setText("CONN: YES");
+//            } else {
+//                mConnectable.setText("CONN: NO");
+//            }
+            String format = String.format("Minor:%s Rssi:%s Distance:%s ",
+                     mMinewBeacon.getMinor(),
                     mMinewBeacon.getRssi(),
-                    mMinewBeacon.getBattery(),
-                    mMinewBeacon.getDistance(),
-                    mMinewBeacon.getDeviceId());
+                    mMinewBeacon.getDistance()
+                    );
 
             mDevice_other.setText(format);
 
+            String form1= String.format("%s",mMinewBeacon.getDistance());
 
+            distance1.setText(form1);
+
+//            form1= String.format("%s",mMinewBeacon.getDistance());
+//            hi1.setText(form1);
 
             String s1 ="56388";
             String s2="56877";

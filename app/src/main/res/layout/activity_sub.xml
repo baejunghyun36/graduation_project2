@@ -24,11 +24,52 @@
         />
 
     <TextView
+        android:id="@+id/test1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="hi"
+        />
+
+
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="hi"
+        />
+
+
+    <TextView
+        android:id="@+id/test3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="hi"
+        />
+
+    <TextView
         android:id="@+id/dis_result"
         android:layout_width="381dp"
         android:layout_height="wrap_content"
         android:text="거리"
         android:textSize="50dp" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/hi"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="1"-->
+<!--        android:textSize="20dp"/>-->
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sub_recyeler"
+        android:layout_width="match_parent"
+        android:layout_height="338dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

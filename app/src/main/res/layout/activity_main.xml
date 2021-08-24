@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,33 +11,235 @@
     tools:context=".demo.MainActivity">
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/main_toolbar"
+<!--    <android.support.v7.widget.Toolbar-->
+<!--        android:id="@+id/main_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/colorPrimary">-->
+<!--    </android.support.v7.widget.Toolbar>-->
+
+
+    <android.support.v4.widget.DrawerLayout
+
+
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-    </android.support.v7.widget.Toolbar>
-
-
-    <EditText
-        android:id="@+id/et_test"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btn_move"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="검색"/>
+        android:layout_height="477dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#BCAEFF"
+                android:orientation="horizontal">
+
+
+
+                <EditText
+                    android:id="@+id/et_test"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="20dp">
+
+
+                </EditText>
+
+
+                <Button
+                    android:id="@+id/btn_move"
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="현재위치" />
+
+
+                <ImageButton
+                    android:id="@+id/btn_open1"
+                    android:layout_width="43dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="37dp"
+                    android:src="@drawable/baseline_view_headline_black_24dp" />
+
+
+
+
+
+                <!--                <Button-->
+<!--                    android:id="@+id/btn_open"-->
+<!--                    android:layout_width="68dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="200dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Menu" />-->
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#BCAEFF"
+                android:gravity="center">
+
+
+
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="134dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|top" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|top" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|bottom" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom" />
+
+
+            </FrameLayout>
+
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:orientation="vertical"
+                android:rowCount="3">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4" />
+
+
+            </GridLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0"
+                android:orientation="vertical"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="스크롤" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="스크롤" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="안녕" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="안녕" />
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+        <!--    activity_drawer 과 연결 해주는거. -->
+        <include layout="@layout/activity_drawer" />
+
+
+    </android.support.v4.widget.DrawerLayout>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_recyeler"
         android:layout_width="match_parent"
-        android:layout_height="581dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="256dp">
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>
