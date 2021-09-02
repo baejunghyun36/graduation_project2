@@ -44,7 +44,7 @@ import pl.polidea.view.ZoomView;
 import java.util.Collections;
 import java.util.List;
 
-
+//배정현 3:58
 public class SubActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "AnimationActivity";
@@ -84,6 +84,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv2;
     private TextView tv3;
     private TextView tv4;
+
+
+
 
     private String str1 = SubActivity.distance;
     private String str2 = SubActivity.location;
