@@ -1,5 +1,5 @@
 package com.minew.beaconset.demo;
-
+//ㅎㅎ
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.List;
