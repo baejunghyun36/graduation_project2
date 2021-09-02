@@ -54,6 +54,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private Button btn3;
     private float screenWidth;
     private float screenHeight;
+    private int section =0;
 
     private float toX = 0, fromY = 0;
     private float toY = 0;
@@ -323,7 +324,74 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                     public void run()
                                     {
 
-                                        if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
+                                        //4구역
+
+
+
+                                        //6구역
+                                        if(a[2]<=1.1&&a[1]<=1.1&&(a[1]>1.1||a[3]>1.1)){
+                                            if(nowX<=480&&nowY<350){
+                                                nowY++; nowX++;
+                                            }
+                                            if(nowX<=480&&nowY>350){
+                                                nowX++; nowY--;
+                                            }
+                                            if(nowX>480&&nowY>350){
+                                                nowX=480; nowY--;
+                                            }
+
+                                            if(nowX>480&&nowY<350){
+                                                nowX=480; nowY++;
+                                            }
+                                            section=6;
+                                        }
+
+
+
+
+                                        //2구역
+                                        else if(a[0]<=2&&a[2]<=2&&a[1]>2&&a[3]>2){
+                                            if(nowX<250&&nowY<0){
+                                                nowY=0; nowX++;
+                                            }
+                                            if(nowX>250&&nowY<0){
+                                                nowX--; nowY=0;
+                                            }
+                                            if(nowX<250&&nowY>=0){
+                                                nowX++; nowY--;
+                                            }
+
+                                            if(nowX>250&&nowY>=0){
+                                                nowX--; nowY--;
+                                            }
+                                            section=2;
+                                        }
+
+                                        //8구역
+                                        else if(a[3]<=1&&a[1]<=1&&a[2]>1&&a[0]>1) {
+                                            if (nowX < 250 && nowY > 650) {
+                                                nowY = 650;
+                                                nowX++;
+                                            }
+                                            if (nowX > 250 && nowY >650 ) {
+                                                nowX--;
+                                                nowY = 650;
+                                            }
+                                            if (nowX < 250 && nowY <= 650) {
+                                                nowX++;
+                                                nowY++;
+                                            }
+
+                                            if (nowX > 250 && nowY <= 650) {
+                                                nowX--;
+                                                nowY++;
+                                            }
+                                            section=8;
+                                        }
+
+
+                                        //1구역
+                                        else if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
                                             if(nowX<0&&nowY<0){
                                                 nowX=0;
                                                 nowY=0;
@@ -338,33 +406,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
                                             nowX--;
                                             nowY--;
-
-
-//                                            if(nowX>0&&nowX<680&&nowY>0&&nowY<1000){
-//                                                nowX--;
-//                                                nowY--;
-//                                            }
-//
-//                                            else{
-//                                                if(nowX<0&&nowY<0){
-//                                                    nowX=1;
-//                                                    nowY=1;
-//                                                }
-//
-//                                                else if(nowX<0&&nowY>0){
-//                                                    nowX=1;
-//                                                    nowY--;
-//                                                }
-//                                                else if(nowY<0&&nowX>0){
-//                                                    nowX--;
-//                                                    nowY=1;
-//                                                }
-//
-//
-//
-//                                            }
+                                            section=1;
 
                                         }
+
+                                        //9구역
                                         else if(a[1]<a[0]&&a[1]<a[2]&&a[1]<a[3]){
 
                                             if(nowX>480&&nowY>650){
@@ -382,10 +428,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
                                             nowX++;
                                             nowY++;
+                                            section=9;
 
 
 
                                         }
+                                        //3구역
                                         else if(a[2]<a[0]&&a[2]<a[1]&&a[2]<a[3]){
 
                                             if(nowX>480&&nowY<0){
@@ -403,30 +451,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
                                             nowX++;
                                             nowY--;
-
-
-//                                            if(nowX>0&&nowX<680&&nowY>0&&nowY<1000){
-//                                                nowY--;
-//                                                nowX++;
-//                                            }
-//                                           else{
-//
-//                                                if(nowX<680&&nowY<0){
-//                                                    nowX++;
-//                                                    nowY=1;
-//                                                }
-//                                                else if(nowY>0&&nowX>680){
-//                                                    nowX=680;
-//                                                    nowY++;
-//                                                }
-//                                                else{
-//                                                    nowX=580;
-//                                                    nowY=0;
-//                                                }
-//                                            }
+                                            section=3;
 
 
                                         }
+
+                                        //7구역
                                         else if(a[3]<a[0]&&a[3]<a[1]&&a[3]<a[2]){
 
                                             if(nowX<0&&nowY>650){
@@ -446,39 +476,56 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                             nowX--;
                                             nowY++;
-
-
-//
-//                                            if(nowX>0&&nowX<680&&nowY>0&&nowY<1000){
-//                                                nowY++;
-//                                                nowX--;
-//                                            }
-//
-//                                            else{
-//                                                if(nowX<0&&nowY>1000){
-//                                                    nowX=679;
-//                                                    nowY=999;
-//
-//                                                }
-//                                                else if(nowX<680&&nowY>1000){
-//                                                    nowX++;
-//                                                    nowY=999;
-//                                                }
-//                                                else if(nowY<1000&&nowX>680){
-//                                                    nowX=679;
-//                                                    nowY++;
-//                                                }
-//
-//                                            }
+                                            section =7;
 
                                         }
+
+                                        //중간구역
+//                                        else if(a[0]<=1.5&&a[2]<=1.5&&a[1]<=1.5&&a[3]<=1.5){
+//                                            if(nowX>=0&&nowX<=480&&nowY<=650&&nowY>=0){
+//
+//                                                if(section==1){
+//                                                    nowX++; nowY++;
+//                                                }
+//                                                else if(section==2){
+//                                                    nowY++;
+//                                                }
+//                                                else if(section==3){
+//                                                    nowX--; nowY++;
+//                                                }
+//                                                else if(section==4){
+//                                                    nowX++;
+//                                                }
+//                                                else if(section==6){
+//                                                    nowX--;
+//                                                }
+//                                                else if(section==7){
+//                                                    nowX++; nowY--;
+//                                                }
+//                                                else if(section==8){
+//                                                    nowY--;
+//                                                }
+//                                                else if(section==9){
+//                                                    nowX--; nowY--;
+//                                                }
+//
+//                                            }
+//
+//
+//                                        }
+
+
+
+
+
+
 
                                         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
                                         btn2.setY(nowY);
 
                                         TranslateAnimation animation = new TranslateAnimation(nowX,nowX, nowY, nowY);
 
-                                        animation.setDuration(3000);
+                                        animation.setDuration(5000);
                                         animation.setFillAfter(false);
                                         animation.setFillEnabled(true);
                                         animation.setAnimationListener(new Animation.AnimationListener() {
