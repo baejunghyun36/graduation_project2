@@ -44,7 +44,7 @@ import pl.polidea.view.ZoomView;
 import java.util.Collections;
 import java.util.List;
 //은윤 4:26 수정
-
+//충헌 4:42
 public class SubActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "AnimationActivity";
