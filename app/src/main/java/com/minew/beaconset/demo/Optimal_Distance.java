@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+//시험한번만 해보겔요
 public class Optimal_Distance{
     public static int path[] = new int[5];
     static int width;
