@@ -25,13 +25,20 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.android.support:design:26.1.0'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
-    implementation 'android.arch.navigation:navigation-ui:1.0.0'// 서버 통신에 필요한 라이브러리 설치
+    implementation 'android.arch.navigation:navigation-ui:1.0.0'
+    implementation files('libs\\android-zoom-view.jar')
+    implementation files('libs\\android-zoom-view.jar')
+    implementation files('libs\\android-zoom-view.jar')
+    implementation files('libs\\android-zoom-view.jar')
+    implementation files('libs\\android-zoom-view.jar')// 서버 통신에 필요한 라이브러리 설치
     testImplementation 'junit:junit:4.13'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation files('libs/minewBeaconAdmin.jar')
-
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
 
 }
+
+

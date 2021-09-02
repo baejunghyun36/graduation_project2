@@ -1,6 +1,9 @@
 package com.minew.beaconset.demo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,9 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
 
+
         // 회원가입 버튼 클릭 시 수행
-
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,12 +55,15 @@ public class LoginActivity extends AppCompatActivity {
 
                                 String userID = jsonObject.getString("userID");
                                 String userPass = jsonObject.getString("userPassword");
+                                String userName = jsonObject.getString("userName");
 
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다-!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPass", userPass);
+                                intent.putExtra("userName",userName);
                                 startActivity(intent);
+
                             } else {   // 로그인 실패
                                 Toast.makeText(getApplicationContext(), "로그인에 실패했습니다ㅠㅠ", Toast.LENGTH_SHORT).show();
                                 return;

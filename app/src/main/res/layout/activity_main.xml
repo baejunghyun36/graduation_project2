@@ -11,81 +11,64 @@
     tools:context=".demo.MainActivity">
 
 
-<!--    <android.support.v7.widget.Toolbar-->
-<!--        android:id="@+id/main_toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/colorPrimary">-->
-<!--    </android.support.v7.widget.Toolbar>-->
-
-
     <android.support.v4.widget.DrawerLayout
 
 
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="477dp"
-        android:background="#FFFFFF"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
             <LinearLayout
-
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#BCAEFF"
+                android:layout_height="wrap_content"
+                android:background="#045CB1"
                 android:orientation="horizontal">
 
 
-
                 <EditText
-                    android:id="@+id/et_test"
-                    android:layout_width="252dp"
+                    android:id="@+id/item"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20dp">
-
-
-                </EditText>
-
+                    android:hint="물품 검색"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"></EditText>
 
                 <Button
                     android:id="@+id/btn_move"
                     android:layout_width="wrap_content"
-                    android:layout_height="37dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="현재위치" />
+                    android:layout_marginTop="0dp"
+                    android:text="검색" />
 
 
                 <ImageButton
                     android:id="@+id/btn_open1"
                     android:layout_width="43dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
                     android:layout_marginTop="10dp"
-                    android:layout_height="37dp"
                     android:src="@drawable/baseline_view_headline_black_24dp" />
 
 
-
-
-
                 <!--                <Button-->
-<!--                    android:id="@+id/btn_open"-->
-<!--                    android:layout_width="68dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="200dp"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="Menu" />-->
-
-
+                <!--                    android:id="@+id/btn_open"-->
+                <!--                    android:layout_width="68dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="200dp"-->
+                <!--                    android:layout_marginLeft="10dp"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="Menu" />-->
 
 
             </LinearLayout>
@@ -97,132 +80,204 @@
                 android:gravity="center">
 
 
-
-
             </LinearLayout>
 
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="134dp">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|top" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|top" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|center_vertical" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|bottom" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom" />
-
-
-            </FrameLayout>
-
-
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:orientation="vertical"
-                android:rowCount="3">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4" />
-
-
-            </GridLayout>
-
-            <ScrollView
+            <!--마트 정보 제공?용 수평 스크롤뷰-->
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_weight="0"
-                android:orientation="vertical"
-
-                >
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="horizontal" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="스크롤" />
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="스크롤" />
+                        android:layout_height="match_parent"
+                        android:text="할인정보" />
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="안녕" />
+                        android:layout_height="match_parent"
+                        android:text="마트 정보1" />
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="안녕" />
+                        android:layout_height="match_parent"
+                        android:text="마트 정보2" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="마트 정보3" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="마트정보4" />
                 </LinearLayout>
 
 
-            </ScrollView>
+            </HorizontalScrollView>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp" />
+
+            <!--구분선-->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="#4682B4" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <Button
+                    android:id="@+id/BtnNum1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1" />
+
+                <Button
+                    android:id="@+id/BtnNum2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2" />
+
+                <Button
+                    android:id="@+id/BtnNum3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3" />
+
+                <Button
+                    android:id="@+id/BtnNum4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/BtnNum5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5" />
+
+                <Button
+                    android:id="@+id/BtnNum6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="6" />
+
+                <Button
+                    android:id="@+id/BtnNum7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="7" />
+
+                <Button
+                    android:id="@+id/BtnNum8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="5dp">
+
+                <Button
+                    android:id="@+id/BtnNum9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9" />
+
+                <Button
+                    android:id="@+id/BtnNum10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10" />
+
+                <Button
+                    android:id="@+id/BtnNum11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="11" />
+
+                <Button
+                    android:id="@+id/BtnNum12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="12" />
+            </LinearLayout>
+
+
+            <!--구분선-->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="#4682B4" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp" />
+
+
+            <!--접고 펼치기 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                tools:context=".MainActivity">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -234,12 +289,6 @@
 
     </android.support.v4.widget.DrawerLayout>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_recyeler"
-        android:layout_width="match_parent"
-        android:layout_height="256dp">
-    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

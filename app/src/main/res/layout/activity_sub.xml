@@ -13,21 +13,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="목적지"
-        android:textSize="20dp" />
+        android:textSize="10dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="까지 걸리는 거리 "
-        android:textSize="20dp"
 
-        />
 
     <TextView
         android:id="@+id/test1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="10dp"
         android:text="hi"
         />
 
@@ -36,7 +30,7 @@
         android:id="@+id/test2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="10dp"
         android:text="hi"
         />
 
@@ -45,16 +39,10 @@
         android:id="@+id/test3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="10dp"
         android:text="hi"
         />
 
-    <TextView
-        android:id="@+id/dis_result"
-        android:layout_width="381dp"
-        android:layout_height="wrap_content"
-        android:text="거리"
-        android:textSize="50dp" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/hi"-->
@@ -62,15 +50,37 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:text="1"-->
 <!--        android:textSize="20dp"/>-->
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/container1"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:animationCache="true"
+        android:clipChildren="false">
+
+    </RelativeLayout>
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="389dp"
-        android:background="#ffffff">
+        android:layout_height="100dp"
+        android:animationCache="true"
+        android:clipChildren="false">
+
+<!--        <com.github.chrisbanes.photoview.PhotoView-->
+<!--            android:id="@+id/photoView"-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="376dp"-->
+<!--            android:background="@android:color/white" />-->
 
         <LinearLayout
             android:id="@+id/ll1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:weightSum="2">
@@ -80,30 +90,23 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:text="btn1"
-                />
+                android:text="현재 내 위치" />
 
             <Button
                 android:id="@+id/btn3"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:text="btn3"
-                />
+                android:text="btn3" />
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/btn2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@mipmap/ic_launcher" />
+
+
+
 
 
     </RelativeLayout>
-
-
-
 
 
     <android.support.v7.widget.RecyclerView
