@@ -28,11 +28,10 @@ public class mypages extends AppCompatActivity {
         String userName = intent.getStringExtra("userName");
         client.setText(userName+ " 님 반갑습니다 :)");
 
-        btn_back.setOnClickListener(new View.OnClickListener(){
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(mypages.this, MainActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                onBackPressed();    // 이전 페이지로 돌아가기
             }
         });
 
