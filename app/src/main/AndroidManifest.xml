@@ -14,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".demo.ParkingLocation"></activity>
+        <activity android:name=".demo.mypages" />
         <activity
             android:name=".demo.SubActivity"
             android:exported="true"
@@ -28,7 +30,6 @@
         </activity>
         <activity android:name=".demo.RegisterActivity" />
         <activity android:name=".demo.MainActivity" />
-        <activity android:name=".demo.Location" />
         <activity android:name=".demo.DetilActivity" />
 
         <service android:name=".ConnectService" />
