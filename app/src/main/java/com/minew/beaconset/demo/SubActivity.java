@@ -43,7 +43,7 @@ import pl.polidea.view.ZoomView;
 
 import java.util.Collections;
 import java.util.List;
-
+// 은윤 3:36
 
 public class SubActivity extends AppCompatActivity implements View.OnClickListener {
 
