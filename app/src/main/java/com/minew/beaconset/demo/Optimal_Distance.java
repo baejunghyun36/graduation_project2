@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 public class Optimal_Distance{
+    public static int path[] = new int[5];
     static int width;
     static int height;
     static int map[][] = new int[10][10];
@@ -80,9 +81,10 @@ public class Optimal_Distance{
         tsp(0, 0, 1);
         // node숫자, 비용합, 개수
         for (int i = 0; i < N; i++) {
-            System.out.println(result_array[i]+" ");
+      //      System.out.println(result_array[i]+" ");
+            path[i] = result_array[i];
         }
-        System.out.println(min_num);
+     //   System.out.println(min_num);
 
     }
 
