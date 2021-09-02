@@ -30,7 +30,7 @@ public class ParkingLocation extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();    // 집으로 돌아가기
+                onBackPressed();    // 집으로 돌아가기ㅛ료ㅠㅗㅠㅠㅛㅕㅠㅛㅠㅕㅑㅗㅠㅑ
             }
         });
 
