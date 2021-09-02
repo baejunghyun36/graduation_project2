@@ -50,8 +50,16 @@
         android:text="hi"
         />
 
+    <TextView
+        android:id="@+id/test5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hi"
+        android:textSize="30dp" />
 
-<!--    <TextView-->
+
+
+    <!--    <TextView-->
 <!--        android:id="@+id/hi"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
