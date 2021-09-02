@@ -43,21 +43,7 @@ import pl.polidea.view.ZoomView;
 
 import java.util.Collections;
 import java.util.List;
-//은윤 4:26 수정
-//정현 4:44
-//은윤 4:53
-//충헌 4:55
-//정현 4:55
-//정현 4:57
-//정현 5:14
-//정현 5:19
-//마이크테스트
-//원ㄷ투원투
-//commit
-//hig
-//kjdiwu
-//gegeg
-//asdasd
+
 
 public class SubActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -70,7 +56,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float screenHeight;
 
     private float toX = 0, fromY = 0;
-    private float nowX=400, nowY = 400;
+    private float toY = 0;
+    private float nowX=0, nowY = 0;
     public String res = MainActivity.rest2;
 
 
@@ -98,8 +85,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv2;
     private TextView tv3;
     private TextView tv4;
-
-
+    private TextView tv5;
 
 
     private String str1 = SubActivity.distance;
@@ -116,12 +102,13 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         final ZoomView zoomView = new ZoomView(this);
         zoomView.addView(v);
         zoomView.setLayoutParams(layoutParams);
-        zoomView.setMiniMapEnabled(true); // 좌측 상단 검은색 미니맵 설정
+        zoomView.setMiniMapEnabled(false); // 좌측 상단 검은색 미니맵 설정
         zoomView.setMaxZoom(4f); // 줌 Max 배율 설정  1f 로 설정하면 줌 안됩니다.
         zoomView.setMiniMapCaption("Mini Map Test"); //미니 맵 내용
         zoomView.setMiniMapCaptionSize(20); // 미니 맵 내용 글씨 크기 설정
+        zoomView.zoomTo(1,x,y);
 
-        (new Thread(new Runnable()
+    /*    (new Thread(new Runnable()
         {
 
             @Override
@@ -152,7 +139,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                     public void run() {
                                                          x= nowX;
                                                          y= nowY;
-                                                         zoomView.zoomTo(1.8f,x+200,y+100);
+
 
                                                     }
                                                 });
@@ -171,7 +158,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                         // ooops
                     }
             }
-        })).start();
+        })).start();*/
 
         RelativeLayout container = (RelativeLayout) findViewById(R.id.container1);
         container.addView(zoomView);
@@ -190,6 +177,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         tv2= findViewById(R.id.test2);
         tv3= findViewById(R.id.test3);
         tv4= findViewById(R.id.test4);
+        tv5 = findViewById(R.id.test5);
         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
         btn2.setY(nowY);
         btn2.getLayoutParams().height = 123;
@@ -219,15 +207,14 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 Thread.sleep(1000);
                                                 runOnUiThread(new Runnable() // start actions in UI thread
                                                 {
-
                                                     @Override
                                                     public void run() {
                                                         tv1.setText("정현이꺼 " + a[0]);
                                                         tv2.setText("은윤이꺼 " + a[1]);
                                                         tv3.setText("충헌이꺼 " + a[2]);
                                                         tv4.setText("교수님꺼 " + a[3]);
-                                                        btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
-                                                        btn2.setY(nowY);
+                                                        tv5.setText("X : "+nowX+"Y : "+nowY);
+
                                                         String rest = MainActivity.rest2;
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(rest);
@@ -237,14 +224,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         //    Intent intent = getIntent();
                                                         //    String str = intent.getStringExtra("item");
                                              //           tv_sub.setText(res);
-                                                        nowX -= 2;
-                                                        nowY -= 2;
-
-
+//                                                        nowX -= 2;
+//                                                        nowY -= 2;
                                                         // 3개 비콘 distance에 따라서 별 이동하도록 nowX와 nowY 설정하기
 
                                                         // 화면 밖으로 나가는거 막아주기
-                                                        if(nowX<0&&nowY<0){
+                                                   /*     if(nowX<0&&nowY<0){
                                                             nowY=0;
                                                             nowX=0;
                                                         }
@@ -257,7 +242,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         else if(nowX>1000&&nowY>1000){
                                                             nowY=1000;
                                                             nowX=1000;
-                                                        }
+                                                        }*/
 
 
                                                     }
@@ -293,9 +278,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
 
     private void init(){
-
-
-
         ll1 = findViewById(R.id.ll1);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
@@ -321,7 +303,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()){
 
             case R.id.btn1 :
-
                 fromY = screenHeight - ll1.getHeight() - btn2.getHeight();
                 Log.e(TAG, "fromX : " + toX + ",  fromY : " +fromY);
 
@@ -334,23 +315,170 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                         while (!Thread.interrupted())
                             try
                             {
-                                Thread.sleep(1000);
+                                Thread.sleep(10);
                                 runOnUiThread(new Runnable() // start actions in UI thread
                                 {
 
                                     @Override
                                     public void run()
                                     {
-                                        if(a[0]-a[1]<0){
-                                            toX=500;
+
+                                        if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
+                                            if(nowX<0&&nowY<0){
+                                                nowX=0;
+                                                nowY=0;
+                                            }
+                                            if(nowX<0&&nowY>0){
+                                                nowX=0;
+                                                nowY--;
+                                            }
+                                            if(nowX>=0&&nowY<=0){
+                                                nowX--;
+                                                nowY=0;
+                                            }
+                                            nowX--;
+                                            nowY--;
+
+
+//                                            if(nowX>0&&nowX<680&&nowY>0&&nowY<1000){
+//                                                nowX--;
+//                                                nowY--;
+//                                            }
+//
+//                                            else{
+//                                                if(nowX<0&&nowY<0){
+//                                                    nowX=1;
+//                                                    nowY=1;
+//                                                }
+//
+//                                                else if(nowX<0&&nowY>0){
+//                                                    nowX=1;
+//                                                    nowY--;
+//                                                }
+//                                                else if(nowY<0&&nowX>0){
+//                                                    nowX--;
+//                                                    nowY=1;
+//                                                }
+//
+//
+//
+//                                            }
+
                                         }
-                                        else{
-                                            toX=0;
+                                        else if(a[1]<a[0]&&a[1]<a[2]&&a[1]<a[3]){
+
+                                            if(nowX>480&&nowY>650){
+                                                nowX=580;
+                                                nowY=650;
+                                            }
+
+                                            if( nowX>480&&nowY<=650){
+                                                nowX=480;
+                                                nowY++;
+                                            }
+                                            if(nowX<=480&&nowY>650){
+                                                nowY=650;
+                                                nowX++;
+                                            }
+                                            nowX++;
+                                            nowY++;
+
+
+
+                                        }
+                                        else if(a[2]<a[0]&&a[2]<a[1]&&a[2]<a[3]){
+
+                                            if(nowX>480&&nowY<0){
+                                                nowX=480;
+                                                nowY=0;
+                                            }
+
+                                            if( nowX<=480&&nowY<0){
+                                                nowX++;
+                                                nowY=0;
+                                            }
+                                            if(nowX>480&&nowY>=0){
+                                                nowY--;
+                                                nowX=480;
+                                            }
+                                            nowX++;
+                                            nowY--;
+
+
+//                                            if(nowX>0&&nowX<680&&nowY>0&&nowY<1000){
+//                                                nowY--;
+//                                                nowX++;
+//                                            }
+//                                           else{
+//
+//                                                if(nowX<680&&nowY<0){
+//                                                    nowX++;
+//                                                    nowY=1;
+//                                                }
+//                                                else if(nowY>0&&nowX>680){
+//                                                    nowX=680;
+//                                                    nowY++;
+//                                                }
+//                                                else{
+//                                                    nowX=580;
+//                                                    nowY=0;
+//                                                }
+//                                            }
+
+
+                                        }
+                                        else if(a[3]<a[0]&&a[3]<a[1]&&a[3]<a[2]){
+
+                                            if(nowX<0&&nowY>650){
+                                                nowX=0;
+                                                nowY=650;
+                                            }
+
+                                            if(nowX<0&&nowY<=650){
+                                                nowX=0;
+                                                nowY++;
+                                            }
+
+                                            if( nowX>=0&&nowY>650){
+                                                nowX--;
+                                                nowY=650;
+                                            }
+
+                                            nowX--;
+                                            nowY++;
+
+
+//
+//                                            if(nowX>0&&nowX<680&&nowY>0&&nowY<1000){
+//                                                nowY++;
+//                                                nowX--;
+//                                            }
+//
+//                                            else{
+//                                                if(nowX<0&&nowY>1000){
+//                                                    nowX=679;
+//                                                    nowY=999;
+//
+//                                                }
+//                                                else if(nowX<680&&nowY>1000){
+//                                                    nowX++;
+//                                                    nowY=999;
+//                                                }
+//                                                else if(nowY<1000&&nowX>680){
+//                                                    nowX=679;
+//                                                    nowY++;
+//                                                }
+//
+//                                            }
+
                                         }
 
-                                        TranslateAnimation animation = new TranslateAnimation(nowX, toX, 0, 0);
+                                        btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
+                                        btn2.setY(nowY);
 
-                                        animation.setDuration(6000);
+                                        TranslateAnimation animation = new TranslateAnimation(nowX,nowX, nowY, nowY);
+
+                                        animation.setDuration(3000);
                                         animation.setFillAfter(false);
                                         animation.setFillEnabled(true);
                                         animation.setAnimationListener(new Animation.AnimationListener() {
@@ -373,8 +501,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         });
                                         btn2.startAnimation(animation);
 
-                                        if(toX==500)nowX+=41;
-                                        else nowX-=41;
+                              /*          if(toX==500)nowX+=41;
+                                        else nowX-=41;*/
 
                                     }
                                 });
@@ -389,7 +517,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 break;
 
 
-            case R.id.btn3 :
+          /*  case R.id.btn3 :
 
                 Log.e(TAG, "fromX : " + toX + ",  fromY : " +fromY);
 
@@ -418,7 +546,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                 toX = 0;
                 fromY = 0;
-                break;
+                break;*/
 
             default:
                 break;

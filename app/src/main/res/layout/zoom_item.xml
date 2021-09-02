@@ -6,24 +6,20 @@
     >
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/map">
 
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/map"
-                >
+        <ImageView
+            android:id="@+id/btn2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:drawable/btn_star_big_on" />
 
 
-
-                <ImageView
-                    android:id="@+id/btn2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@android:drawable/btn_star_big_on" />
-
-
-            </RelativeLayout>
+    </RelativeLayout>
 
 
 
