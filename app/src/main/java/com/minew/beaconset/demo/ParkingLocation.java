@@ -27,23 +27,12 @@ public class ParkingLocation extends AppCompatActivity {
         setContentView(R.layout.activity_parking_location);
 
         ImageButton btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener(){
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(ParkingLocation.this, mypages.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                onBackPressed();    // 집으로 돌아가기ㅛ료ㅠㅗㅠㅠㅛㅕㅠㅛㅠㅕㅑㅗㅠㅑ
             }
         });
-
-
-    }
-
-    TextView tv_parking_info = findViewById(R.id.parking_info);
-    final float a[] = subBeaconListAdapter.i;
-    //@Override
-    public void run() {
-            //a[0].setText("거리 " + a[0]);
-
 
     }
 
