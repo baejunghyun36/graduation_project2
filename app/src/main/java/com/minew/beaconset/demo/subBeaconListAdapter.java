@@ -64,8 +64,6 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
             i[3] = mMinewBeacons.get(position).getDistance();
         }
 
-//        i[position] = mMinewBeacons.get(position).getDistance();
-        // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
