@@ -47,6 +47,7 @@ import java.util.List;
 //정현 4:44
 //은윤 4:53
 //충헌 4:49
+//정현 4:55
 public class SubActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "AnimationActivity";
