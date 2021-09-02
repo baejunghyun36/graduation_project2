@@ -19,7 +19,7 @@ import java.util.List;
 
 public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdapter.MyViewHolder> {
 
-    public static float[] i = new float[3];
+    public static float[] i = new float[4];
 
 
     public static String distance;
@@ -57,8 +57,11 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
         else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56877){
             i[1] = mMinewBeacons.get(position).getDistance();
         }
-        else{
+        else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56878){
             i[2]= mMinewBeacons.get(position).getDistance();
+        }
+        else {
+            i[3] = mMinewBeacons.get(position).getDistance();
         }
 
 //        i[position] = mMinewBeacons.get(position).getDistance();
@@ -134,13 +137,6 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
 
 
 
-//            mDevice_name.setText(mMinewBeacon.getName());
-//            mDevice_uuid.setText("UUID:" + mMinewBeacon.getUuid());
-//            if (mMinewBeacon.isConnectable()) {
-//                mConnectable.setText("CONN: YES");
-//            } else {
-//                mConnectable.setText("CONN: NO");
-//            }
             String format = String.format("Minor:%s Rssi:%s Distance:%s ",
                      mMinewBeacon.getMinor(),
                     mMinewBeacon.getRssi(),
@@ -153,8 +149,6 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
 
             distance1.setText(form1);
 
-//            form1= String.format("%s",mMinewBeacon.getDistance());
-//            hi1.setText(form1);
 
             String s1 ="56388";
             String s2="56877";
@@ -170,7 +164,7 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
                 mDevice_who.setText("은윤이꺼");
                 location = "은윤이꺼";
             }
-            else{
+            else if(s3.equals(mMinewBeacon.getMinor())){
                 mDevice_location.setText("지하주차장C");
                 mDevice_who.setText("충헌이꺼");
                 location = "충헌이꺼";
