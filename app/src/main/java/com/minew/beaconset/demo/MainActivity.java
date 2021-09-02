@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = "phpquerytest";
 
     private static final String TAG_JSON = "webnautes";
-    private static final String TAG_ADDRESS = "rest";
+    private static final String TAG_ADDRESS = "x";
     String mJsonString;
     EditText item_find;
     private Button btn_current, btn_my_page;
