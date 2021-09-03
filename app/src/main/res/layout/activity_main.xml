@@ -157,28 +157,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="새우깡" />
 
                 <Button
                     android:id="@+id/BtnNum2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="꼬북칩" />
 
                 <Button
                     android:id="@+id/BtnNum3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="고구마깡" />
 
                 <Button
                     android:id="@+id/BtnNum4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="4" />
+                    android:text="양파링" />
             </LinearLayout>
 
             <LinearLayout
