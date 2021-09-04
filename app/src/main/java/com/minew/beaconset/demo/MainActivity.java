@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
-    public static String rest2 = "";
+    public static String rest[] = new String[10];
+    public static int item_location[][] = new int[10][10];
+    public static String id[] = new String[10];
 
     private DrawerLayout drawerLayout;
     private View drawerView;
@@ -76,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = "phpquerytest";
 
     private static final String TAG_JSON = "webnautes";
-    private static final String TAG_ADDRESS = "x";
+    private static final String TAG_ADDRESS = "rest";
+    private static final String TAG_id = "id";
+    private static final String TAG_X = "x";
+    private static final String TAG_Y = "y";
     String mJsonString;
     EditText item_find;
     private Button btn_current, btn_my_page;
@@ -84,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        GetData task = new GetData();
+        task.execute("");
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
 
@@ -103,9 +109,7 @@ public class MainActivity extends AppCompatActivity {
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                GetData task = new GetData();
-                task.execute(item_find.getText().toString());
-          //      tv_pass.setText(rest2);
+
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 startActivity(intent);
             }
@@ -426,7 +430,12 @@ public class MainActivity extends AppCompatActivity {
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
                     String address = item.getString(TAG_ADDRESS);
-                    rest2 = address;
+                    String x = item.getString(TAG_X);
+                    String y = item.getString(TAG_Y);
+                    String Item_id = item.getString(TAG_id);
+                    rest[i] = address;
+                    item_location[Integer.parseInt(x)][Integer.parseInt(y)] = i;
+                    id[i] = Item_id;
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
