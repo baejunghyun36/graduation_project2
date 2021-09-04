@@ -59,7 +59,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float toX = 0, fromY = 0;
     private float toY = 0;
     private float nowX=0, nowY = 0;
-    public String res = MainActivity.rest2;
 
 
     private float x = nowX;
@@ -216,7 +215,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         tv4.setText("교수님꺼 " + a[3]);
                                                         tv5.setText("X : "+nowX+"Y : "+nowY);
 
-                                                        String rest = MainActivity.rest2;
+                                                        String rest = MainActivity.rest[3];
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(rest);
                                            //             tv_sub = findViewById(R.id.tv_sub);
