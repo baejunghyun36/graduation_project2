@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
 import com.minew.beaconset.BluetoothState;
 import com.minew.beaconset.ConnectionState;
@@ -54,7 +55,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+// 9월 3일 은윤
 //9월 3일 은윤
 
 public class MainActivity extends AppCompatActivity {
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     String mJsonString;
     EditText item_find;
     private Button btn_current, btn_my_page;
+    public Button[] items = new Button[12]; // 아이템 버튼 배열
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,9 +176,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
         initView();
         initManager();
         checkBluetooth();
@@ -213,6 +213,33 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
+
+    // 장바구니 담기 Alert 창
+    public void onClickShowAlert(View view, Button B) {
+        AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
+        // alert의 title과 Messege 세팅
+
+        myAlertBuilder.setTitle("장바구니 버튼");
+        myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
+
+        // Yes Button or No Button
+        myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        myAlertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(),"취소되었습니다!",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        // Alert를 생성해주고 보여주는 메소드(show를 선언해야 Alert가 생성됨)
+        myAlertBuilder.show();
+    }
+
     DrawerLayout.DrawerListener listener=new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
