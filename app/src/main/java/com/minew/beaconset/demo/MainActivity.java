@@ -55,8 +55,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 // 9월 3일 은윤
-//9월 3일 은윤
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
         btn_current = findViewById(R.id.btn_current_location);
         btn_my_page = findViewById(R.id.btn_my_page);
+        items[0] = findViewById(R.id.BtnNum1);
+        items[1] = findViewById(R.id.BtnNum1);
+        items[2] = findViewById(R.id.BtnNum1);
+        items[3] = findViewById(R.id.BtnNum1);
 
         item_find = (EditText)findViewById(R.id.item);
         btn_move = findViewById(R.id.btn_move);
@@ -131,6 +135,33 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // (9/4은윤)
+        items[0].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClickShowAlert(v, items[0]);
+            }
+        });
+        items[1].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClickShowAlert(v, items[1]);
+            }
+        });
+        items[2].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClickShowAlert(v, items[2]);
+            }
+        });
+        items[3].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClickShowAlert(v, items[3]);
+            }
+        });
+
 
         recyclerview = findViewById(R.id.recyclerView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -214,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
-    // 장바구니 담기 Alert 창
+    // 장바구니 담기 Alert 창 (9/4 은윤)
     public void onClickShowAlert(View view, Button B) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
         // alert의 title과 Messege 세팅
