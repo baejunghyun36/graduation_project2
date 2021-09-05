@@ -147,6 +147,19 @@
                 android:background="#4682B4" />
 
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#A3D9F6"
+                android:scrollbarFadeDuration="0"
+                android:scrollbarSize="5dp"
+                android:scrollbarThumbVertical="@android:color/holo_blue_bright"
+
+                android:scrollbars="vertical">
+
+            </android.support.v7.widget.RecyclerView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,28 +170,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="감자칩" />
 
                 <Button
                     android:id="@+id/BtnNum2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="새우깡" />
 
                 <Button
                     android:id="@+id/BtnNum3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="초코칩" />
 
                 <Button
                     android:id="@+id/BtnNum4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="4" />
+                    android:text="꼬북칩" />
             </LinearLayout>
 
             <LinearLayout
