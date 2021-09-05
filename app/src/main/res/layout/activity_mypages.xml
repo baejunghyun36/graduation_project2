@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <Button
-            android:id="@+id/list"
+            android:id="@+id/toCartBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="나의 쇼핑리스트(원하는 물품 위치 찾기)" />

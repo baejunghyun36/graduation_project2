@@ -56,7 +56,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// 9월 3일 은윤
+// 9월 4일 은윤
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
 
+    public static ArrayList<ItemData> arrayList;
+    public static ItemAdapter itemAdapter;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,9 +110,17 @@ public class MainActivity extends AppCompatActivity {
         btn_current = findViewById(R.id.btn_current_location);
         btn_my_page = findViewById(R.id.btn_my_page);
         items[0] = findViewById(R.id.BtnNum1);
-        items[1] = findViewById(R.id.BtnNum1);
-        items[2] = findViewById(R.id.BtnNum1);
-        items[3] = findViewById(R.id.BtnNum1);
+        items[1] = findViewById(R.id.BtnNum2);
+        items[2] = findViewById(R.id.BtnNum3);
+        items[3] = findViewById(R.id.BtnNum4);
+
+        recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        arrayList=new ArrayList<>();
+        itemAdapter = new ItemAdapter(arrayList);
+        recyclerView.setAdapter(itemAdapter);
 
         item_find = (EditText)findViewById(R.id.item);
         btn_move = findViewById(R.id.btn_move);
@@ -136,12 +150,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // (9/4은윤)
+        // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 onClickShowAlert(v, items[0]);
             }
+            //Intent item_intent
         });
         items[1].setOnClickListener(new View.OnClickListener(){
             @Override
@@ -248,14 +263,20 @@ public class MainActivity extends AppCompatActivity {
     // 장바구니 담기 Alert 창 (9/4 은윤)
     public void onClickShowAlert(View view, Button B) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
-        // alert의 title과 Messege 세팅
-
+       
         myAlertBuilder.setTitle("장바구니 버튼");
         myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
+
+        final Button pushItem = B;
 
         // Yes Button or No Button
         myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
+
+                ItemData itemData = new ItemData(R.mipmap.ic_launcher,pushItem.getText().toString()+"");
+                arrayList.add(itemData);    // 해당 아이템 추가
+                itemAdapter.notifyDataSetChanged(); //새로고침
+
                 Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
                         Toast.LENGTH_SHORT).show();
             }
@@ -267,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
-        // Alert를 생성해주고 보여주는 메소드(show를 선언해야 Alert가 생성됨)
         myAlertBuilder.show();
     }
 
