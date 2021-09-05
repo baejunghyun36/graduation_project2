@@ -20,20 +20,13 @@
             android:name=".demo.SubActivity"
             android:exported="true"
             android:label="@string/title_activity_sub"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".demo.LoginActivity">
             <intent-filter> <!-- 처음으로 실행되는 화면 -->
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
-        </activity>
-
-
-
-        <activity android:name=".demo.LoginActivity">
-
         </activity>
         <activity android:name=".demo.RegisterActivity" />
         <activity android:name=".demo.MainActivity" />

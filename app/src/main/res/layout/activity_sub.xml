@@ -49,14 +49,11 @@
         android:textSize="10dp"
         android:text="hi"
         />
-
     <TextView
         android:id="@+id/test5"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hi"
-        android:textSize="30dp" />
-
+        android:text="x,y" />
 
 
     <!--    <TextView-->
@@ -73,6 +70,11 @@
         android:layout_height="550dp"
         android:animationCache="true"
         android:clipChildren="false">
+
+
+
+
+
 
     </RelativeLayout>
 

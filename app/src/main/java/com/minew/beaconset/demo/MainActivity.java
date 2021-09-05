@@ -67,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
     public static String rest[] = new String[10];
-    public static int item_location[][] = new int[10][10];
+    public static int[] item_location_x = new int[20];
+    public static int[] item_location_y = new int[20];
+
     public static String id[] = new String[10];
 
     private DrawerLayout drawerLayout;
@@ -434,7 +436,8 @@ public class MainActivity extends AppCompatActivity {
                     String y = item.getString(TAG_Y);
                     String Item_id = item.getString(TAG_id);
                     rest[i] = address;
-                    item_location[Integer.parseInt(x)][Integer.parseInt(y)] = i;
+                    item_location_x[i] = Integer.parseInt(x);
+                    item_location_y[i] = Integer.parseInt(y);
                     id[i] = Item_id;
                 }
             } catch (JSONException e) {
@@ -447,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query2.php";
+            String serverURL = "http://192.168.0.3/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
