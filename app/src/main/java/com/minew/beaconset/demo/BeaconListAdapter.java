@@ -15,7 +15,7 @@ import com.minew.beaconset.R;
 import org.w3c.dom.Text;
 
 import java.util.List;
-///// 깃허브 처음이에요
+
 
 public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.MyViewHolder> {
 
