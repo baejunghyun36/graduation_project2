@@ -3,6 +3,10 @@ package com.minew.beaconset.demo;
 //test2
 //test3
 //test4
+
+//밥줘
+//밥안줘?
+//뱌ㅐ고파
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
