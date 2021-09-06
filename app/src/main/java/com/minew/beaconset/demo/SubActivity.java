@@ -55,6 +55,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float screenWidth;
     private float screenHeight;
     private int section =0;
+    //hi
   //  private int opt[] = Optimal_Distance.path;
     private float toX = 0, fromY = 0;
     private float toY = 0;
