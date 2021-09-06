@@ -2,6 +2,7 @@ package com.minew.beaconset.demo;
 //ㄴ마어
 //ㄴㅁㅇㄴㅁㅇ
 //ㅁㄴㅇㅁㄴㅇ
+///////////////////////////////////////
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
