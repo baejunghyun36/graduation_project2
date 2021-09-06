@@ -59,7 +59,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float toX = 0, fromY = 0;
     private float toY = 0;
     private float nowX=0, nowY = 0;
-    private Optimal_Distance test;
+    private Optimal_Distance test ;
     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
     private String opt[] = SubActivity2.path;
     private float x = nowX;

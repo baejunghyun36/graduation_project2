@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button  btn_move;
 
+
+
+
     private static String TAG = "phpquerytest";
 
     private static final String TAG_JSON = "webnautes";
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
-    private RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         items[1] = findViewById(R.id.BtnNum2);
         items[2] = findViewById(R.id.BtnNum3);
         items[3] = findViewById(R.id.BtnNum4);
+
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
@@ -152,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
@@ -270,7 +275,6 @@ public class MainActivity extends AppCompatActivity {
         myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
 
         final Button pushItem = B;
-
         // Yes Button or No Button
         myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
@@ -525,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.3/load.php";
+            String serverURL = "http://192.168.0.146/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
