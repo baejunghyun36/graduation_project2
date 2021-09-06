@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button  btn_move;
 
-
+//test
 
 
     private static String TAG = "phpquerytest";
