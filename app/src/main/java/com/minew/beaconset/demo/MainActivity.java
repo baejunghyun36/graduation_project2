@@ -525,7 +525,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.3/load.php";
+            String serverURL = "http://192.168.0.146/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
