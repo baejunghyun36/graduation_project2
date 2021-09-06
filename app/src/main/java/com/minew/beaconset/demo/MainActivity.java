@@ -1,5 +1,4 @@
 package com.minew.beaconset.demo;
-//주석주석걱
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -59,7 +58,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv_id, tv_pass;
-    //private RecyclerView       mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
     UserRssi comp = new UserRssi();
@@ -312,24 +310,13 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void initView() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-//        setSupportActionBar(toolbar);
-        //mRecycle = (RecyclerView) findViewById(R.id.main_recyeler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        //mRecycle.setLayoutManager(layoutManager);
         mAdapter = new BeaconListAdapter();
-        //mRecycle.setAdapter(mAdapter);
-        //mRecycle.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL));
     }
 
     private void initManager() {
         mMinewBeaconManager = MinewBeaconManager.getInstance(this);
     }
-
-
-    /*
-    * check location
-    * */
     private void checkLocation(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -338,9 +325,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    /**
-     * check Bluetooth state
-     */
     private void checkBluetooth() {
         BluetoothState bluetoothState = mMinewBeaconManager.checkBluetoothState();
         switch (bluetoothState) {
@@ -355,7 +339,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
     private void initListener() {
         //scan listener;
         mMinewBeaconManager.setMinewbeaconManagerListener(new MinewBeaconManagerListener() {
@@ -394,7 +377,6 @@ public class MainActivity extends AppCompatActivity {
                         + mAdapter.getData(position).getName());
                 mpDialog.show();
                 mMinewBeaconManager.stopScan();
-                //connect to beacon
                 MinewBeacon minewBeacon = mAdapter.getData(position);
                 MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(MainActivity.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
@@ -404,10 +386,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemLongClick(View view, int position) {
             }
         });
-
     }
-
-    //connect listener;
     MinewBeaconConnectionListener minewBeaconConnectionListener = new MinewBeaconConnectionListener() {
         @Override
         public void onChangeState(MinewBeaconConnection connection, ConnectionState state) {
@@ -574,14 +553,10 @@ public class MainActivity extends AppCompatActivity {
                 bufferedReader.close();
                 return sb.toString().trim();
             } catch (Exception e) {
-
                 Log.d(TAG, "InsertData: Error ", e);
                 errorString = e.toString();
-
                 return null;
             }
-
         }
     }
-
 }
