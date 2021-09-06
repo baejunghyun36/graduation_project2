@@ -12,7 +12,7 @@ public class CartActivity extends AppCompatActivity {
 
     //public ArrayList<ItemData> Cart_arrayList;
     //public ItemAdapter Cart_mainAdapter;
-      public RecyclerView Cart_recyclerView = MainActivity.recyclerView;
+    //public RecyclerView Cart_recyclerView = MainActivity.recyclerView;
     //public LinearLayoutManager Cart_linearLayoutManager;
 
     @Override

@@ -1,4 +1,5 @@
 package com.minew.beaconset.demo;
+//6시 10분 은윤
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
     public static RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
+    public static LinearLayoutManager linearLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
