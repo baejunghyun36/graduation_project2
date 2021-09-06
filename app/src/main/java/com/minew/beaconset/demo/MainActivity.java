@@ -1,5 +1,7 @@
 package com.minew.beaconset.demo;
-
+//ㄴ마어
+//ㄴㅁㅇㄴㅁㅇ
+//ㅁㄴㅇㅁㄴㅇ
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -59,7 +61,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv_id, tv_pass;
-    //private RecyclerView       mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
     UserRssi comp = new UserRssi();
@@ -78,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button  btn_move;
 
+//test
+
+
     private static String TAG = "phpquerytest";
 
     private static final String TAG_JSON = "webnautes";
@@ -92,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
+    public static RecyclerView recyclerView;
+    public static LinearLayoutManager linearLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         items[1] = findViewById(R.id.BtnNum2);
         items[2] = findViewById(R.id.BtnNum3);
         items[3] = findViewById(R.id.BtnNum4);
+
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
@@ -152,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
@@ -270,7 +276,6 @@ public class MainActivity extends AppCompatActivity {
         myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
 
         final Button pushItem = B;
-
         // Yes Button or No Button
         myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
@@ -308,24 +313,13 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void initView() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-//        setSupportActionBar(toolbar);
-        //mRecycle = (RecyclerView) findViewById(R.id.main_recyeler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        //mRecycle.setLayoutManager(layoutManager);
         mAdapter = new BeaconListAdapter();
-        //mRecycle.setAdapter(mAdapter);
-        //mRecycle.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL));
     }
 
     private void initManager() {
         mMinewBeaconManager = MinewBeaconManager.getInstance(this);
     }
-
-
-    /*
-    * check location
-    * */
     private void checkLocation(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -334,9 +328,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    /**
-     * check Bluetooth state
-     */
     private void checkBluetooth() {
         BluetoothState bluetoothState = mMinewBeaconManager.checkBluetoothState();
         switch (bluetoothState) {
@@ -351,7 +342,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
     private void initListener() {
         //scan listener;
         mMinewBeaconManager.setMinewbeaconManagerListener(new MinewBeaconManagerListener() {
@@ -390,7 +380,6 @@ public class MainActivity extends AppCompatActivity {
                         + mAdapter.getData(position).getName());
                 mpDialog.show();
                 mMinewBeaconManager.stopScan();
-                //connect to beacon
                 MinewBeacon minewBeacon = mAdapter.getData(position);
                 MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(MainActivity.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
@@ -400,10 +389,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemLongClick(View view, int position) {
             }
         });
-
     }
-
-    //connect listener;
     MinewBeaconConnectionListener minewBeaconConnectionListener = new MinewBeaconConnectionListener() {
         @Override
         public void onChangeState(MinewBeaconConnection connection, ConnectionState state) {
@@ -570,14 +556,10 @@ public class MainActivity extends AppCompatActivity {
                 bufferedReader.close();
                 return sb.toString().trim();
             } catch (Exception e) {
-
                 Log.d(TAG, "InsertData: Error ", e);
                 errorString = e.toString();
-
                 return null;
             }
-
         }
     }
-
 }

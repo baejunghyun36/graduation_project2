@@ -2,6 +2,7 @@ package com.minew.beaconset.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -11,7 +12,7 @@ public class CartActivity extends AppCompatActivity {
 
     //public ArrayList<ItemData> Cart_arrayList;
     //public ItemAdapter Cart_mainAdapter;
-    //public RecyclerView Cart_recyclerView;
+    //public RecyclerView Cart_recyclerView = MainActivity.recyclerView;
     //public LinearLayoutManager Cart_linearLayoutManager;
 
     @Override
@@ -27,5 +28,7 @@ public class CartActivity extends AppCompatActivity {
                 onBackPressed();    // 이전 페이지로 돌아가기
             }
         });
+
+        //Cart_recyclerView=(RecyclerView)findViewById(R.id.cartList);
     }
 }

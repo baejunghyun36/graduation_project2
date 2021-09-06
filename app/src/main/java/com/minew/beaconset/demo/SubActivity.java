@@ -55,11 +55,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float screenWidth;
     private float screenHeight;
     private int section =0;
-  //  private int opt[] = Optimal_Distance.path;
+
     private float toX = 0, fromY = 0;
     private float toY = 0;
     private float nowX=0, nowY = 0;
-    private Optimal_Distance test;
+    private Optimal_Distance test ;
     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
     private String opt[] = SubActivity2.path;
     private float x = nowX;
@@ -95,7 +95,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
-    //    String rest = MainActivity.rest2;
         View v = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.zoom_item, null, false);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -107,57 +106,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         zoomView.setMiniMapCaption("Mini Map Test"); //미니 맵 내용
         zoomView.setMiniMapCaptionSize(20); // 미니 맵 내용 글씨 크기 설정
         zoomView.zoomTo(1,x,y);
-    /*    (new Thread(new Runnable()
-        {
-
-            @Override
-            public void run()
-            {
-                while (!Thread.interrupted())
-                    try
-                    {
-                        Thread.sleep(2000);
-                        runOnUiThread(new Runnable() // start actions in UI thread
-                        {
-
-                            @Override
-                            public void run()
-                            {
-
-                                (new Thread(new Runnable() {
-
-                                    @Override
-                                    public void run() {
-                                        while (!Thread.interrupted())
-                                            try {
-                                                Thread.sleep(1000);
-                                                runOnUiThread(new Runnable() // start actions in UI thread
-                                                {
-
-                                                    @Override
-                                                    public void run() {
-                                                         x= nowX;
-                                                         y= nowY;
-
-
-                                                    }
-                                                });
-                                            } catch (InterruptedException e) {
-                                                // ooops
-                                            }
-                                    }
-                                })).start();
-
-
-                            }
-                        });
-                    }
-                    catch (InterruptedException e)
-                    {
-                        // ooops
-                    }
-            }
-        })).start();*/
 
         RelativeLayout container = (RelativeLayout) findViewById(R.id.container1);
         container.addView(zoomView);
@@ -217,33 +165,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         String rest = MainActivity.id[3];
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(rest);
-                                           //             tv_sub = findViewById(R.id.tv_sub);
-
-
-                                                        //    Intent intent = getIntent();
-                                                        //    String str = intent.getStringExtra("item");
-                                             //           tv_sub.setText(res);
-//                                                        nowX -= 2;
-//                                                        nowY -= 2;
-                                                        // 3개 비콘 distance에 따라서 별 이동하도록 nowX와 nowY 설정하기
-
-                                                        // 화면 밖으로 나가는거 막아주기
-                                                   /*     if(nowX<0&&nowY<0){
-                                                            nowY=0;
-                                                            nowX=0;
-                                                        }
-                                                        else if((nowX==0)&&(nowY>0)){
-                                                            nowX=0;
-                                                        }
-                                                        else if((nowY==0)&&(nowX>0)){
-                                                            nowY=0;
-                                                        }
-                                                        else if(nowX>1000&&nowY>1000){
-                                                            nowY=1000;
-                                                            nowX=1000;
-                                                        }*/
-
-
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
@@ -251,8 +172,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
                                     }
                                 })).start();
-
-
                             }
                         });
                     }
@@ -262,16 +181,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                     }
             }
         })).start();
-
-     //   tv_sub = findViewById(R.id.tv_sub);
-
-
-    //    Intent intent = getIntent();
-   //     String str = intent.getStringExtra("item");
-    //    tv_sub.setText(rest);
-
-
-
     }
 
 
@@ -560,47 +469,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 })).start();
 
                 break;
-
-
-          /*  case R.id.btn3 :
-
-                Log.e(TAG, "fromX : " + toX + ",  fromY : " +fromY);
-
-                TranslateAnimation animation3 = new TranslateAnimation(0,  -toX, 0, -fromY);
-                animation3.setDuration(3000);
-                animation3.setFillAfter(false);
-                animation3.setFillEnabled(true);
-                animation3.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        btn2.layout(0, 0, btn2.getWidth(), btn2.getHeight());
-                        Log.e(TAG, " 1: " + btn2.getLeft() + " , 2 : " + btn2.getTop() + "  , 3 : "  + btn2.getRight() + "  , 4 : " + btn2.getBottom());
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-                btn2.startAnimation(animation3);
-
-                toX = 0;
-                fromY = 0;
-                break;*/
-
             default:
                 break;
         }
     }
 
     private void initView() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-//        setSupportActionBar(toolbar);
         mRecycle = (RecyclerView) findViewById(R.id.sub_recyeler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecycle.setLayoutManager(layoutManager);
