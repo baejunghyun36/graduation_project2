@@ -2,6 +2,7 @@ package com.minew.beaconset.demo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
@@ -31,7 +32,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.AlertDialog;
 
 import com.minew.beaconset.BluetoothState;
 import com.minew.beaconset.ConnectionState;
@@ -56,8 +56,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// 9월 4일 은윤
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv_id, tv_pass;
@@ -69,17 +67,27 @@ public class MainActivity extends AppCompatActivity {
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
-    public static String rest2 = "";
+    public static String rest[] = new String[10];
+    public static int[] item_location_x = new int[20];
+    public static int[] item_location_y = new int[20];
+
+    public static String id[] = new String[10];
 
     private DrawerLayout drawerLayout;
     private View drawerView;
 
     private Button  btn_move;
 
+
+
+
     private static String TAG = "phpquerytest";
 
     private static final String TAG_JSON = "webnautes";
-    private static final String TAG_ADDRESS = "x";
+    private static final String TAG_ADDRESS = "rest";
+    private static final String TAG_id = "id";
+    private static final String TAG_X = "x";
+    private static final String TAG_Y = "y";
     String mJsonString;
     EditText item_find;
     private Button btn_current, btn_my_page;
@@ -87,15 +95,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
-    private RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        GetData task = new GetData();
+        task.execute("");
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
 
@@ -114,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
         items[2] = findViewById(R.id.BtnNum3);
         items[3] = findViewById(R.id.BtnNum4);
 
+
+
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -126,9 +135,7 @@ public class MainActivity extends AppCompatActivity {
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                GetData task = new GetData();
-                task.execute(item_find.getText().toString());
-          //      tv_pass.setText(rest2);
+
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 startActivity(intent);
             }
@@ -149,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
@@ -176,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 onClickShowAlert(v, items[3]);
             }
         });
-
-
         recyclerview = findViewById(R.id.recyclerView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
@@ -222,6 +228,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
         initView();
         initManager();
         checkBluetooth();
@@ -259,16 +268,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
-
-    // 장바구니 담기 Alert 창 (9/4 은윤)
     public void onClickShowAlert(View view, Button B) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
-       
+
         myAlertBuilder.setTitle("장바구니 버튼");
         myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
 
         final Button pushItem = B;
-
         // Yes Button or No Button
         myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
@@ -290,7 +296,6 @@ public class MainActivity extends AppCompatActivity {
         });
         myAlertBuilder.show();
     }
-
     DrawerLayout.DrawerListener listener=new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -506,7 +511,13 @@ public class MainActivity extends AppCompatActivity {
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
                     String address = item.getString(TAG_ADDRESS);
-                    rest2 = address;
+                    String x = item.getString(TAG_X);
+                    String y = item.getString(TAG_Y);
+                    String Item_id = item.getString(TAG_id);
+                    rest[i] = address;
+                    item_location_x[i] = Integer.parseInt(x);
+                    item_location_y[i] = Integer.parseInt(y);
+                    id[i] = Item_id;
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
@@ -518,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query2.php";
+            String serverURL = "http://192.168.0.146/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

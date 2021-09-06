@@ -55,13 +55,13 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float screenWidth;
     private float screenHeight;
     private int section =0;
-
+  //  private int opt[] = Optimal_Distance.path;
     private float toX = 0, fromY = 0;
     private float toY = 0;
     private float nowX=0, nowY = 0;
-    public String res = MainActivity.rest2;
-
-
+    private Optimal_Distance test ;
+    Optimal_Distance SubActivity2 = new Optimal_Distance().start();
+    private String opt[] = SubActivity2.path;
     private float x = nowX;
     private float y = nowY;
 
@@ -88,7 +88,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv4;
     private TextView tv5;
 
-
     private String str1 = SubActivity.distance;
     private String str2 = SubActivity.location;
 
@@ -108,7 +107,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         zoomView.setMiniMapCaption("Mini Map Test"); //미니 맵 내용
         zoomView.setMiniMapCaptionSize(20); // 미니 맵 내용 글씨 크기 설정
         zoomView.zoomTo(1,x,y);
-
     /*    (new Thread(new Runnable()
         {
 
@@ -214,9 +212,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         tv2.setText("은윤이꺼 " + a[1]);
                                                         tv3.setText("충헌이꺼 " + a[2]);
                                                         tv4.setText("교수님꺼 " + a[3]);
-                                                        tv5.setText("X : "+nowX+"Y : "+nowY);
+                                                        tv5.setText(opt[0] + "->"+ opt[1] + "->" + opt[2] + "->" + opt[3]);
 
-                                                        String rest = MainActivity.rest2;
+                                                        String rest = MainActivity.id[3];
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(rest);
                                            //             tv_sub = findViewById(R.id.tv_sub);
@@ -753,5 +751,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         super.onDestroy();
     }
 }
+
 
 

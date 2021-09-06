@@ -1,11 +1,14 @@
 package com.minew.beaconset.demo;
 
-import java.util.Scanner;
+import android.support.v7.app.AppCompatActivity;
+
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
-public class Optimal_Distance{
-    public static int path[] = new int[5];
+
+public class Optimal_Distance extends AppCompatActivity {
+    public static int[] item_x = MainActivity.item_location_x;
+    static int[] item_y = MainActivity.item_location_y;
+    public static String path[] = new String[20];
     static int width;
     static int height;
     static int map[][] = new int[10][10];
@@ -26,8 +29,8 @@ public class Optimal_Distance{
     static int item_location[][] = new int[20][2];
     static Queue<Integer> queue_x = new LinkedList<>();
     static Queue<Integer> queue_y = new LinkedList<>();
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+
+    public Optimal_Distance start() {
         width = 10;
         height = 10;
 
@@ -36,7 +39,6 @@ public class Optimal_Distance{
                 map[i][j] = -1;
             }
         }
-
         map[1][1] = -2; //벽
         map[1][2] = -2; //벽
         map[3][1] = -2; //벽
@@ -46,10 +48,14 @@ public class Optimal_Distance{
         map[9][9] = -3; //계산대
 
         for (int i = 0; i < N; i++) {
-            if(i==0) System.out.println("현재 위치를 입력하세요 : ");
-            else System.out.println("물품 "+i+" 의 위치를 입력하세요 : ");
             for (int j = 0; j < 2; j++) {
-                item_location[i][j]= sc.nextInt();
+                if(j == 0){
+                    item_location[i][j] = item_x[i];
+                }
+                else{
+                    item_location[i][j] = item_y[i];
+                }
+
             }
         }
 
@@ -81,11 +87,11 @@ public class Optimal_Distance{
         tsp(0, 0, 1);
         // node숫자, 비용합, 개수
         for (int i = 0; i < N; i++) {
-      //      System.out.println(result_array[i]+" ");
-            path[i] = result_array[i];
+            System.out.println(result_array[i]+" ");
+            //    path[i] = Integer.toString(result_array[i]);
         }
-     //   System.out.println(min_num);
-
+        System.out.println(min_num);
+        return null;
     }
 
     private static void bfs() {
@@ -119,7 +125,7 @@ public class Optimal_Distance{
             if (min_num > costSum + to_finish[items[i - 1]]) {
                 min_num = costSum + to_finish[items[i - 1]];
                 for (int j = 0; j < N; j++) {
-                    result_array[j] = items[j];
+                    path[j] = Integer.toString(items[j]);
                 }
             }
             visited[node] = 0;
@@ -135,4 +141,5 @@ public class Optimal_Distance{
         visited[node] = 0;
         items[count - 1] = -1;
     }
+
 }
