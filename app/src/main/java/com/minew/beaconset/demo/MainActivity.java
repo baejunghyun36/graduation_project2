@@ -1,4 +1,5 @@
 package com.minew.beaconset.demo;
+//6시 10분 은윤
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
