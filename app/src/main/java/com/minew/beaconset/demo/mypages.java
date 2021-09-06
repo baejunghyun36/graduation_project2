@@ -25,7 +25,7 @@ public class mypages extends AppCompatActivity {
         TextView client = findViewById(R.id.client_name);
         ImageButton btn_back = findViewById(R.id.btn_back);
         Button btn_parking = findViewById(R.id.parking);
-        list = findViewById(R.id.list);
+        list = findViewById(R.id.toCartBtn);
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
         client.setText(userName+ " 님 반갑습니다 :)");
