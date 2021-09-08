@@ -26,16 +26,12 @@ public class Optimal_Distance extends AppCompatActivity {
     static int dx[] = {0,0,-1,1};
     static int dy[] = { 1,-1,0,0};
     static int dis[][] = new int[1000][1000];
-    static int res[][] = new int[100][100];
-    static int inf = 1000000;
-    static int visit[] = new int[100];
-    static int visited[] = new int[100];
-    static int d[] = new int[100];
-    static int to_finish[] = new int[100];
-    static int N = 4;
-    static int items[] = new int[100];
+    static int res[][] = new int[5][5];
+    static int visited[] = new int[5];
+    static int to_finish[] = new int[5];
+    static int N = 5;
+    static int items[] = new int[5];
     static int min_num = 100000000;
-    static int result_array[] = new int[100];
     static int item_location[][] = new int[20][2];
     static Queue<Integer> queue_x = new LinkedList<>();
     static Queue<Integer> queue_y = new LinkedList<>();
@@ -43,8 +39,8 @@ public class Optimal_Distance extends AppCompatActivity {
 
 
     public Optimal_Distance start() {
-        width = 480;
-        height =650;
+        width = 1000;
+        height = 1000;
 
 
         for (int i = 0; i < 1000; i++) {
@@ -60,27 +56,21 @@ public class Optimal_Distance extends AppCompatActivity {
         map[8][9] = -2; //벽
         map[9][9] = -3; //계산대
 
-        for (int i = 0; i <= N; i++) {
+        for (int i = 0; i < N; i++) {
             for (int j = 0; j < 2; j++) {
-                if(i==0){
-                    item_location[i][0]=nowx;
-                    item_location[i][1]=nowy;
-                }
-                else{
-                    if(j == 0){
-                        item_location[i][j] = item_x[i-1];
-                    }
-                    else{
-                        item_location[i][j] = item_y[i-1];
+                if (i == 0) {
+                    item_location[i][0] = nowx;
+                    item_location[i][1] = nowy;
+                } else {
+                    if (j == 0) {
+                        item_location[i][j] = item_x[i - 1];
+                    } else {
+                        item_location[i][j] = item_y[i - 1];
                     }
                 }
-
-
-
             }
         }
-
-        for (int i = 0; i <= N; i++) {
+        for (int i = 0; i < N; i++) {
             int now_x = item_location[i][0];
             int now_y = item_location[i][1];
 
@@ -89,10 +79,10 @@ public class Optimal_Distance extends AppCompatActivity {
 
             bfs();
 
-            for (int j = 0; j <= N; j++)
-                if (i != j) res[i][j] = dis[item_location[j][0]][item_location[j][1]];
+            for (int j = 0; j < N; j++) if (i != j) res[i][j] = dis[item_location[j][0]][item_location[j][1]];
 
             to_finish[i] = dis[height-1][width-1];
+
 
             for (int k = 0; k < height; k++) {
                 for (int j = 0; j < width; j++) {
@@ -101,17 +91,11 @@ public class Optimal_Distance extends AppCompatActivity {
                 }
             }
         }
-        for (int i = 1; i <= N; i++) {
+        for (int i = 1; i < N; i++) {
             items[i] = -1;
             visited[i] = 0;
         }
         tsp(0, 0, 1);
-        // node숫자, 비용합, 개수
-    /*    for (int i = 0; i < N; i++) {
-            System.out.println(result_array[i]+" ");
-            //    path[i] = Integer.toString(result_array[i]);
-        }
-        System.out.println(min_num);*/
         return null;
     }
 
@@ -140,12 +124,12 @@ public class Optimal_Distance extends AppCompatActivity {
         visited[node] = 1;
         items[count - 1] = node;
 
-        if (count == N+1) {
-            int i=N+1;
+        if (count == N) {
+            int i=N;
 
             if (min_num > costSum + to_finish[items[i - 1]]) {
                 min_num = costSum + to_finish[items[i - 1]];
-                for (int j = 0; j <= N; j++) {
+                for (int j = 0; j < N; j++) {
                     path[j] = Integer.toString(items[j]);
                 }
             }
@@ -154,7 +138,7 @@ public class Optimal_Distance extends AppCompatActivity {
             return;
         }
 
-        for (int i = 0; i <= N; i++) {
+        for (int i = 0; i < N; i++) {
             if (visited[i]== 0 && res[node][i] != 0) {
                 tsp(i, costSum + res[node][i], count + 1);
             }
