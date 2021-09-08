@@ -3,6 +3,7 @@ package com.minew.beaconset.demo;
 //test2
 //test3
 //test4
+//ffff
 
 //밥줘
 //밥안줘?
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private       ProgressDialog mpDialog;
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
-    private RecyclerView recyclerview;
+    public RecyclerView recyclerview;
     public static String rest[] = new String[10];
     public static int[] item_location_x = new int[20];
     public static int[] item_location_y = new int[20];
@@ -83,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private View drawerView;
 
     private Button  btn_move;
-
-//test
 
 
     private static String TAG = "phpquerytest";
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     public static RecyclerView recyclerView;
     public static LinearLayoutManager linearLayoutManager;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         GetData task = new GetData();
@@ -130,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
+
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -192,6 +192,10 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerview = findViewById(R.id.recyclerView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+
+
+
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
         ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
@@ -274,6 +278,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
+
+
     public void onClickShowAlert(View view, Button B) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
 

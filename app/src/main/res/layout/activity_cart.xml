@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demo.CartActivity">
+    android:orientation="vertical"
+    tools:context=".demo.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -29,10 +31,13 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cartList"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        android:background="#A3D9F6"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/holo_blue_bright"
 
-</android.support.constraint.ConstraintLayout>
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

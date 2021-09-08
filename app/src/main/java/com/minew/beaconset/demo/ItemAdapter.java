@@ -52,6 +52,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CustomViewHold
             public boolean onLongClick(View view) {
 
                 remove(holder.getAdapterPosition());    //길게 누르면 해당 item삭제
+                Toast.makeText(view.getContext(),"장바구니에서 삭제되었습니다", Toast.LENGTH_SHORT).show();
 
                 return true;
             }
