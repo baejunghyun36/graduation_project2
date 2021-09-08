@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button  btn_move;
 
-//test
-
 
     private static String TAG = "phpquerytest";
 
@@ -131,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
+
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -193,6 +192,10 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerview = findViewById(R.id.recyclerView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+
+
+
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
         ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
@@ -275,6 +278,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
+
+
     public void onClickShowAlert(View view, Button B) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
 
