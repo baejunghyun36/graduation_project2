@@ -66,7 +66,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float y = nowY;
 
     int[] pos=new int[4];
-
+    private int lw = 0;
+    private int rw = 480;
+    private int uw = 0;
+    private int dw = 650;
+    private int mx = 250;
+    private int my = 350;
     public static TextView tv_sub;
     private TextView dis_result;
     BeaconListAdapter SubActivity = new BeaconListAdapter();
@@ -233,42 +238,38 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                         //4구역
 
-
+                                        //4구역
 
                                         //6구역
                                         if(a[2]<=1.1&&a[1]<=1.1&&(a[1]>1.1||a[3]>1.1)){
-                                            if(nowX<=480&&nowY<350){
+                                            if(nowX<=rw&&nowY<my){
                                                 nowY++; nowX++;
                                             }
-                                            if(nowX<=480&&nowY>350){
+                                            if(nowX<=rw&&nowY>my){
                                                 nowX++; nowY--;
                                             }
-                                            if(nowX>480&&nowY>350){
-                                                nowX=480; nowY--;
+                                            if(nowX>rw&&nowY>my){
+                                                nowX=rw; nowY--;
                                             }
-
-                                            if(nowX>480&&nowY<350){
-                                                nowX=480; nowY++;
+                                            if(nowX>rw&&nowY<my){
+                                                nowX=rw; nowY++;
                                             }
                                             section=6;
                                         }
 
-
-
-
                                         //2구역
                                         else if(a[0]<=2&&a[2]<=2&&a[1]>2&&a[3]>2){
-                                            if(nowX<250&&nowY<0){
-                                                nowY=0; nowX++;
+                                            if(nowX<mx&&nowY<uw){
+                                                nowY=uw; nowX++;
                                             }
-                                            if(nowX>250&&nowY<0){
-                                                nowX--; nowY=0;
+                                            if(nowX>mx&&nowY<uw){
+                                                nowX--; nowY=uw;
                                             }
-                                            if(nowX<250&&nowY>=0){
+                                            if(nowX<mx&&nowY>=uw){
                                                 nowX++; nowY--;
                                             }
 
-                                            if(nowX>250&&nowY>=0){
+                                            if(nowX>mx&&nowY>=uw){
                                                 nowX--; nowY--;
                                             }
                                             section=2;
@@ -276,20 +277,20 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                         //8구역
                                         else if(a[3]<=1&&a[1]<=1&&a[2]>1&&a[0]>1) {
-                                            if (nowX < 250 && nowY > 650) {
-                                                nowY = 650;
+                                            if (nowX < mx && nowY > dw) {
+                                                nowY = dw;
                                                 nowX++;
                                             }
-                                            if (nowX > 250 && nowY >650 ) {
+                                            if (nowX > mx && nowY >uw ) {
                                                 nowX--;
-                                                nowY = 650;
+                                                nowY = uw;
                                             }
-                                            if (nowX < 250 && nowY <= 650) {
+                                            if (nowX < mx && nowY <= uw) {
                                                 nowX++;
                                                 nowY++;
                                             }
 
-                                            if (nowX > 250 && nowY <= 650) {
+                                            if (nowX > mx && nowY <= uw) {
                                                 nowX--;
                                                 nowY++;
                                             }
@@ -299,17 +300,17 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                         //1구역
                                         else if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
-                                            if(nowX<0&&nowY<0){
-                                                nowX=0;
-                                                nowY=0;
+                                            if(nowX<lw&&nowY<uw){
+                                                nowX=lw;
+                                                nowY=uw;
                                             }
-                                            if(nowX<0&&nowY>0){
-                                                nowX=0;
+                                            if(nowX<lw&&nowY>uw){
+                                                nowX=lw;
                                                 nowY--;
                                             }
-                                            if(nowX>=0&&nowY<=0){
+                                            if(nowX>=lw&&nowY<=uw){
                                                 nowX--;
-                                                nowY=0;
+                                                nowY=uw;
                                             }
                                             nowX--;
                                             nowY--;
@@ -320,17 +321,17 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         //9구역
                                         else if(a[1]<a[0]&&a[1]<a[2]&&a[1]<a[3]){
 
-                                            if(nowX>480&&nowY>650){
-                                                nowX=580;
-                                                nowY=650;
+                                            if(nowX>rw&&nowY>dw){
+                                                nowX=rw;
+                                                nowY=dw;
                                             }
 
-                                            if( nowX>480&&nowY<=650){
-                                                nowX=480;
+                                            if( nowX>rw&&nowY<=dw){
+                                                nowX=rw;
                                                 nowY++;
                                             }
-                                            if(nowX<=480&&nowY>650){
-                                                nowY=650;
+                                            if(nowX<=rw&&nowY>dw){
+                                                nowY=dw;
                                                 nowX++;
                                             }
                                             nowX++;
@@ -343,18 +344,18 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         //3구역
                                         else if(a[2]<a[0]&&a[2]<a[1]&&a[2]<a[3]){
 
-                                            if(nowX>480&&nowY<0){
-                                                nowX=480;
-                                                nowY=0;
+                                            if(nowX>rw&&nowY<uw){
+                                                nowX=rw;
+                                                nowY=uw;
                                             }
 
-                                            if( nowX<=480&&nowY<0){
+                                            if( nowX<=rw&&nowY<uw){
                                                 nowX++;
-                                                nowY=0;
+                                                nowY=uw;
                                             }
-                                            if(nowX>480&&nowY>=0){
+                                            if(nowX>rw&&nowY>=uw){
                                                 nowY--;
-                                                nowX=480;
+                                                nowX=rw;
                                             }
                                             nowX++;
                                             nowY--;
@@ -366,19 +367,19 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         //7구역
                                         else if(a[3]<a[0]&&a[3]<a[1]&&a[3]<a[2]){
 
-                                            if(nowX<0&&nowY>650){
-                                                nowX=0;
-                                                nowY=650;
+                                            if(nowX<lw&&nowY>dw){
+                                                nowX=lw;
+                                                nowY=dw;
                                             }
 
-                                            if(nowX<0&&nowY<=650){
-                                                nowX=0;
+                                            if(nowX<lw&&nowY<=dw){
+                                                nowX=lw;
                                                 nowY++;
                                             }
 
-                                            if( nowX>=0&&nowY>650){
+                                            if( nowX>=lw&&nowY>dw){
                                                 nowX--;
-                                                nowY=650;
+                                                nowY=dw;
                                             }
 
                                             nowX--;
@@ -422,13 +423,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 //                                        }
 
 
-
-
-
-
-
                                         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
                                         btn2.setY(nowY);
+
 
                                         TranslateAnimation animation = new TranslateAnimation(nowX,nowX, nowY, nowY);
 
