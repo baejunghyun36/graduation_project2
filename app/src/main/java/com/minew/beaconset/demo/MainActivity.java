@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private       ProgressDialog mpDialog;
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
-    private RecyclerView recyclerview;
+    public RecyclerView recyclerview;
     public static String rest[] = new String[10];
     public static int[] item_location_x = new int[20];
     public static int[] item_location_y = new int[20];
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     public static RecyclerView recyclerView;
     public static LinearLayoutManager linearLayoutManager;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         GetData task = new GetData();
