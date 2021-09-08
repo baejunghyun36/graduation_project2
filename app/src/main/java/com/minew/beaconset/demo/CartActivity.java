@@ -27,12 +27,19 @@ public class CartActivity extends AppCompatActivity {
         itemAdapter2 = new ItemAdapter(arrayList2);
         recyclerView.setAdapter(itemAdapter2);
 
-        MainActivity.arrayList = arrayList2;    // 리사이클뷰 동기화
+        arrayList2 = MainActivity.arrayList;
+        MainActivity.arrayList = arrayList2;
+        MainActivity.recyclerView =recyclerView;
+        MainActivity.itemAdapter.notifyDataSetChanged(); // main의 리사이클뷰와 동기화
+
         ImageButton btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();    // 이전 페이지로 돌아가기
+
+                if(MainActivity.recyclerView == recyclerView){
+                    onBackPressed();
+                }
             }
         });
 
