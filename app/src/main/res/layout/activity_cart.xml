@@ -40,4 +40,13 @@
 
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btn_optimal_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1976D2"
+        android:text="최적의 경로로 쇼핑 시작!"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 </LinearLayout>

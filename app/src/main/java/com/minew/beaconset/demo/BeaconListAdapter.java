@@ -18,7 +18,7 @@ import java.util.List;
 
 
 public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.MyViewHolder> {
-
+    public static float[] i = new float[4];
     public static String distance;
     public static String location;
 
@@ -50,7 +50,6 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.setDataAndUi(mMinewBeacons.get(position));
-
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
