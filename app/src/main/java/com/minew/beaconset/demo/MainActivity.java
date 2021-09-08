@@ -1,13 +1,5 @@
 package com.minew.beaconset.demo;
-//ㄴ마어
-//test2
-//test3
-//test4
-//ffff
 
-//밥줘
-//밥안줘?
-//뱌ㅐ고파
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -65,7 +57,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static int Basket_index = 0;
     private TextView tv_id, tv_pass;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
@@ -73,17 +65,18 @@ public class MainActivity extends AppCompatActivity {
     private       ProgressDialog mpDialog;
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
-    public RecyclerView recyclerview;
+    private RecyclerView recyclerview;
     public static String rest[] = new String[10];
     public static int[] item_location_x = new int[20];
     public static int[] item_location_y = new int[20];
-
     public static String id[] = new String[10];
 
     private DrawerLayout drawerLayout;
     private View drawerView;
 
     private Button  btn_move;
+
+
 
 
     private static String TAG = "phpquerytest";
@@ -103,11 +96,9 @@ public class MainActivity extends AppCompatActivity {
     public static RecyclerView recyclerView;
     public static LinearLayoutManager linearLayoutManager;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        GetData task = new GetData();
-        task.execute("");
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
 
@@ -129,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
-
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -192,10 +182,6 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerview = findViewById(R.id.recyclerView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-
-
-
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
         ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
@@ -278,9 +264,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
-
-
-    public void onClickShowAlert(View view, Button B) {
+    public void onClickShowAlert(View view, final Button B) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
 
         myAlertBuilder.setTitle("장바구니 버튼");
@@ -290,7 +274,9 @@ public class MainActivity extends AppCompatActivity {
         // Yes Button or No Button
         myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
-
+                GetData task = new GetData();
+                String tmp = B.getText().toString();
+                task.execute(tmp);
                 ItemData itemData = new ItemData(R.mipmap.ic_launcher,pushItem.getText().toString()+"");
                 arrayList.add(itemData);    // 해당 아이템 추가
                 itemAdapter.notifyDataSetChanged(); //새로고침
@@ -507,10 +493,11 @@ public class MainActivity extends AppCompatActivity {
                     String x = item.getString(TAG_X);
                     String y = item.getString(TAG_Y);
                     String Item_id = item.getString(TAG_id);
-                    rest[i] = address;
-                    item_location_x[i] = Integer.parseInt(x);
-                    item_location_y[i] = Integer.parseInt(y);
-                    id[i] = Item_id;
+                    rest[Basket_index] = address;
+                    item_location_x[Basket_index] = Integer.parseInt(x);
+                    item_location_y[Basket_index] = Integer.parseInt(y);
+                    id[Basket_index] = Item_id;
+                    Basket_index++;
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
@@ -522,7 +509,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/load.php";
+            String serverURL = "http://192.168.0.146/query2.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
