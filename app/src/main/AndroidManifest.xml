@@ -31,7 +31,7 @@
         <activity android:name=".demo.RegisterActivity" />
         <activity android:name=".demo.MainActivity" />
         <activity android:name=".demo.DetilActivity" />
-
+        <activity android:name=".demo.CartActivity" />
         <service android:name=".ConnectService" />
 
         <receiver android:name=".BluetoothChangedReceiver">

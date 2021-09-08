@@ -2,8 +2,8 @@ package com.minew.beaconset.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.minew.beaconset.R;
@@ -29,6 +29,6 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        //Cart_recyclerView=(RecyclerView)findViewById(R.id.cartList);
+
     }
 }

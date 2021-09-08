@@ -1,23 +1,11 @@
 package com.minew.beaconset.demo;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.minew.beaconset.R;
-import com.minew.beaconset.BluetoothState;
-import com.minew.beaconset.ConnectionState;
-import com.minew.beaconset.MinewBeacon;
-import com.minew.beaconset.MinewBeaconConnection;
-import com.minew.beaconset.MinewBeaconConnectionListener;
-import com.minew.beaconset.MinewBeaconManager;
-import com.minew.beaconset.MinewBeaconManagerListener;
-import com.minew.beaconset.R;
-
-import java.util.List;
 
 public class ParkingLocation extends AppCompatActivity {
 
