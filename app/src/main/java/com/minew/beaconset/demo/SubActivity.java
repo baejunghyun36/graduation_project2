@@ -58,20 +58,29 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
     private float toX = 0, fromY = 0;
     private float toY = 0;
-    private float nowX=0, nowY = 0;
-    private Optimal_Distance test ;
-    Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-    private String opt[] = SubActivity2.path;
-    private float x = nowX;
-    private float y = nowY;
+    private int nowX=0, nowY = 0;
 
-    int[] pos=new int[4];
     private int lw = 0;
     private int rw = 480;
     private int uw = 0;
     private int dw = 650;
     private int mx = 250;
     private int my = 350;
+    private Optimal_Distance test ;
+    Optimal_Distance SubActivity2 = new Optimal_Distance().start();
+    private String opt[] = SubActivity2.path;
+    private float x = nowX;
+    private float y = nowY;
+
+    public static int now_x = 300;
+    public static int now_y = 300;
+
+/*    private float nowx = Optimal_Distance.nowx;
+    private float nowy = Optimal_Distance.nowy;*/
+
+
+    int[] pos=new int[4];
+
     public static TextView tv_sub;
     private TextView dis_result;
     BeaconListAdapter SubActivity = new BeaconListAdapter();
@@ -165,11 +174,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         tv2.setText("은윤이꺼 " + a[1]);
                                                         tv3.setText("충헌이꺼 " + a[2]);
                                                         tv4.setText("교수님꺼 " + a[3]);
-                                                        tv5.setText(opt[0] + "->"+ opt[1] + "->" + opt[2] + "->" + opt[3]);
-
-                                                        String rest = MainActivity.id[3];
+                                                        tv5.setText("X : "+  " Y : "+" 현재위치 ->" + opt[0] + "->"+ opt[1] + "->" + opt[2] + "->" + opt[3]);
                                                         tv_sub = findViewById(R.id.tv_sub);
-                                                        tv_sub.setText(rest);
+                                                        tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
@@ -184,6 +191,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                     {
                         // ooops
                     }
+
             }
         })).start();
     }
@@ -235,8 +243,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                     @Override
                                     public void run()
                                     {
-
-                                        //4구역
 
                                         //4구역
 
@@ -425,7 +431,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
                                         btn2.setY(nowY);
-
+                                        now_x=nowX;
+                                        now_y =nowY;
 
                                         TranslateAnimation animation = new TranslateAnimation(nowX,nowX, nowY, nowY);
 
@@ -622,6 +629,4 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         super.onDestroy();
     }
 }
-
-
 
