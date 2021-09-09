@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".demo.SearchActivity"></activity>
+        <activity
+            android:name=".demo.Start_page"
+            android:exported="true" />
+        <activity
+            android:name=".demo.home"
+            android:exported="true" />
+        <activity android:name=".demo.SearchActivity" />
         <activity android:name=".demo.ParkingLocation" />
         <activity android:name=".demo.mypages" />
         <activity

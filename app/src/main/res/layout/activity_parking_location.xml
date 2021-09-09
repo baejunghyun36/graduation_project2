@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".demo.ParkingLocation"
-
     >
 
 
@@ -14,7 +14,7 @@
         android:layout_width="411dp"
         android:layout_height="47dp"
         android:background="#1976D2"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,17 +28,11 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/back_icon" />
+
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="현재 주차 위치"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
     <TextView
         android:id="@+id/parking_info"
@@ -48,19 +42,18 @@
         android:layout_marginTop="48dp"
         android:text="구역"
         android:textSize="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        />
 
-    <TextView
-        android:id="@+id/parking_info2"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="231dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:text="확인용"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        android:layout_marginLeft="70dp"
+        android:text="홈"
+        android:textSize="30dp"
+        />
+
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/sub_recyeler2"
@@ -71,4 +64,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
