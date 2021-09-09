@@ -82,6 +82,7 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
                 }
             });
         }
+        holder.itemView.setVisibility(View.GONE);
     }
 
     @Override

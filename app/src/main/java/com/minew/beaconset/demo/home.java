@@ -3,18 +3,23 @@ package com.minew.beaconset.demo;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
+
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,70 +36,64 @@ import com.minew.beaconset.R;
 import java.util.Collections;
 import java.util.List;
 
+public class home extends AppCompatActivity {
 
-public class ParkingLocation extends AppCompatActivity {
-    private RecyclerView       mRecycle;
+    public static Context context_main;
+    public String str;
+
+    private Button btn_move;
+
+    private Button btn_search;
+    private Button btnnum2;
+    private DrawerLayout drawerLayout;
+    private View drawerView;
+    private Button btn_current, btn_my_page;
+    EditText item_find;
+
+    //parking
+    private RecyclerView mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
     private subBeaconListAdapter  mAdapter;
     UserRssi comp = new UserRssi();
-    private       ProgressDialog mpDialog;
-    public static MinewBeacon    clickBeacon;
+    private ProgressDialog mpDialog;
+    public static MinewBeacon clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
     final float a[] = subBeaconListAdapter.i;
-    private int check =0;
+    public static int check;
     private TextView parking_info;
     private TextView parking_info2;
-    private Button btn_move;
-    public static String now_s="1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parking_location);
+        setContentView(R.layout.activity_home);
 
+        context_main =this;
+        Intent intent = getIntent();
+        final String userID = intent.getStringExtra("userID");
+        String userPass = intent.getStringExtra("userPass");
+        final String userName = intent.getStringExtra("userName");
+
+        btn_move = findViewById(R.id.btn_move);
+        btn_search = findViewById(R.id.btn_search);
+        item_find = (EditText)findViewById(R.id.item) ;
+        btnnum2 = findViewById(R.id.BtnNum2);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View) findViewById(R.id.drawer );
+        btn_current = findViewById(R.id.btn_current_location);
+        btn_my_page = findViewById(R.id.btn_my_page);
+
+
+        //parking
         parking_info = findViewById(R.id.parking_info);
-        String s= ((home)home.context_main).str;
-        parking_info.setText(s);
-
-     /*   if(now_s=="1"){
-            parking_info = findViewById(R.id.parking_info);
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            String s = bundle.getString("loc");
-            now_s = s;
-            parking_info.setText(s);
-        }
-
-        else{
-            parking_info.setText(now_s);
-        }
-*/
-
-        btn_move = findViewById(R.id.btn1);
-        btn_move.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(ParkingLocation.this, home.class);
-                startActivity(intent);
-            }
-        });
-
-
-//
-//
-
-
-
-
-
-       /* parking_info = findViewById(R.id.parking_info);
-        parking_info2 = findViewById(R.id.parking_info2);*/
-    /*    initView();
+        parking_info2 = findViewById(R.id.parking_info2);
+        initView();
         initManager();
         checkBluetooth();
         checkLocation();
-
-        dialogshow();*/
-       /* mMinewBeaconManager.startService();
+        dialogshow();
+        mMinewBeaconManager.startService();
 
         (new Thread(new Runnable() {
 
@@ -135,134 +134,206 @@ public class ParkingLocation extends AppCompatActivity {
                         // ooops
                     }
             }
-        })).start();*/
+        })).start();
 
 
-       /* String parking_info3 = "000040";
-        countDown(parking_info3);*/
 
-        ImageButton btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();    // 집으로 돌아가기
+        String parking_info3 = "000005";
+        countDown(parking_info3);
+
+        btn_move.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(home.this, SubActivity.class);
+                startActivity(intent);
             }
         });
 
+
+        btn_search.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
+                    Intent intent = new Intent(home.this, SearchActivity.class);
+                    intent.putExtra("SearchingItem", item_find.getText().toString());
+                    startActivity(intent);
+                }
+                else {    // 검색창 Null일때
+                    Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn_current.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(home.this, SubActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_my_page.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent(home.this, mypages.class);
+                intent.putExtra("userName",userName);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton btn_open1 = (ImageButton)findViewById(R.id.btn_open1);
+        btn_open1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(drawerView);
+            }
+        });
+
+        btnnum2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(home.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
-    /*public void countDown(String time) {
-        long conversionTime = 0;
+    public void countDown(String time) {
+        if(check==0){
 
-        // 1000 단위가 1초
-        // 60000 단위가 1분
-        // 60000 * 3600 = 1시간
-        String getHour = time.substring(0, 2);
-        String getMin = time.substring(2, 4);
-        String getSecond = time.substring(4, 6);
+            long conversionTime = 0;
 
-        // "00"이 아니고, 첫번째 자리가 0 이면 제거
-        if (getHour.substring(0, 1) == "0") {
-            getHour = getHour.substring(1, 2);
-        }
+            // 1000 단위가 1초
+            // 60000 단위가 1분
+            // 60000 * 3600 = 1시간
+            String getHour = time.substring(0, 2);
+            String getMin = time.substring(2, 4);
+            String getSecond = time.substring(4, 6);
 
-        if (getMin.substring(0, 1) == "0") {
-            getMin = getMin.substring(1, 2);
-        }
+            // "00"이 아니고, 첫번째 자리가 0 이면 제거
+            if (getHour.substring(0, 1) == "0") {
+                getHour = getHour.substring(1, 2);
+            }
 
-        if (getSecond.substring(0, 1) == "0") {
-            getSecond = getSecond.substring(1, 2);
-        }
+            if (getMin.substring(0, 1) == "0") {
+                getMin = getMin.substring(1, 2);
+            }
+
+            if (getSecond.substring(0, 1) == "0") {
+                getSecond = getSecond.substring(1, 2);
+            }
 
 
 
-        // 변환시간
-        conversionTime = Long.valueOf(getHour) * 1000 * 3600 + Long.valueOf(getMin) * 60 * 1000 + Long.valueOf(getSecond) * 1000;
+            // 변환시간
+            conversionTime = Long.valueOf(getHour) * 1000 * 3600 + Long.valueOf(getMin) * 60 * 1000 + Long.valueOf(getSecond) * 1000;
 
-        // 첫번쨰 인자 : 원하는 시간 (예를들어 30초면 30 x 1000(주기))
-        // 두번쨰 인자 : 주기( 1000 = 1초)
-        new CountDownTimer(conversionTime, 1000) {
+            // 첫번쨰 인자 : 원하는 시간 (예를들어 30초면 30 x 1000(주기))
+            // 두번쨰 인자 : 주기( 1000 = 1초)
+            new CountDownTimer(conversionTime, 1000) {
 
-            // 특정 시간마다 뷰 변경
-            public void onTick(long millisUntilFinished) {
+                // 특정 시간마다 뷰 변경
+                public void onTick(long millisUntilFinished) {
 
-                // 시간단위
+                    // 시간단위
 //                String hour = String.valueOf(millisUntilFinished / (60 * 60 * 1000));
 
-                // 분단위
-                long getMin = millisUntilFinished - (millisUntilFinished / (60 * 60 * 1000));
+                    // 분단위
+                    long getMin = millisUntilFinished - (millisUntilFinished / (60 * 60 * 1000));
 
 //                String min = String.valueOf(getMin / (60 * 1000)); // 몫
 
-                // 초단위
-                String second = String.valueOf((getMin % (60 * 1000)) / 1000); // 나머지
+                    // 초단위
+                    String second = String.valueOf((getMin % (60 * 1000)) / 1000); // 나머지
 
-                // 밀리세컨드 단위
-                String millis = String.valueOf((getMin % (60 * 1000)) % 1000); // 몫
+                    // 밀리세컨드 단위
+                    String millis = String.valueOf((getMin % (60 * 1000)) % 1000); // 몫
 
-         *//*        시간이 한자리면 0을 붙인다
-                if (hour.length() == 1) {
-                    hour = "0" + hour;
-                }
-                 분이 한자리면 0을 붙인다
-                if (min.length() == 1) {
-                    min = "0" + min;
-                }
-*//*
-                // 초가 한자리면 0을 붙인다
-                if (second.length() == 1) {
-                    second = "0" + second;
-                }
 
-                if(a[0]<a[1]&&a[0]<a[2])check =1;
-                else if (a[1]<a[0]&&a[1]<a[2])check =2;
-                else if(a[2]<a[0]&&a[2]<a[1])check =3;
-                if(check==1){  //정현
-                    if(a[0]>a[1]||a[0]>a[2]){
-                        if(a[1]<a[2])check =2;
-                        else check =3;
-                        second="10";
-                    }
-                }
-                else if(check==2){ //은윤
-                    if(a[1]>a[0]||a[1]>a[2]){
-                        if(a[0]<a[2])check =1;
-                        else check =3;
-                        second="10";
+                    // 초가 한자리면 0을 붙인다
+                    if (second.length() == 1) {
+                        second = "0" + second;
                     }
 
-                }
-                else if(check==3){ //충헌
-                    if(a[2]>a[0]||a[2]>a[1]){
-                        if(a[0]<a[1])check =1;
-                        else check =2;
-                        second="10";
+                    if(a[0]<a[1]&&a[0]<a[2])check =1;
+                    else if (a[1]<a[0]&&a[1]<a[2])check =2;
+                    else if(a[2]<a[0]&&a[2]<a[1])check =3;
+                    if(check==1){  //정현
+                        if(a[0]>a[1]||a[0]>a[2]){
+                            if(a[1]<a[2])check =2;
+                            else check =3;
+                            second="10";
+                        }
                     }
+                    else if(check==2){ //은윤
+                        if(a[1]>a[0]||a[1]>a[2]){
+                            if(a[0]<a[2])check =1;
+                            else check =3;
+                            second="10";
+                        }
+
+                    }
+                    else if(check==3){ //충헌
+                        if(a[2]>a[0]||a[2]>a[1]){
+                            if(a[0]<a[1])check =1;
+                            else check =2;
+                            second="10";
+                        }
+                    }
+
+                    parking_info.setText(second);
+
                 }
 
-                parking_info.setText(second);
+                // 제한시간 종료시
+                public void onFinish() {
+                    if(check==1){
+//                    parking_info.setText("지하 2층 정현");
+                        str= "지하 2층 정현";
+                  /*      Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
+                        intent.putExtra("loc",loc);
+                        startActivity(intent);*/
 
-            }
+                    }
+                    else if(check ==2){
+//                    parking_info.setText("지하 2층 은윤");
+                 /*       String loc = "지하 2층 은윤";*/
 
-            // 제한시간 종료시
-            public void onFinish() {
-                if(check==1){
-                    parking_info.setText("지하 2층 정현");
-                }
-                else if(check ==2){
-                    parking_info.setText("지하 2층 은윤");
-                }
-                else if(check ==3){
-                    parking_info.setText("지하 2층 충헌");
-                }
-                else{
-                    parking_info.setText("뚜벅이");
-                }
+                        str= "지하 2층 정현";
+                      /*  Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
+                        intent.putExtra("loc",loc);
+                        startActivity(intent);*/
+                    }
+                    else if(check ==3){
+//                    parking_info.setText("지하 2층 충헌");
+                        str= "지하 2층 정현";
+ /*                       String loc = "지하 2층 충헌";*/
+                  /*      Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
+                        intent.putExtra("loc",loc);
+                        startActivity(intent);*/
+                    }
+                    else{
+//                      parking_info.setText("뚜벅이");
+                   /*     String loc = "뚜벅이";*/
+                        str= "지하 2층 정현";
+         /*               Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
+                        intent.putExtra("loc",loc);
+                        startActivity(intent);*/
+                    }
+                    check =1;
 
-                // TODO : 타이머가 모두 종료될때 어떤 이벤트를 진행할지
-            }
-        }.start();
+
+
+                    //
+
+                }
+            }.start();
+        }
     }
+
+
+
+
+
     private void initView() {
         mRecycle = (RecyclerView) findViewById(R.id.sub_recyeler2);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -330,7 +401,7 @@ public class ParkingLocation extends AppCompatActivity {
                 mMinewBeaconManager.stopScan();
                 //connect to beacon
                 MinewBeacon minewBeacon = mAdapter.getData(position);
-                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(ParkingLocation.this, minewBeacon);
+                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(home.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
                 minewBeaconConnection.connect();
             }
@@ -346,7 +417,7 @@ public class ParkingLocation extends AppCompatActivity {
             switch (state) {
                 case BeaconStatus_Connected:
                     mpDialog.dismiss();
-                    Intent intent = new Intent(ParkingLocation.this, DetilActivity.class);
+                    Intent intent = new Intent(home.this, DetilActivity.class);
                     intent.putExtra("mac", connection.setting.getMacAddress());
                     startActivity(intent);
                     break;
@@ -383,7 +454,7 @@ public class ParkingLocation extends AppCompatActivity {
     }
 
     protected void dialogshow() {
-        mpDialog = new ProgressDialog(ParkingLocation.this);
+        mpDialog = new ProgressDialog(home.this);
         mpDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mpDialog.setTitle(null);//
         mpDialog.setIcon(null);//
@@ -413,5 +484,8 @@ public class ParkingLocation extends AppCompatActivity {
         mMinewBeaconManager.stopService();
         super.onDestroy();
     }
-*/
+
+
+
+
 }
