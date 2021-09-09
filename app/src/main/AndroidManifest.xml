@@ -14,13 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".demo.ParkingLocation"></activity>
+        <activity android:name=".demo.SearchActivity"></activity>
+        <activity android:name=".demo.ParkingLocation" />
         <activity android:name=".demo.mypages" />
         <activity
             android:name=".demo.SubActivity"
             android:exported="true"
             android:label="@string/title_activity_sub"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".demo.LoginActivity">
             <intent-filter> <!-- 처음으로 실행되는 화면 -->
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +33,7 @@
         <activity android:name=".demo.MainActivity" />
         <activity android:name=".demo.DetilActivity" />
         <activity android:name=".demo.CartActivity" />
+
         <service android:name=".ConnectService" />
 
         <receiver android:name=".BluetoothChangedReceiver">

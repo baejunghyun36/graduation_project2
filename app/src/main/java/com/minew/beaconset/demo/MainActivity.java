@@ -1,35 +1,27 @@
 package com.minew.beaconset.demo;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,10 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View drawerView;
 
-    private Button  btn_move;
-
-
-
+    private Button  btn_move, btn_search;
 
     private static String TAG = "phpquerytest";
 
@@ -107,11 +96,13 @@ public class MainActivity extends AppCompatActivity {
         String userPass = intent.getStringExtra("userPass");
         final String userName = intent.getStringExtra("userName");
 
+
         tv_id.setText(userID);
         tv_pass.setText(userPass);
 
         btn_current = findViewById(R.id.btn_current_location);
         btn_my_page = findViewById(R.id.btn_my_page);
+        btn_search = findViewById(R.id.btn_search);
         items[0] = findViewById(R.id.BtnNum1);
         items[1] = findViewById(R.id.BtnNum2);
         items[2] = findViewById(R.id.BtnNum3);
@@ -131,9 +122,23 @@ public class MainActivity extends AppCompatActivity {
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 startActivity(intent);
+            }
+        });
+        // 물품 검색
+        btn_search.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+                if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
+                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                    intent.putExtra("SearchingItem", item_find.getText().toString());
+                    startActivity(intent);
+                }
+                else {    // 검색창 Null일때
+                    Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btn_current.setOnClickListener(new View.OnClickListener(){
@@ -509,7 +514,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query2.php";
+            String serverURL = "http://192.168.0.146/test.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
