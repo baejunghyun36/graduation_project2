@@ -175,7 +175,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         tv2.setText("은윤이꺼 " + a[1]);
                                                         tv3.setText("충헌이꺼 " + a[2]);
                                                         tv4.setText("교수님꺼 " + a[3]);
-                                                        tv5.setText("X : "+  " Y : "+" 현재위치 ->" + opt[0] + "->"+ opt[1] + "->" + opt[2] + "->" + opt[3]);
+                                                        tv5.setText("X : "+  " Y : "+" 현재위치 :" + opt[0] + "->"+ opt[1] + "->" + opt[2] + "->" + opt[3] +"->" + opt[4]);
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
                                                     }
