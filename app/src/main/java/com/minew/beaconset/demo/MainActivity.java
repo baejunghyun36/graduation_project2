@@ -2,6 +2,7 @@ package com.minew.beaconset.demo;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
@@ -19,9 +20,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     public static int[] item_location_x = new int[20];
     public static int[] item_location_y = new int[20];
     public static String id[] = new String[10];
+    Dialog custom_dialog; // 커스텀 다이얼로그
 
     private DrawerLayout drawerLayout;
     private View drawerView;
@@ -96,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         String userPass = intent.getStringExtra("userPass");
         final String userName = intent.getStringExtra("userName");
 
+        custom_dialog = new Dialog(MainActivity.this);       // Dialog 초기화
+        custom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        custom_dialog.setContentView(R.layout.custom_dialog);   //커스텀 다이얼로그 연결
 
         tv_id.setText(userID);
         tv_pass.setText(userPass);
@@ -162,29 +169,30 @@ public class MainActivity extends AppCompatActivity {
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                onClickShowAlert(v, items[0]);
+            public void onClick(View v){ // 감자
+                showDialog(items[0],R.drawable.potato);
             }
-            //Intent item_intent
         });
         items[1].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                onClickShowAlert(v, items[1]);
+            public void onClick(View v){    // 새우
+                showDialog(items[1], R.drawable.shrimp);
             }
         });
         items[2].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                onClickShowAlert(v, items[2]);
+            public void onClick(View v){    //초코
+                showDialog(items[2], R.drawable.choco);
             }
         });
         items[3].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                onClickShowAlert(v, items[3]);
+            public void onClick(View v){    // 꼬북북
+                showDialog(items[3],R.drawable.turtle);
             }
         });
+
+
         recyclerview = findViewById(R.id.recyclerView);
         recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
@@ -269,11 +277,60 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
-    public void onClickShowAlert(View view, final Button B) {
+
+    // custom_dialog 디자인
+    public void showDialog(final Button B, final int iv){
+        //버튼 글씨랑 이미지뷰 띄울거야..
+        String item_name = B.getText().toString();
+        TextView tv_item = custom_dialog.findViewById(R.id.item);
+        tv_item.setText(item_name);
+        ImageView iv_item = custom_dialog.findViewById(R.id.item_image);
+        iv_item.setImageResource(iv);
+        TextView answerCart = findViewById(R.id.answerCart);
+
+
+        custom_dialog.show(); // 다이얼로그 띄우기
+
+        // YES 버튼
+        custom_dialog.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                GetData task = new GetData();
+                String tmp = B.getText().toString();
+                task.execute(tmp);
+
+                ItemData itemData = new ItemData(iv,B.getText().toString()+"");
+                arrayList.add(itemData);    // 해당 아이템 추가
+                itemAdapter.notifyDataSetChanged(); //새로고침
+
+                Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
+                        Toast.LENGTH_SHORT).show();
+
+                custom_dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        // NO 버튼
+        Button noBtn = custom_dialog.findViewById(R.id.noBtn);
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getApplicationContext(),"취소되었습니다!",
+                        Toast.LENGTH_SHORT).show();
+
+                custom_dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+    }
+/*
+    public void onClickShowAlert(View view, final Button B, final int iv) {
         AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
 
         myAlertBuilder.setTitle("장바구니 버튼");
         myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
+        //myAlertBuilder.setView(R.drawable.choco).show();
 
         final Button pushItem = B;
         // Yes Button or No Button
@@ -282,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
                 GetData task = new GetData();
                 String tmp = B.getText().toString();
                 task.execute(tmp);
-                ItemData itemData = new ItemData(R.mipmap.ic_launcher,pushItem.getText().toString()+"");
+                ItemData itemData = new ItemData(R.drawable.turtle,pushItem.getText().toString()+"");
                 arrayList.add(itemData);    // 해당 아이템 추가
                 itemAdapter.notifyDataSetChanged(); //새로고침
 
@@ -299,6 +356,8 @@ public class MainActivity extends AppCompatActivity {
         });
         myAlertBuilder.show();
     }
+
+ */
     DrawerLayout.DrawerListener listener=new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
