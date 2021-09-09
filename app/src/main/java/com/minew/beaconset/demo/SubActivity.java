@@ -485,7 +485,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         mRecycle.setLayoutManager(layoutManager);
         mAdapter = new subBeaconListAdapter();
         mRecycle.setAdapter(mAdapter);
-        mRecycle.addItemDecoration(new RecycleViewDivider(this, LinearLayout.INVISIBLE));
+        mRecycle.addItemDecoration(new RecycleViewDivider(this, LinearLayout.HORIZONTAL));
     }
     private void initManager() {
         mMinewBeaconManager = MinewBeaconManager.getInstance(this);
