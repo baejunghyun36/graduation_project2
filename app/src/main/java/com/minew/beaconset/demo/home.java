@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,10 +42,11 @@ public class home extends AppCompatActivity {
     public static Context context_main;
     public String str;
 
+
     private Button btn_move;
 
     private Button btn_search;
-    private Button btnnum2;
+    private ImageView btnnum2;
     private DrawerLayout drawerLayout;
     private View drawerView;
     private Button btn_current, btn_my_page;
@@ -198,137 +200,141 @@ public class home extends AppCompatActivity {
     }
 
     public void countDown(String time) {
-        if(check==0){
-
-            long conversionTime = 0;
-
-            // 1000 단위가 1초
-            // 60000 단위가 1분
-            // 60000 * 3600 = 1시간
-            String getHour = time.substring(0, 2);
-            String getMin = time.substring(2, 4);
-            String getSecond = time.substring(4, 6);
-
-            // "00"이 아니고, 첫번째 자리가 0 이면 제거
-            if (getHour.substring(0, 1) == "0") {
-                getHour = getHour.substring(1, 2);
-            }
-
-            if (getMin.substring(0, 1) == "0") {
-                getMin = getMin.substring(1, 2);
-            }
-
-            if (getSecond.substring(0, 1) == "0") {
-                getSecond = getSecond.substring(1, 2);
-            }
 
 
+        long conversionTime = 0;
 
-            // 변환시간
-            conversionTime = Long.valueOf(getHour) * 1000 * 3600 + Long.valueOf(getMin) * 60 * 1000 + Long.valueOf(getSecond) * 1000;
+        // 1000 단위가 1초
+        // 60000 단위가 1분
+        // 60000 * 3600 = 1시간
+        String getHour = time.substring(0, 2);
+        String getMin = time.substring(2, 4);
+        String getSecond = time.substring(4, 6);
 
-            // 첫번쨰 인자 : 원하는 시간 (예를들어 30초면 30 x 1000(주기))
-            // 두번쨰 인자 : 주기( 1000 = 1초)
-            new CountDownTimer(conversionTime, 1000) {
+        // "00"이 아니고, 첫번째 자리가 0 이면 제거
+        if (getHour.substring(0, 1) == "0") {
+            getHour = getHour.substring(1, 2);
+        }
 
-                // 특정 시간마다 뷰 변경
-                public void onTick(long millisUntilFinished) {
+        if (getMin.substring(0, 1) == "0") {
+            getMin = getMin.substring(1, 2);
+        }
 
-                    // 시간단위
+        if (getSecond.substring(0, 1) == "0") {
+            getSecond = getSecond.substring(1, 2);
+        }
+
+
+
+        // 변환시간
+        conversionTime = Long.valueOf(getHour) * 1000 * 3600 + Long.valueOf(getMin) * 60 * 1000 + Long.valueOf(getSecond) * 1000;
+
+        // 첫번쨰 인자 : 원하는 시간 (예를들어 30초면 30 x 1000(주기))
+        // 두번쨰 인자 : 주기( 1000 = 1초)
+        new CountDownTimer(conversionTime, 1000) {
+
+            // 특정 시간마다 뷰 변경
+            public void onTick(long millisUntilFinished) {
+
+                // 시간단위
 //                String hour = String.valueOf(millisUntilFinished / (60 * 60 * 1000));
 
-                    // 분단위
-                    long getMin = millisUntilFinished - (millisUntilFinished / (60 * 60 * 1000));
+                // 분단위
+                long getMin = millisUntilFinished - (millisUntilFinished / (60 * 60 * 1000));
 
 //                String min = String.valueOf(getMin / (60 * 1000)); // 몫
 
-                    // 초단위
-                    String second = String.valueOf((getMin % (60 * 1000)) / 1000); // 나머지
+                // 초단위
+                String second = String.valueOf((getMin % (60 * 1000)) / 1000); // 나머지
 
-                    // 밀리세컨드 단위
-                    String millis = String.valueOf((getMin % (60 * 1000)) % 1000); // 몫
+                // 밀리세컨드 단위
+                String millis = String.valueOf((getMin % (60 * 1000)) % 1000); // 몫
 
 
-                    // 초가 한자리면 0을 붙인다
-                    if (second.length() == 1) {
-                        second = "0" + second;
-                    }
-
-                    if(a[0]<a[1]&&a[0]<a[2])check =1;
-                    else if (a[1]<a[0]&&a[1]<a[2])check =2;
-                    else if(a[2]<a[0]&&a[2]<a[1])check =3;
-                    if(check==1){  //정현
-                        if(a[0]>a[1]||a[0]>a[2]){
-                            if(a[1]<a[2])check =2;
-                            else check =3;
-                            second="10";
-                        }
-                    }
-                    else if(check==2){ //은윤
-                        if(a[1]>a[0]||a[1]>a[2]){
-                            if(a[0]<a[2])check =1;
-                            else check =3;
-                            second="10";
-                        }
-
-                    }
-                    else if(check==3){ //충헌
-                        if(a[2]>a[0]||a[2]>a[1]){
-                            if(a[0]<a[1])check =1;
-                            else check =2;
-                            second="10";
-                        }
-                    }
-
-                    parking_info.setText(second);
-
+                // 초가 한자리면 0을 붙인다
+                if (second.length() == 1) {
+                    second = "0" + second;
                 }
 
-                // 제한시간 종료시
-                public void onFinish() {
-                    if(check==1){
+                if(a[0]<a[1]&&a[0]<a[2])check =1;
+                else if (a[1]<a[0]&&a[1]<a[2])check =2;
+                else if(a[2]<a[0]&&a[2]<a[1])check =3;
+                if(check==1){  //정현
+                    if(a[0]>a[1]||a[0]>a[2]){
+                        if(a[1]<a[2])check =2;
+                        else check =3;
+                        second="10";
+                    }
+                }
+                else if(check==2){ //은윤
+                    if(a[1]>a[0]||a[1]>a[2]){
+                        if(a[0]<a[2])check =1;
+                        else check =3;
+                        second="10";
+                    }
+
+                }
+                else if(check==3){ //충헌
+                    if(a[2]>a[0]||a[2]>a[1]){
+                        if(a[0]<a[1])check =1;
+                        else check =2;
+                        second="10";
+                    }
+                }
+
+                parking_info.setText(second);
+
+            }
+
+            // 제한시간 종료시
+            public void onFinish() {
+                if(check==1){
 //                    parking_info.setText("지하 2층 정현");
-                        str= "지하 2층 정현";
+                    str= "지하 2층 정현";
                   /*      Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
                         intent.putExtra("loc",loc);
                         startActivity(intent);*/
 
-                    }
-                    else if(check ==2){
+                }
+                else if(check ==2){
 //                    parking_info.setText("지하 2층 은윤");
-                 /*       String loc = "지하 2층 은윤";*/
+                    /*       String loc = "지하 2층 은윤";*/
 
-                        str= "지하 2층 정현";
+                    str= "지하 2층 정현";
                       /*  Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
                         intent.putExtra("loc",loc);
                         startActivity(intent);*/
-                    }
-                    else if(check ==3){
+                }
+                else if(check ==3){
 //                    parking_info.setText("지하 2층 충헌");
-                        str= "지하 2층 정현";
- /*                       String loc = "지하 2층 충헌";*/
+                    str= "지하 2층 정현";
+                    /*                       String loc = "지하 2층 충헌";*/
                   /*      Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
                         intent.putExtra("loc",loc);
                         startActivity(intent);*/
-                    }
-                    else{
+                }
+                else{
 //                      parking_info.setText("뚜벅이");
-                   /*     String loc = "뚜벅이";*/
-                        str= "지하 2층 정현";
+                    /*     String loc = "뚜벅이";*/
+                    str= "지하 2층 정현";
          /*               Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
                         intent.putExtra("loc",loc);
                         startActivity(intent);*/
-                    }
-                    check =1;
-
-
-
-                    //
-
                 }
-            }.start();
-        }
+                check =1;
+
+
+
+                //
+
+            }
+        }.start();
     }
+
+
+
+
+
 
 
 

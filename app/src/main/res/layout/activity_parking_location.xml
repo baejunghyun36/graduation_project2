@@ -29,10 +29,7 @@
             android:scaleType="centerInside"
             app:srcCompat="@drawable/back_icon" />
 
-
     </LinearLayout>
-
-
 
     <TextView
         android:id="@+id/parking_info"
@@ -44,14 +41,14 @@
         android:textSize="70dp"
         />
 
-    <Button
+<!--    <Button
         android:id="@+id/btn1"
         android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:text="홈"
         android:textSize="30dp"
-        />
+        />-->
 
 
 
