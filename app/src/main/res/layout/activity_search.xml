@@ -57,7 +57,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#D0EFF3"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tv_searching"
@@ -71,6 +72,12 @@
                 android:textStyle="bold" />
 
 
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_launcher_foreground" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,14 +86,14 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btn_inCart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:text="장바구니 담기" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_direct_optimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"

@@ -62,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
     public static String rest[] = new String[10];
+    public static String name[] = new String[10];
     public static int[] item_location_x = new int[20];
     public static int[] item_location_y = new int[20];
     public static String id[] = new String[10];
-    Dialog custom_dialog; // 커스텀 다이얼로그
+    public Dialog custom_dialog; // 커스텀 다이얼로그
 
     private DrawerLayout drawerLayout;
     private View drawerView;
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
+
 
         Intent intent = getIntent();
         final String userID = intent.getStringExtra("userID");
@@ -138,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
 
                 if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
+                    GetData task = new GetData();
+                    task.execute(item_find.getText().toString());
                     Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                     intent.putExtra("SearchingItem", item_find.getText().toString());
                     startActivity(intent);
@@ -169,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){ // 감자
-                showDialog(items[0],R.drawable.potato);
+            public void onClick(View v){    // 감자
+                showDialog(items[0], R.drawable.potato);
             }
         });
         items[1].setOnClickListener(new View.OnClickListener(){
@@ -188,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         items[3].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 꼬북북
-                showDialog(items[3],R.drawable.turtle);
+                showDialog(items[3], R.drawable.turtle);
             }
         });
 
@@ -288,7 +292,6 @@ public class MainActivity extends AppCompatActivity {
         iv_item.setImageResource(iv);
         TextView answerCart = findViewById(R.id.answerCart);
 
-
         custom_dialog.show(); // 다이얼로그 띄우기
 
         // YES 버튼
@@ -299,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
                 GetData task = new GetData();
                 String tmp = B.getText().toString();
                 task.execute(tmp);
+
 
                 ItemData itemData = new ItemData(iv,B.getText().toString()+"");
                 arrayList.add(itemData);    // 해당 아이템 추가
@@ -531,7 +535,7 @@ public class MainActivity extends AppCompatActivity {
         mMinewBeaconManager.stopService();
         super.onDestroy();
     }
-    private class GetData extends AsyncTask<String, Void, String> {
+    public class GetData extends AsyncTask<String, Void, String> {
 
         ProgressDialog progressDialog;
         String errorString = null;
@@ -573,7 +577,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/test.php";
+            String serverURL = "http://192.168.0.146/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
