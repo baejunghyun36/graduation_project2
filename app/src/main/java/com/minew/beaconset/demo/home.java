@@ -556,15 +556,13 @@ public class home extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             String searchKeyword1 = params[0];
-            String searchKeyword2 = params[0];
 
             String serverURL = "http://192.168.0.3/query2.php";
-            String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
+            String postParameters = "&name=" + searchKeyword1;
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -572,12 +570,10 @@ public class home extends AppCompatActivity {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -589,7 +585,6 @@ public class home extends AppCompatActivity {
                 else{
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
