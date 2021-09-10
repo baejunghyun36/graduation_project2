@@ -52,7 +52,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static int Basket_index = 0;
     private TextView tv_id, tv_pass;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
@@ -61,11 +60,6 @@ public class MainActivity extends AppCompatActivity {
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
-    public static String rest[] = new String[10];
-    public static String name[] = new String[10];
-    public static int[] item_location_x = new int[20];
-    public static int[] item_location_y = new int[20];
-    public static String id[] = new String[10];
     public Dialog custom_dialog; // 커스텀 다이얼로그
 
     private DrawerLayout drawerLayout;
@@ -73,8 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     private Button  btn_move, btn_search;
 
+    public static int Basket_index;
     private static String TAG = "phpquerytest";
-
+    public static String rest[] = new String[10];
+    public static String name[] = new String[10];
+    public static int[] item_location_x = new int[20];
+    public static int[] item_location_y = new int[20];
+    public static String id[] = new String[10];
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ADDRESS = "rest";
     private static final String TAG_id = "id";
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG_Y = "y";
     String mJsonString;
     EditText item_find;
+
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
 
@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
-
 
         Intent intent = getIntent();
         final String userID = intent.getStringExtra("userID");
@@ -140,11 +139,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
 
                 if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
-                    GetData task = new GetData();
+                    GetData task = new GetData();  // DB UPLOAD
                     task.execute(item_find.getText().toString());
-                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                    intent.putExtra("SearchingItem", item_find.getText().toString());
-                    startActivity(intent);
+              //      Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+          //          startActivity(intent);
                 }
                 else {    // 검색창 Null일때
                     Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
@@ -299,9 +297,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                GetData task = new GetData();
-                String tmp = B.getText().toString();
-                task.execute(tmp);
+         //       GetData task = new GetData();
+      //          String tmp = B.getText().toString();
+       //         task.execute(tmp);
 
 
                 ItemData itemData = new ItemData(iv,B.getText().toString()+"");
@@ -565,11 +563,16 @@ public class MainActivity extends AppCompatActivity {
                     item_location_x[Basket_index] = Integer.parseInt(x);
                     item_location_y[Basket_index] = Integer.parseInt(y);
                     id[Basket_index] = Item_id;
-                    Basket_index++;
+                    Basket_index = Basket_index+1;
+        //            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+           //         startActivity(intent);
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            Basket_index = Basket_index +1;
+            startActivity(intent);
         }
         @Override
         protected String doInBackground(String... params) {
@@ -577,7 +580,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/load.php";
+            String serverURL = "http://192.168.0.3/query2.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
