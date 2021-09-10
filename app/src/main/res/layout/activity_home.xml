@@ -8,18 +8,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".demo.MainActivity">
-
-
+    tools:context=".demo.home">
 
 
     <android.support.v4.widget.DrawerLayout
-
-
-
-
-
-
 
 
         android:id="@+id/drawer_layout"
@@ -28,19 +20,47 @@
         android:orientation="vertical">
 
 
-
-
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#045CB1"
+                android:background="#FFFFFF"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_open1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="350dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/baseline_view_headline_black_24dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_move"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="현위치" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
 
@@ -62,102 +82,239 @@
                     android:text="검색" />
 
 
-                <ImageButton
-                    android:id="@+id/btn_open1"
-                    android:layout_width="43dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/baseline_view_headline_black_24dp" />
-
-
-                <!--                <Button-->
-                <!--                    android:id="@+id/btn_open"-->
-                <!--                    android:layout_width="68dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginStart="200dp"-->
-                <!--                    android:layout_marginLeft="10dp"-->
-                <!--                    android:layout_marginTop="10dp"-->
-                <!--                    android:gravity="center"-->
-                <!--                    android:text="Menu" />-->
-
-
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#BCAEFF"
-                android:gravity="center">
-
-
-                <Button
-                    android:id="@+id/btn_move"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:text="SubActivity" />
-            </LinearLayout>
-
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp" />
-
-            <!--구분선-->
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:background="#4682B4" />
-
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
 
-                <Button
-                    android:id="@+id/BtnNum1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="유제품" />
+                >
 
-                <Button
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="60dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
                     android:id="@+id/BtnNum2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="70dp"
+                    android:text="BEST" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="48dp"
+
                     android:text="과자" />
 
-                <Button
-                    android:id="@+id/BtnNum3"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="" />
+                    android:layout_marginLeft="55dp"
+                    android:text="과일" />
 
-                <Button
-                    android:id="@+id/BtnNum4"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="" />
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="1dp"
+                    android:text="정육" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="60dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="73dp"
+                    android:text="반찬" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="53dp"
+
+                    android:text="분식" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:text="생활용품" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="1dp"
+                    android:text="일회용품" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="60dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+                <ImageView
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/photo" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="54dp"
+                    android:text="아이스크림" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+
+                    android:text="헤어" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="47dp"
+                    android:text="밀키트" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="47dp"
+                    android:layout_marginTop="1dp"
+                    android:text="정육" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/parking_info"
                 android:gravity="center"
-                android:layout_width="400dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="구역"
-                android:textSize="70dp"
+                android:textSize="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -165,8 +322,8 @@
             <TextView
                 android:id="@+id/parking_info2"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="확인용"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -175,8 +332,7 @@
 
 
 
-
-
+            <!--접고 펼치기 -->
             <!--구분선-->
             <View
                 android:layout_width="wrap_content"
@@ -199,10 +355,10 @@
                 android:paddingBottom="16dp"
                 tools:context=".MainActivity">
 
-<!--                <android.support.v7.widget.RecyclerView-->
-<!--                    android:id="@+id/recyclerView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content" />-->
+                <!--                <android.support.v7.widget.RecyclerView-->
+                <!--                    android:id="@+id/recyclerView"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content" />-->
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/sub_recyeler2"
@@ -226,3 +382,4 @@
 
 
 </LinearLayout>
+

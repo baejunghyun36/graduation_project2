@@ -3,6 +3,7 @@ package com.minew.beaconset.demo;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,6 +34,8 @@ import java.util.List;
 
 
 public class ParkingLocation extends AppCompatActivity {
+
+
     private RecyclerView       mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
     private subBeaconListAdapter  mAdapter;
@@ -44,7 +47,7 @@ public class ParkingLocation extends AppCompatActivity {
     private int check =0;
     private TextView parking_info;
     private TextView parking_info2;
-    private Button btn_move;
+/*    private Button btn_move;*/
     public static String now_s="1";
 
     @Override
@@ -54,6 +57,7 @@ public class ParkingLocation extends AppCompatActivity {
 
         parking_info = findViewById(R.id.parking_info);
         String s= ((home)home.context_main).str;
+        check=1;
         parking_info.setText(s);
 
      /*   if(now_s=="1"){
@@ -70,13 +74,13 @@ public class ParkingLocation extends AppCompatActivity {
         }
 */
 
-        btn_move = findViewById(R.id.btn1);
+ /*       btn_move = findViewById(R.id.btn1);
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(ParkingLocation.this, home.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
 //
