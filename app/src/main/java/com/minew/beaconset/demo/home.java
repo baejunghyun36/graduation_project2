@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +36,16 @@ import com.minew.beaconset.MinewBeaconManager;
 import com.minew.beaconset.MinewBeaconManagerListener;
 import com.minew.beaconset.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,6 +55,19 @@ public class home extends AppCompatActivity {
     public String str;
 
 
+    public static int Basket_index;
+    private static String TAG = "phpquerytest";
+    public static String rest[] = new String[10];
+    public static String name[] = new String[10];
+    public static int[] item_location_x = new int[20];
+    public static int[] item_location_y = new int[20];
+    public static String id[] = new String[10];
+    private static final String TAG_JSON = "webnautes";
+    private static final String TAG_ADDRESS = "rest";
+    private static final String TAG_id = "id";
+    private static final String TAG_X = "x";
+    private static final String TAG_Y = "y";
+    String mJsonString;
     private Button btn_move;
 
     private Button btn_search;
@@ -154,9 +179,8 @@ public class home extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
-                    Intent intent = new Intent(home.this, SearchActivity.class);
-                    intent.putExtra("SearchingItem", item_find.getText().toString());
-                    startActivity(intent);
+                    GetData task = new GetData();
+                    task.execute(item_find.getText().toString());
                 }
                 else {    // 검색창 Null일때
                     Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
@@ -490,7 +514,101 @@ public class home extends AppCompatActivity {
         mMinewBeaconManager.stopService();
         super.onDestroy();
     }
+    public class GetData extends AsyncTask<String, Void, String> {
 
+        ProgressDialog progressDialog;
+        String errorString = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(home.this,
+                    "Please Wait", null, true, true);
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            mJsonString = result;
+            try {
+                JSONObject jsonObject = new JSONObject(mJsonString);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+                for(int i=0;i<jsonArray.length();i++){
+                    JSONObject item = jsonArray.getJSONObject(i);
+                    String address = item.getString(TAG_ADDRESS);
+                    String x = item.getString(TAG_X);
+                    String y = item.getString(TAG_Y);
+                    String Item_id = item.getString(TAG_id);
+                    rest[Basket_index] = address;
+                    item_location_x[Basket_index] = Integer.parseInt(x);
+                    item_location_y[Basket_index] = Integer.parseInt(y);
+                    id[Basket_index] = Item_id;
+                    Basket_index++;
+                }
+            } catch (JSONException e) {
+                Log.d(TAG, "showResult : ", e);
+            }
+            Intent intent = new Intent(home.this, SearchActivity.class);
+            startActivity(intent);
+        }
+        @Override
+        protected String doInBackground(String... params) {
+
+            String searchKeyword1 = params[0];
+            String searchKeyword2 = params[0];
+
+            String serverURL = "http://192.168.0.3/query2.php";
+            String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString().trim();
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+                return null;
+            }
+        }
+    }
 
 
 

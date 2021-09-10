@@ -12,22 +12,17 @@ import com.minew.beaconset.R;
 
 
 public class SearchActivity extends AppCompatActivity {
-    public String id[] = MainActivity.id;
-
-    public int Last_num = MainActivity.Basket_index;
+    public static String id[] = home.id;
+    private TextView SearchingItem;
+    public static int Last_num = home.Basket_index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
-
-        final TextView searching = (TextView) findViewById(R.id.tv_searching);
-        Intent intent = getIntent();
-        final String SearchingItem = intent.getStringExtra("SearchingItem");
-        //searching.setText(SearchingItem+"\n?찾는거 맞나요?");
-        searching.setText(id[Last_num]);    // item_index
+        SearchingItem =  findViewById(R.id.tv_searching);
+        SearchingItem.setText(id[Last_num-1]);
 
         Button btn_inCart = findViewById(R.id.btn_inCart);
         Button direct_optimal = findViewById(R.id.btn_direct_optimal);
