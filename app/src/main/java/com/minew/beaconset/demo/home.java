@@ -333,6 +333,21 @@ public class home extends AppCompatActivity {
                         second="10";
                     }
                 }
+                Button noBtn = custom_parking.findViewById(R.id.noBtn);
+                noBtn.setText("닫기");
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Toast.makeText(getApplicationContext(),"즐거운 쇼핑되세요!",
+
+                                Toast.LENGTH_SHORT).show();
+                        custom_parking.dismiss(); // 다이얼로그 닫기
+
+                    }
+                });
+
+
                 tv_item.setText(second);
             }
 

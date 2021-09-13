@@ -42,8 +42,12 @@
                         android:layout_height="wrap_content"
                         android:text="스마트"
                         android:textSize="40dp"
-                        android:textColor="#5A73FF"
+                        android:textColor="#98CAFF"
                         android:textStyle="bold"
+                        android:shadowColor="#6D81EF"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="0.6"
 
                         />
                     <TextView
@@ -51,8 +55,12 @@
                         android:layout_height="wrap_content"
                         android:text="쇼핑"
                         android:textSize="25dp"
-                        android:textColor="#798DFD"
+                        android:textColor="#98CAFF"
+                        android:shadowColor="#6D81EF"
                         android:textStyle="bold"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="0.6"
                         />
 
                 </LinearLayout>
@@ -113,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="물품 검색"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#EF8181"
                     android:textSize="20dp"></EditText>
 
                 <Button
