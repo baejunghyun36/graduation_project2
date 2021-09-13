@@ -558,7 +558,7 @@ public class home extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.3/query2.php";
+            String serverURL = "http://192.168.0.146/query2.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
