@@ -25,19 +25,75 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
 
-                <ImageButton
-                    android:id="@+id/btn_open1"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="350dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/baseline_view_headline_black_24dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="스마트"
+                        android:textSize="40dp"
+                        android:textColor="#98CAFF"
+                        android:textStyle="bold"
+                        android:shadowColor="#6D81EF"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="0.6"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="쇼핑"
+                        android:textSize="25dp"
+                        android:textColor="#98CAFF"
+                        android:shadowColor="#6D81EF"
+                        android:textStyle="bold"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="0.6"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    >
+
+                    <ImageView
+
+                        android:id="@+id/btn_move"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/loc"
+                        android:text="현위치"
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/btn_open1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/baseline_view_headline_black_24dp" />
+
+
+                </LinearLayout>
+
 
 
             </LinearLayout>
@@ -48,12 +104,7 @@
                 android:background="#FFFFFF"
                 android:gravity="center">
 
-                <Button
-                    android:id="@+id/btn_move"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:text="현위치" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -70,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="물품 검색"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#EF8181"
                     android:textSize="20dp"></EditText>
 
                 <Button
@@ -306,32 +357,6 @@
                     android:text="정육" />
             </LinearLayout>
 
-
-            <TextView
-                android:id="@+id/parking_info"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="구역"
-                android:textSize="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <TextView
-                android:id="@+id/parking_info2"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="확인용"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-
-
             <!--접고 펼치기 -->
             <!--구분선-->
             <View
@@ -368,6 +393,21 @@
 
                 </android.support.v7.widget.RecyclerView>
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/parking_info2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="확인용"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+
+
 
 
         </LinearLayout>

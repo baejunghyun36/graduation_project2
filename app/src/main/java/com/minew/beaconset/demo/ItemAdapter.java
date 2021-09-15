@@ -32,6 +32,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CustomViewHold
         return holder;  // holder를 return
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull final ItemAdapter.CustomViewHolder holder, int position) {
         // 실제 추가될 때 생명주기

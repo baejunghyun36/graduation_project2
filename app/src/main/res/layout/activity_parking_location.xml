@@ -33,12 +33,13 @@
 
     <TextView
         android:id="@+id/parking_info"
+
         android:gravity="center"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="48dp"
-        android:text="구역"
-        android:textSize="70dp"
+        android:text="주차한 정보가 없습니다"
+        android:textSize="30dp"
         />
 
 <!--    <Button

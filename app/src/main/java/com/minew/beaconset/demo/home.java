@@ -1,11 +1,13 @@
 package com.minew.beaconset.demo;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -20,6 +22,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -52,9 +56,9 @@ import java.util.List;
 public class home extends AppCompatActivity {
 
     public static Context context_main;
-    public String str;
+    public String str="주차한 정보가 없습니다";
 
-
+    private int cnt_check=0;
     public static int Basket_index;
     private static String TAG = "phpquerytest";
     public static String rest[] = new String[10];
@@ -68,7 +72,7 @@ public class home extends AppCompatActivity {
     private static final String TAG_X = "x";
     private static final String TAG_Y = "y";
     String mJsonString;
-    private Button btn_move;
+    private ImageView btn_move;
 
     private Button btn_search;
     private ImageView btnnum2;
@@ -76,7 +80,7 @@ public class home extends AppCompatActivity {
     private View drawerView;
     private Button btn_current, btn_my_page;
     EditText item_find;
-
+    private Context context;
     //parking
     private RecyclerView mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
@@ -87,9 +91,10 @@ public class home extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 2;
     final float a[] = subBeaconListAdapter.i;
     public static int check;
-    private TextView parking_info;
-    private TextView parking_info2;
 
+    private TextView parking_info2;
+    public Dialog custom_parking; // 커스텀 다이얼로그
+    public Dialog custom_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +108,7 @@ public class home extends AppCompatActivity {
         final String userName = intent.getStringExtra("userName");
 
         btn_move = findViewById(R.id.btn_move);
+
         btn_search = findViewById(R.id.btn_search);
         item_find = (EditText)findViewById(R.id.item) ;
         btnnum2 = findViewById(R.id.BtnNum2);
@@ -112,8 +118,12 @@ public class home extends AppCompatActivity {
         btn_my_page = findViewById(R.id.btn_my_page);
 
 
+        custom_parking = new Dialog(home.this);       // Dialog 초기화
+        custom_parking.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        custom_parking.setContentView(R.layout.custom_parking);   //커스텀 다이얼로그 연결
+
         //parking
-        parking_info = findViewById(R.id.parking_info);
+
         parking_info2 = findViewById(R.id.parking_info2);
         initView();
         initManager();
@@ -148,6 +158,13 @@ public class home extends AppCompatActivity {
 
                                                         parking_info2.setText(a[0] + " " + a[1] + " " + a[2] + " " + a[3]);
 
+                                                        if((a[0]>0||a[1]>0||a[2]>0||a[3]>0)&&(cnt_check==0)){
+                                                            cnt_check=1;
+                                                            String parking_info3 = "000005";
+                                                            countDown(parking_info3);
+                                                        }
+
+
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
@@ -165,9 +182,8 @@ public class home extends AppCompatActivity {
 
 
 
-        String parking_info3 = "000005";
-        countDown(parking_info3);
 
+        btn_move.setColorFilter(Color.parseColor("#6492C3"));
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(home.this, SubActivity.class);
@@ -205,7 +221,11 @@ public class home extends AppCompatActivity {
             }
         });
 
-        ImageButton btn_open1 = (ImageButton)findViewById(R.id.btn_open1);
+
+
+        ImageView btn_open1 = (ImageView)findViewById(R.id.btn_open1);
+
+        btn_open1.setColorFilter(Color.parseColor("#6492C3"));
         btn_open1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,8 +243,18 @@ public class home extends AppCompatActivity {
 
     }
 
+
+
+
+
+
     public void countDown(String time) {
 
+        cnt_check=1;
+        String item_name = str;
+//        TextView tv_item = custom_parking.findViewById(R.id.item);
+//        tv_item.setText(item_name);
+        custom_parking.show(); // 다이얼로그 띄우기
 
         long conversionTime = 0;
 
@@ -248,14 +278,13 @@ public class home extends AppCompatActivity {
             getSecond = getSecond.substring(1, 2);
         }
 
-
-
         // 변환시간
         conversionTime = Long.valueOf(getHour) * 1000 * 3600 + Long.valueOf(getMin) * 60 * 1000 + Long.valueOf(getSecond) * 1000;
 
         // 첫번쨰 인자 : 원하는 시간 (예를들어 30초면 30 x 1000(주기))
         // 두번쨰 인자 : 주기( 1000 = 1초)
         new CountDownTimer(conversionTime, 1000) {
+            TextView tv_item = custom_parking.findViewById(R.id.item);
 
             // 특정 시간마다 뷰 변경
             public void onTick(long millisUntilFinished) {
@@ -274,10 +303,9 @@ public class home extends AppCompatActivity {
                 // 밀리세컨드 단위
                 String millis = String.valueOf((getMin % (60 * 1000)) % 1000); // 몫
 
-
                 // 초가 한자리면 0을 붙인다
                 if (second.length() == 1) {
-                    second = "0" + second;
+                    second = "" + second;
                 }
 
                 if(a[0]<a[1]&&a[0]<a[2])check =1;
@@ -305,55 +333,65 @@ public class home extends AppCompatActivity {
                         second="10";
                     }
                 }
+                Button noBtn = custom_parking.findViewById(R.id.noBtn);
+                noBtn.setText("닫기");
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                parking_info.setText(second);
+                        Toast.makeText(getApplicationContext(),"즐거운 쇼핑되세요!",
 
+                                Toast.LENGTH_SHORT).show();
+                        custom_parking.dismiss(); // 다이얼로그 닫기
+
+                    }
+                });
+
+
+                tv_item.setText(second);
             }
 
             // 제한시간 종료시
             public void onFinish() {
                 if(check==1){
-//                    parking_info.setText("지하 2층 정현");
-                    str= "지하 2층 정현";
-                  /*      Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
-                        intent.putExtra("loc",loc);
-                        startActivity(intent);*/
-
+                    str= "지하 2층 A-1 구역";
                 }
                 else if(check ==2){
-//                    parking_info.setText("지하 2층 은윤");
-                    /*       String loc = "지하 2층 은윤";*/
 
-                    str= "지하 2층 정현";
-                      /*  Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
-                        intent.putExtra("loc",loc);
-                        startActivity(intent);*/
+                    str= "지하 2층 B-3 구역";
+
                 }
                 else if(check ==3){
-//                    parking_info.setText("지하 2층 충헌");
-                    str= "지하 2층 정현";
-                    /*                       String loc = "지하 2층 충헌";*/
-                  /*      Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
-                        intent.putExtra("loc",loc);
-                        startActivity(intent);*/
+
+                    str= "지하 2층 C-2 구역";
                 }
                 else{
-//                      parking_info.setText("뚜벅이");
-                    /*     String loc = "뚜벅이";*/
-                    str= "지하 2층 정현";
-         /*               Intent intent = new Intent(getBaseContext(),ParkingLocation.class);
-                        intent.putExtra("loc",loc);
-                        startActivity(intent);*/
+
+                    str= "뚜벅이";
                 }
-                check =1;
+                TextView parking_id = custom_parking.findViewById(R.id.parking_id);
+                TextView myinfo = custom_parking.findViewById(R.id.myinfo);
+
+                parking_id.setText("");
+                tv_item.setText(str);
+                myinfo.setText("메뉴 -> 마이페이지 -> 주차위치찾기 ");
 
 
-
-                //
-
+                // NO 버튼
+                Button noBtn = custom_parking.findViewById(R.id.noBtn);
+                noBtn.setText("확인");
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(),"즐거운 쇼핑 되세요!",
+                                Toast.LENGTH_SHORT).show();
+                        custom_parking.dismiss(); // 다이얼로그 닫기
+                    }
+                });
             }
         }.start();
     }
+
 
 
 
@@ -602,6 +640,7 @@ public class home extends AppCompatActivity {
                 }
                 bufferedReader.close();
                 return sb.toString().trim();
+
             } catch (Exception e) {
                 Log.d(TAG, "InsertData: Error ", e);
                 errorString = e.toString();
@@ -609,7 +648,4 @@ public class home extends AppCompatActivity {
             }
         }
     }
-
-
-
 }
