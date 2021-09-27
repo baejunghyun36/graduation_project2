@@ -59,7 +59,7 @@ public class home extends AppCompatActivity {
     public String str="주차한 정보가 없습니다";
 
     private int cnt_check=0;
-    public static int Basket_index;
+    public static int Basket_index=0;
     private static String TAG = "phpquerytest";
     public static String rest[] = new String[10];
     public static String name[] = new String[10];
@@ -186,8 +186,8 @@ public class home extends AppCompatActivity {
         btn_move.setColorFilter(Color.parseColor("#6492C3"));
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(home.this, SubActivity.class);
-                startActivity(intent);
+                GetData task = new GetData();
+                task.execute("");
             }
         });
 
@@ -207,8 +207,8 @@ public class home extends AppCompatActivity {
         btn_current.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(home.this, SubActivity.class);
-                startActivity(intent);
+                GetData task = new GetData();
+                task.execute("");
             }
         });
         btn_my_page.setOnClickListener(new View.OnClickListener(){
@@ -587,8 +587,10 @@ public class home extends AppCompatActivity {
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            Intent intent = new Intent(home.this, SearchActivity.class);
+            Intent intent = new Intent(home.this, SubActivity.class);
             startActivity(intent);
+            //  Intent intent = new Intent(home.this, SearchActivity.class);
+            //  startActivity(intent);
         }
         @Override
         protected String doInBackground(String... params) {
@@ -596,7 +598,7 @@ public class home extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.3/query2.php";
+            String serverURL = "http://192.168.0.146/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

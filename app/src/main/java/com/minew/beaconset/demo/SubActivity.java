@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +28,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.chrisbanes.photoview.PhotoView;
 import com.minew.beaconset.BluetoothState;
 import com.minew.beaconset.ConnectionState;
 import com.minew.beaconset.MinewBeacon;
@@ -74,7 +72,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
     public static int now_x = 300;
     public static int now_y = 300;
-
+    public static int [] item_x = home.item_location_x;
+    public static int [] item_y = home.item_location_y;
 /*    private float nowx = Optimal_Distance.nowx;
     private float nowy = Optimal_Distance.nowy;*/
 
@@ -101,6 +100,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv3;
     private TextView tv4;
     private TextView tv5;
+    private TextView item_id[] = new TextView[4];
 
     private String str1 = SubActivity.distance;
     private String str2 = SubActivity.location;
@@ -140,6 +140,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         tv3= findViewById(R.id.test3);
         tv4= findViewById(R.id.test4);
         tv5 = findViewById(R.id.test5);
+
         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
         btn2.setY(nowY);
         btn2.getLayoutParams().height = 123;
@@ -175,7 +176,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         tv2.setText("은윤이꺼 " + a[1]);
                                                         tv3.setText("충헌이꺼 " + a[2]);
                                                         tv4.setText("교수님꺼 " + a[3]);
-                                                        tv5.setText(nowX +" "+ nowY + "->"+ opt[1] + "->" + opt[2] + "->" + opt[3] +"->" + opt[4]);
+
+                                                        tv5.setText(item_x[0] + "," + item_y[0]+"/n"+
+                                                                item_x[1] + "," + item_y[1]+"/n"+
+                                                                item_x[2] + "," + item_y[2]+"/n"+
+                                                                item_x[3] + "," + item_y[3]+"/n");
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
                                                     }
@@ -205,6 +210,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
 
+        item_id[0] = findViewById(R.id.print_id1);
+        item_id[1] = findViewById(R.id.print_id2);
+        item_id[2] = findViewById(R.id.print_id3);
+        item_id[3] = findViewById(R.id.print_id4);
+
         btn1.setOnClickListener((View.OnClickListener) this);
         btn2.setOnClickListener((View.OnClickListener) this);
         btn3.setOnClickListener((View.OnClickListener) this);
@@ -214,6 +224,13 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         display.getSize(point);
 
         Log.e(TAG, "Width : " + point.x + " , Height : " + point.y);
+
+        // 각 아이템의 위치에 해당 index
+        for(int i = 0; i < 4; i++){
+            item_id[i].setX(item_x[i]);
+            item_id[i].setY(item_y[i]);
+            item_id[i].setText(home.id[i]);
+        }
 
         screenWidth = point.x;
         screenHeight = point.y;
@@ -629,4 +646,3 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         super.onDestroy();
     }
 }
-

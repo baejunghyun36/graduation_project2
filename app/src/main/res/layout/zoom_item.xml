@@ -18,27 +18,55 @@
             android:layout_height="60dp"
             android:background="@android:drawable/btn_star_big_on" />
 
+        <TextView
+            android:id="@+id/print_id1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303F9F"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/print_id2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303F9F"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/print_id3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303F9F"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/print_id4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303F9F"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 
 
 
-<!--    <ScrollView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="0"-->
-<!--        android:orientation="vertical"-->
+    <!--    <ScrollView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_weight="0"-->
+    <!--        android:orientation="vertical"-->
 
-<!--        >-->
+    <!--        >-->
 
-<!--    <HorizontalScrollView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="0"-->
-<!--        android:orientation="vertical"-->
-<!--        >-->
-<!--    </HorizontalScrollView>-->
-<!--    </ScrollView>-->
+    <!--    <HorizontalScrollView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_weight="0"-->
+    <!--        android:orientation="vertical"-->
+    <!--        >-->
+    <!--    </HorizontalScrollView>-->
+    <!--    </ScrollView>-->
 
 
 
