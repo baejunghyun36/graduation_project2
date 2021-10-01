@@ -82,7 +82,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
     /////////////////////////
     //LinearLayout linearView;
-    FrameLayout absoluteLayout;
+    LinearLayout linearView;
+    FrameLayout frameView;
 
     int[] pos=new int[4];
 
@@ -106,6 +107,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv3;
     private TextView tv4;
     private TextView tv5;
+    private TextView item_id[] = new TextView[4];
+    private TextView test_view;
 
     private float[] filtered = new float[4];
     private KalmanFilter Kdis1;
@@ -114,9 +117,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private KalmanFilter Kdis4;
     private float[] sum_dis = new float[4];
     private int count = 0;
-
-    private TextView item_id[] = new TextView[4];
-    private TextView test_view;
 
     private String str1 = SubActivity.distance;
     private String str2 = SubActivity.location;
@@ -140,10 +140,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         RelativeLayout container = (RelativeLayout) findViewById(R.id.container1);
         container.addView(zoomView);
 
-        Kdis1 = new KalmanFilter(0.0f);
-        Kdis2= new KalmanFilter(0.0f);
-        Kdis3 = new KalmanFilter(0.0f);
-        Kdis4 = new KalmanFilter(0.0f);
 
         initView();
         initManager();
@@ -155,6 +151,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         init(zoomView);
         //createTextView();
         mMinewBeaconManager.startService();
+
+        Kdis1 = new KalmanFilter(0.0f);
+        Kdis2= new KalmanFilter(0.0f);
+        Kdis3 = new KalmanFilter(0.0f);
+        Kdis4 = new KalmanFilter(0.0f);
 
         tv1= findViewById(R.id.test1);
         tv2= findViewById(R.id.test2);
@@ -217,12 +218,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             count++;
                                                         }
 
-                                                        tv5.setText(item_x[0] + "," + item_y[0]+"\n"+
-                                                                item_x[1] + "," + item_y[1]+"\n"+
-                                                                item_x[2] + "," + item_y[2]+"\n"+
-                                                                item_x[3] + "," + item_y[3]
-                                                                //+"x:"+absoluteLayout.getWidth()+" y:"+absoluteLayout.getHeight()
-                                                                );
+                                                        tv5.setText(item_x[0] + "," + item_y[0]+"|"+
+                                                                        item_x[1] + "," + item_y[1]+"|"+
+                                                                        item_x[2] + "," + item_y[2]+"|"+
+                                                                        item_x[3] + "," + item_y[3]
+                                                                //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
+                                                        );
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
                                                     }
@@ -245,20 +246,25 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void createTextView(float x, float y, String txt){
+        //(float x, float y, String txt):인자
 
         TextView textViewNm = new TextView(getApplicationContext());
-        textViewNm.setText("임의 생성한 textView");
+        textViewNm.setText(txt);
         textViewNm.setTextSize(20);
         textViewNm.setTextColor(Color.parseColor("#CC0066"));
+        textViewNm.setId(0);
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.leftMargin=(int)x;
         params.topMargin=(int)y;
 
         textViewNm.setLayoutParams(params);
         textViewNm.setBackgroundColor(Color.rgb(0,255, 0));
-        textViewNm.setText(txt);
-        absoluteLayout=findViewById(R.id.mapView);
-        absoluteLayout.addView(textViewNm);
+        //textViewNm.setText(txt);
+        //linearView=findViewById(R.id.mapView);
+        //linearView.addView(textViewNm);
+        frameView = findViewById(R.id.frameView);
+        frameView.addView(textViewNm);
 
     }
 
@@ -268,10 +274,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
 
-        item_id[0] = v.findViewById(R.id.print_id1);
-        item_id[1] = v.findViewById(R.id.print_id2);
-        item_id[2] = v.findViewById(R.id.print_id3);
-        item_id[3] = v.findViewById(R.id.print_id4);
+
         test_view = v.findViewById(R.id.print_test);
 
         btn1.setOnClickListener((View.OnClickListener) this);
@@ -286,7 +289,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
         // 각 아이템의 위치에 해당 index
 
-        //createTextView(100, 0, "(-100,0)");
+        //createTextView(100, 0, "(100,0)");
         //createTextView(-200, 100, "(-200,100)");
         //createTextView(500, 500, "(540,300)");
         //createTextView(linearView.getWidth()/2, linearView.getHeight()/2, "mid");
@@ -296,19 +299,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         test_view.setText("(0,0)");
 
 
-        //item_id[1].setText(home.id[1]);
-
-
-
         for(int i = 0; i < 4; i++){
-           item_id[i].setX(item_x[i]);
-           item_id[i].setY(item_y[i]);
-           item_id[i].setText(home.id[i]);
+            if(item_x[i]>1000)  item_x[i] = 1000;
+            if(item_y[i]>1200)  item_y[i]=1200;
+            createTextView(item_x[i], item_y[i],home.id[i]);
         }
-
-        //item_id[1].setX(absoluteLayout.getWidth()/2); // FrameLayout에서 이거 쓰면 오류
-        //item_id[1].setY(absoluteLayout.getHeight()/2);
-        //item_id[1].setText(home.id[1]);
 
         screenWidth = point.x;
         screenHeight = point.y;
