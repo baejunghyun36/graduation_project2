@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".demo.SubActivity">
+    tools:context=".demo.SubActivity"
+    android:layout_weight="100">
 
 
     <TextView
@@ -68,10 +69,9 @@
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:animationCache="true"
         android:clipChildren="false">
-
-
     </RelativeLayout>
 
     <RelativeLayout

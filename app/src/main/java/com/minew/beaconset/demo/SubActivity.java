@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -21,7 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -77,6 +80,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 /*    private float nowx = Optimal_Distance.nowx;
     private float nowy = Optimal_Distance.nowy;*/
 
+    /////////////////////////
+    //LinearLayout linearView;
+    FrameLayout absoluteLayout;
 
     int[] pos=new int[4];
 
@@ -101,6 +107,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv4;
     private TextView tv5;
     private TextView item_id[] = new TextView[4];
+    private TextView test_view;
 
     private String str1 = SubActivity.distance;
     private String str2 = SubActivity.location;
@@ -132,7 +139,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
         dialogshow();
 
-        init();
+        init(zoomView);
+        //createTextView();
         mMinewBeaconManager.startService();
 
         tv1= findViewById(R.id.test1);
@@ -177,10 +185,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         tv3.setText("충헌이꺼 " + a[2]);
                                                         tv4.setText("교수님꺼 " + a[3]);
 
-                                                        tv5.setText(item_x[0] + "," + item_y[0]+"/n"+
-                                                                item_x[1] + "," + item_y[1]+"/n"+
-                                                                item_x[2] + "," + item_y[2]+"/n"+
-                                                                item_x[3] + "," + item_y[3]+"/n");
+                                                        tv5.setText(item_x[0] + "," + item_y[0]+"\n"+
+                                                                item_x[1] + "," + item_y[1]+"\n"+
+                                                                item_x[2] + "," + item_y[2]+"\n"+
+                                                                item_x[3] + "," + item_y[3]
+                                                                //+"x:"+absoluteLayout.getWidth()+" y:"+absoluteLayout.getHeight()
+                                                                );
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
                                                     }
@@ -202,18 +212,35 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         })).start();
     }
 
+    private void createTextView(float x, float y, String txt){
 
+        TextView textViewNm = new TextView(getApplicationContext());
+        textViewNm.setText("임의 생성한 textView");
+        textViewNm.setTextSize(20);
+        textViewNm.setTextColor(Color.parseColor("#CC0066"));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.leftMargin=(int)x;
+        params.topMargin=(int)y;
 
-    private void init(){
+        textViewNm.setLayoutParams(params);
+        textViewNm.setBackgroundColor(Color.rgb(0,255, 0));
+        textViewNm.setText(txt);
+        absoluteLayout=findViewById(R.id.mapView);
+        absoluteLayout.addView(textViewNm);
+
+    }
+
+    private void init(View v){
         ll1 = findViewById(R.id.ll1);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
 
-        item_id[0] = findViewById(R.id.print_id1);
-        item_id[1] = findViewById(R.id.print_id2);
-        item_id[2] = findViewById(R.id.print_id3);
-        item_id[3] = findViewById(R.id.print_id4);
+        item_id[0] = v.findViewById(R.id.print_id1);
+        item_id[1] = v.findViewById(R.id.print_id2);
+        item_id[2] = v.findViewById(R.id.print_id3);
+        item_id[3] = v.findViewById(R.id.print_id4);
+        test_view = v.findViewById(R.id.print_test);
 
         btn1.setOnClickListener((View.OnClickListener) this);
         btn2.setOnClickListener((View.OnClickListener) this);
@@ -226,11 +253,30 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         Log.e(TAG, "Width : " + point.x + " , Height : " + point.y);
 
         // 각 아이템의 위치에 해당 index
+
+        //createTextView(100, 0, "(-100,0)");
+        //createTextView(-200, 100, "(-200,100)");
+        //createTextView(500, 500, "(540,300)");
+        //createTextView(linearView.getWidth()/2, linearView.getHeight()/2, "mid");
+
+        test_view.setX(0);
+        test_view.setY(0);
+        test_view.setText("(0,0)");
+
+
+        //item_id[1].setText(home.id[1]);
+
+
+
         for(int i = 0; i < 4; i++){
-            item_id[i].setX(item_x[i]);
-            item_id[i].setY(item_y[i]);
-            item_id[i].setText(home.id[i]);
+           item_id[i].setX(item_x[i]);
+           item_id[i].setY(item_y[i]);
+           item_id[i].setText(home.id[i]);
         }
+
+        //item_id[1].setX(absoluteLayout.getWidth()/2); // FrameLayout에서 이거 쓰면 오류
+        //item_id[1].setY(absoluteLayout.getHeight()/2);
+        //item_id[1].setText(home.id[1]);
 
         screenWidth = point.x;
         screenHeight = point.y;
