@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".demo.SubActivity"
-    android:layout_weight="100">
+    >
 
 
     <TextView
@@ -17,14 +17,12 @@
         android:textSize="10dp" />
 
 
-
     <TextView
         android:id="@+id/test1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
         android:text="hi"
-        />
+        android:textSize="10dp" />
 
 
     <TextView
@@ -64,19 +62,26 @@
     <!--        android:text="1"-->
     <!--        android:textSize="20dp"/>-->
 
-
+    <!--아래 RelativeLayout의 height를 wrap_content로 하면
+    해당 태그 아래 내용들이 출력되지 않음.
+    임시방편으로 일단 height 특정 값으로 설정-->
     <RelativeLayout
         android:id="@+id/container1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="500dp"
         android:animationCache="true"
         android:clipChildren="false">
     </RelativeLayout>
 
-    <RelativeLayout
+    <!--구분선-->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="#4682B4" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:animationCache="true"
         android:clipChildren="false">
 
@@ -86,10 +91,13 @@
         <!--            android:layout_height="376dp"-->
         <!--            android:background="@android:color/white" />-->
 
+
+
+
         <LinearLayout
             android:id="@+id/ll1"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:weightSum="2">
@@ -115,7 +123,7 @@
 
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView

@@ -1,69 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mapView"
     >
 
     <FrameLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mapView"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameView"
         >
+
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/map"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            />
+            android:src="@drawable/map" />
 
 
-    <ImageView
-        android:adjustViewBounds="true"
-                    android:id="@+id/btn2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@android:drawable/btn_star_big_on" />
+        <ImageView
+            android:adjustViewBounds="true"
+            android:id="@+id/btn2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:drawable/btn_star_big_on" />
 
-                <TextView
-                    android:id="@+id/print_id1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#303F9F"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/print_id2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#303F9F"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/print_id3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#303F9F"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/print_id4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#303F9F"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/print_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#303F9F"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/print_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303F9F"
+            android:textStyle="bold" />
 
 
 
