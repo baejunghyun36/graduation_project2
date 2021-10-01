@@ -106,6 +106,15 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv3;
     private TextView tv4;
     private TextView tv5;
+
+    private float[] filtered = new float[4];
+    private KalmanFilter Kdis1;
+    private KalmanFilter Kdis2;
+    private KalmanFilter Kdis3;
+    private KalmanFilter Kdis4;
+    private float[] sum_dis = new float[4];
+    private int count = 0;
+
     private TextView item_id[] = new TextView[4];
     private TextView test_view;
 
@@ -131,6 +140,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         RelativeLayout container = (RelativeLayout) findViewById(R.id.container1);
         container.addView(zoomView);
 
+        Kdis1 = new KalmanFilter(0.0f);
+        Kdis2= new KalmanFilter(0.0f);
+        Kdis3 = new KalmanFilter(0.0f);
+        Kdis4 = new KalmanFilter(0.0f);
 
         initView();
         initManager();
@@ -180,10 +193,29 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 {
                                                     @Override
                                                     public void run() {
-                                                        tv1.setText("정현이꺼 " + a[0]);
-                                                        tv2.setText("은윤이꺼 " + a[1]);
-                                                        tv3.setText("충헌이꺼 " + a[2]);
-                                                        tv4.setText("교수님꺼 " + a[3]);
+                                                        filtered[0] = (float) Kdis1.update(a[0]);
+                                                        filtered[1] = (float) Kdis2.update(a[1]);
+                                                        filtered[2] = (float) Kdis3.update(a[2]);
+                                                        filtered[3] = (float) Kdis4.update(a[3]);
+                                                        if(count == 5){
+                                                            for(int i=0; i<4; i++){
+                                                                sum_dis[i] = sum_dis[i] / count;
+                                                            }
+                                                            tv1.setText("정현이꺼 " + sum_dis[0]);
+                                                            tv2.setText("은윤이꺼 " + sum_dis[1]);
+                                                            tv3.setText("충헌이꺼 " + sum_dis[2]);
+                                                            tv4.setText("교수님꺼 " + sum_dis[3]);
+                                                            count = 0;
+                                                            for(int i=0; i<4; i++){
+                                                                sum_dis[i] = 0;
+                                                            }
+                                                        }
+                                                        else {
+                                                            for(int i=0; i<4; i++){
+                                                                sum_dis[i] += filtered[i];
+                                                            }
+                                                            count++;
+                                                        }
 
                                                         tv5.setText(item_x[0] + "," + item_y[0]+"\n"+
                                                                 item_x[1] + "," + item_y[1]+"\n"+
@@ -690,5 +722,26 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     protected void onDestroy() {
         mMinewBeaconManager.stopService();
         super.onDestroy();
+    }
+    class KalmanFilter {
+        public double Q = 0.00000001;
+        public double R = 0.00001;
+        public double X = 0, P = 1, K;
+
+        KalmanFilter(double initValue) {
+            X = initValue;
+        }
+
+        private void measurementUpdate() {
+            K = (P + Q) / (P + Q + R);
+            P = R * (P + Q) / (R + P + Q);
+        }
+
+        public double update(double measurement) {
+            measurementUpdate();
+            X = X + (measurement - X) * K;
+
+            return X;
+        }
     }
 }
