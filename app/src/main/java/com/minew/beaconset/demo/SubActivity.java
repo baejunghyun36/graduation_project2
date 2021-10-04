@@ -227,7 +227,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         // );
                                                         //  tv5.setText(Optimal_Distance.result_array[0]+ " " + Optimal_Distance.result_array[1]+ " " + Optimal_Distance.result_array[2]+ " " + Optimal_Distance.result_array[3]+ " " );
                                                         tv_sub = findViewById(R.id.tv_sub);
-                                                        tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
+                                                        tv_sub.setText(Integer.toString(home.item_location_x[Optimal_Distance.arr[0]]*10) + " " + Integer.toString(home.item_location_y[Optimal_Distance.arr[0]]*10) );
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
