@@ -12,7 +12,7 @@ import com.minew.beaconset.R;
 
 
 public class SearchActivity extends AppCompatActivity {
-    public static String id[] = home.id;
+    public static int id[] = home.id;
     private TextView SearchingItem;
     public static int Last_num = home.Basket_index;
 

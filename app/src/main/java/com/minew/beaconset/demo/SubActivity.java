@@ -1,6 +1,7 @@
 package com.minew.beaconset.demo;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -56,11 +57,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float screenWidth;
     private float screenHeight;
     private int section =0;
-
+    public static String arr = "";
     private float toX = 0, fromY = 0;
     private float toY = 0;
     private int nowX=0, nowY = 0;
-
+    private int cnt = Optimal_Distance.cnt;
     private int lw = 0;
     private int rw = 480;
     private int uw = 0;
@@ -68,8 +69,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private int mx = 250;
     private int my = 350;
     private Optimal_Distance test ;
-    Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-    private String opt[] = SubActivity2.path;
+
+
     private float x = nowX;
     private float y = nowY;
 
@@ -218,12 +219,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             count++;
                                                         }
 
-                                                        tv5.setText(item_x[0] + "," + item_y[0]+"|"+
-                                                                        item_x[1] + "," + item_y[1]+"|"+
-                                                                        item_x[2] + "," + item_y[2]+"|"+
-                                                                        item_x[3] + "," + item_y[3]
-                                                                //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
-                                                        );
+                                                        // for(int i=0; i<cnt; i++
+                                                        //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
+                                                        // );
+                                                        //  tv5.setText(Optimal_Distance.result_array[0]+ " " + Optimal_Distance.result_array[1]+ " " + Optimal_Distance.result_array[2]+ " " + Optimal_Distance.result_array[3]+ " " );
                                                         tv_sub = findViewById(R.id.tv_sub);
                                                         tv_sub.setText(MainActivity.id[0] + MainActivity.id[1] + MainActivity.id[2] +MainActivity.id[3]);
                                                     }
@@ -250,7 +249,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
         TextView textViewNm = new TextView(getApplicationContext());
         textViewNm.setText(txt);
-        textViewNm.setTextSize(20);
+        textViewNm.setTextSize(10);
         textViewNm.setTextColor(Color.parseColor("#CC0066"));
         textViewNm.setId(0);
 
@@ -299,10 +298,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         test_view.setText("(0,0)");
 
 
-        for(int i = 0; i < 4; i++){
-            if(item_x[i]>1000)  item_x[i] = 1000;
-            if(item_y[i]>1200)  item_y[i]=1200;
-            createTextView(item_x[i], item_y[i],home.id[i]);
+        for(int i = 0; i < home.Basket_index; i++){
+            if(item_x[i]>1200)  item_x[i] = 1200;
+            if(item_y[i]>1000)  item_y[i]=1000;
+            createTextView(item_y[i]*10,item_x[i]*10,Integer.toString(home.id[i]));
         }
 
         screenWidth = point.x;
@@ -524,7 +523,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         btn2.setY(nowY);
                                         now_x=nowX;
                                         now_y =nowY;
-
                                         TranslateAnimation animation = new TranslateAnimation(nowX,nowX, nowY, nowY);
 
                                         animation.setDuration(5000);
@@ -563,6 +561,14 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                     }
                 })).start();
 
+                break;
+            case R.id.btn3 :
+                Optimal_Distance SubActivity2 = new Optimal_Distance().start();
+                int opt[] = SubActivity2.arr;
+                for(int i=0; i<home.Basket_index; i++){
+                    arr += opt[i] + " ";
+                }
+                tv5.setText(arr);
                 break;
             default:
                 break;
