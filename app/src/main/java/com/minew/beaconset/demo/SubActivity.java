@@ -62,17 +62,22 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float toY = 0;
     private int nowX=0, nowY = 0;
     private int cnt = Optimal_Distance.cnt;
-    private int lw = 0;
-    private int rw = 480;
-    private int uw = 0;
-    private int dw = 650;
-    private int mx = 250;
-    private int my = 350;
-  //  public static int opt[];
+    private int add = 100;
+    private int to_x = 0;
+    private int to_y = 0;
+
+    private int lw = 3;
+    private int rw = 980;
+    private int uw = 3;
+    private int dw = 1180;
+    private int mx = 500;
+    private int my = 600;
+
+    //  public static int opt[];
     private Optimal_Distance test ;
 
     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-  //  public static int opt[] = SubActivity2.arr;
+    //  public static int opt[] = SubActivity2.arr;
     public int opt[] = SubActivity2.arr;
     private float x = nowX;
     private float y = nowY;
@@ -209,7 +214,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             tv1.setText("정현이꺼 " + a[0]);
                                                             tv2.setText("은윤이꺼 " + a[1]);
                                                             tv3.setText("충헌이꺼 " + a[2]);
-                                                            tv4.setText("교수님꺼 " + a[3]);
+                                                            tv4.setText("교수님꺼 " + a[3] + "                     X : "+ nowX + " Y : "+ nowY);
                                                             count = 0;
                                                             for(int i=0; i<4; i++){
                                                                 sum_dis[i] = 0;
@@ -329,90 +334,39 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                         while (!Thread.interrupted())
                             try
                             {
-                                Thread.sleep(10);
+                                Thread.sleep(1000);
                                 runOnUiThread(new Runnable() // start actions in UI thread
                                 {
 
                                     @Override
                                     public void run()
                                     {
+                                        now_x=nowX;
+                                        now_y =nowY;
 
                                         //4구역
 
-                                        //6구역
-                                        if(a[2]<=1.1&&a[1]<=1.1&&(a[1]>1.1||a[3]>1.1)){
-                                            if(nowX<=rw&&nowY<my){
-                                                nowY++; nowX++;
-                                            }
-                                            if(nowX<=rw&&nowY>my){
-                                                nowX++; nowY--;
-                                            }
-                                            if(nowX>rw&&nowY>my){
-                                                nowX=rw; nowY--;
-                                            }
-                                            if(nowX>rw&&nowY<my){
-                                                nowX=rw; nowY++;
-                                            }
-                                            section=6;
-                                        }
-
-                                        //2구역
-                                        else if(a[0]<=2&&a[2]<=2&&a[1]>2&&a[3]>2){
-                                            if(nowX<mx&&nowY<uw){
-                                                nowY=uw; nowX++;
-                                            }
-                                            if(nowX>mx&&nowY<uw){
-                                                nowX--; nowY=uw;
-                                            }
-                                            if(nowX<mx&&nowY>=uw){
-                                                nowX++; nowY--;
-                                            }
-
-                                            if(nowX>mx&&nowY>=uw){
-                                                nowX--; nowY--;
-                                            }
-                                            section=2;
-                                        }
-
-                                        //8구역
-                                        else if(a[3]<=1&&a[1]<=1&&a[2]>1&&a[0]>1) {
-                                            if (nowX < mx && nowY > dw) {
-                                                nowY = dw;
-                                                nowX++;
-                                            }
-                                            if (nowX > mx && nowY >uw ) {
-                                                nowX--;
-                                                nowY = uw;
-                                            }
-                                            if (nowX < mx && nowY <= uw) {
-                                                nowX++;
-                                                nowY++;
-                                            }
-
-                                            if (nowX > mx && nowY <= uw) {
-                                                nowX--;
-                                                nowY++;
-                                            }
-                                            section=8;
-                                        }
 
 
                                         //1구역
-                                        else if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
+                                        if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
                                             if(nowX<lw&&nowY<uw){
                                                 nowX=lw;
                                                 nowY=uw;
                                             }
                                             if(nowX<lw&&nowY>uw){
                                                 nowX=lw;
-                                                nowY--;
+                                                nowY-=add;
                                             }
                                             if(nowX>=lw&&nowY<=uw){
-                                                nowX--;
+                                                nowX-=add;
                                                 nowY=uw;
                                             }
-                                            nowX--;
-                                            nowY--;
+
+                                            nowX-=add;
+                                            nowY-=add;
+
+
                                             section=1;
 
                                         }
@@ -427,14 +381,17 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                             if( nowX>rw&&nowY<=dw){
                                                 nowX=rw;
-                                                nowY++;
+                                                nowY+=add;
                                             }
                                             if(nowX<=rw&&nowY>dw){
                                                 nowY=dw;
-                                                nowX++;
+                                                nowX+=add;
                                             }
-                                            nowX++;
-                                            nowY++;
+
+                                            nowX+=add;
+                                            nowY+=add;
+
+
                                             section=9;
 
 
@@ -449,15 +406,18 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
 
                                             if( nowX<=rw&&nowY<uw){
-                                                nowX++;
+                                                nowX+=add;
                                                 nowY=uw;
                                             }
                                             if(nowX>rw&&nowY>=uw){
-                                                nowY--;
+                                                nowY-=add;
                                                 nowX=rw;
                                             }
-                                            nowX++;
-                                            nowY--;
+
+                                            nowX+=add;
+                                            nowY-=add;
+
+
                                             section=3;
 
 
@@ -473,17 +433,81 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                             if(nowX<lw&&nowY<=dw){
                                                 nowX=lw;
-                                                nowY++;
+                                                nowY+=add;
                                             }
 
                                             if( nowX>=lw&&nowY>dw){
-                                                nowX--;
+                                                nowX-=add;
                                                 nowY=dw;
                                             }
 
-                                            nowX--;
-                                            nowY++;
+
+                                            nowX-=add;
+                                            nowY+=add;
+
+
                                             section =7;
+
+                                        }
+
+
+                                        //6구역
+                                        else if(a[2]<=1.1&&a[1]<=1.1&&(a[1]>1.1||a[3]>1.1)){
+                                            if(nowX<=rw&&nowY<my){
+                                                nowY+=add; nowX+=add;
+                                            }
+                                            if(nowX<=rw&&nowY>my){
+                                                nowX+=add; nowY-=add;
+                                            }
+                                            if(nowX>rw&&nowY>my){
+                                                nowX=rw; nowY-=add;
+                                            }
+                                            if(nowX>rw&&nowY<my){
+                                                nowX=rw; nowY+=add;
+                                            }
+
+                                            section=6;
+                                        }
+
+                                        //2구역
+                                        else if(a[0]<=2&&a[2]<=2&&a[1]>2&&a[3]>2){
+                                            if(nowX<mx&&nowY<uw){
+                                                nowY=uw; nowX+=add;
+                                            }
+                                            if(nowX>mx&&nowY<uw){
+                                                nowX-=add; nowY=uw;
+                                            }
+                                            if(nowX<mx&&nowY>=uw){
+                                                nowX+=add; nowY-=add;
+                                            }
+
+                                            if(nowX>mx&&nowY>=uw){
+                                                nowX-=add; nowY-=add;
+                                            }
+                                            section=2;
+                                        }
+
+                                        //8구역
+                                        else if(a[3]<=1&&a[1]<=1&&a[2]>1&&a[0]>1) {
+                                            if (nowX < mx && nowY > dw) {
+                                                nowY = dw;
+                                                nowX+=add;
+                                            }
+                                            if (nowX > mx && nowY >uw ) {
+                                                nowX-=add;
+                                                nowY = uw;
+                                            }
+                                            if (nowX < mx && nowY <= uw) {
+                                                nowX+=add;
+                                                nowY+=add;
+                                            }
+
+                                            if (nowX > mx && nowY <= uw) {
+                                                nowX-=add;
+                                                nowY+=add;
+                                            }
+
+                                            section=8;
 
                                         }
 
@@ -522,13 +546,17 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 //                                        }
 
 
-                                        btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
-                                        btn2.setY(nowY);
-                                        now_x=nowX;
-                                        now_y =nowY;
-                                        TranslateAnimation animation = new TranslateAnimation(nowX,nowX, nowY, nowY);
+                                        if(nowX<3)nowX=3;
+                                        if(nowY<3)nowY=3;
+                                        if(nowX>rw)nowX=rw;
+                                        if(nowY>dw)nowY=dw;
+                                        to_x = nowX;
+                                        to_y = nowY;
 
-                                        animation.setDuration(5000);
+
+                                        TranslateAnimation animation = new TranslateAnimation(now_x,to_x, now_y, to_y);
+
+                                        animation.setDuration(1000);
                                         animation.setFillAfter(false);
                                         animation.setFillEnabled(true);
                                         animation.setAnimationListener(new Animation.AnimationListener() {
@@ -564,10 +592,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                     }
                 })).start();
 
+
                 break;
             case R.id.btn3 :
-           //     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-          //      opt = SubActivity2.arr;
+                //     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
+                //      opt = SubActivity2.arr;
                 for(int i=0; i<home.Basket_index; i++){
                     arr += opt[i] + " ";
                 }
