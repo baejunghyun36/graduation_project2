@@ -202,11 +202,25 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         filtered[1] = (float) Kdis2.update(a[1]);
                                                         filtered[2] = (float) Kdis3.update(a[2]);
                                                         filtered[3] = (float) Kdis4.update(a[3]);
-                                                            tv1.setText("정현이꺼 " + filtered[0]);
-                                                            tv2.setText("은윤이꺼 " + filtered[1]);
-                                                            tv3.setText("충헌이꺼 " + filtered[2]);
-                                                            tv4.setText("교수님꺼 " + filtered[3]);
-
+                                                        if(count == 5){
+                                                            for(int i=0; i<4; i++){
+                                                                a[i] = sum_dis[i] / count;
+                                                            }
+                                                            tv1.setText("정현이꺼 " + a[0]);
+                                                            tv2.setText("은윤이꺼 " + a[1]);
+                                                            tv3.setText("충헌이꺼 " + a[2]);
+                                                            tv4.setText("교수님꺼 " + a[3]);
+                                                            count = 0;
+                                                            for(int i=0; i<4; i++){
+                                                                sum_dis[i] = 0;
+                                                            }
+                                                        }
+                                                        else {
+                                                            for(int i=0; i<4; i++){
+                                                                sum_dis[i] += filtered[i];
+                                                            }
+                                                            count++;
+                                                        }
 
                                                         // for(int i=0; i<cnt; i++
                                                         //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
