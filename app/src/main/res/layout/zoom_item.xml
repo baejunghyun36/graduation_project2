@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/map" />
+            android:src="@drawable/map1" />
 
 
 
