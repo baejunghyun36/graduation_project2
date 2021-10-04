@@ -24,6 +24,7 @@ public class DrawLineView extends View {
     public float start_y = 0;
     public float end_x = 100;
     public float end_y = 100;
+    public int arr[] = Optimal_Distance.arr;
 
 
     public DrawLineView(Context context) {
@@ -74,7 +75,19 @@ public class DrawLineView extends View {
         canvas.drawRoundRect(r, 10, 10, pnt);
          */
 
-        pnt.setColor(Color.RED);
+        pnt.setColor(Color.BLACK);
+        pnt.setStrokeWidth(15);
+        for(int i=0; i < 9; i++){
+           // pnt.setColor(Color.BLACK);
+           // pnt.setStrokeWidth(15);
+            int x = home.item_location_x[arr[i]-1]*10;
+            int y = home.item_location_y[arr[i]-1]*10;
+           // float[] pts_test={x,y,home.item_location_x[arr[i+1]]*10,home.item_location_y[arr[i+1]]*10};
+        float[] pts_test={y,x,home.item_location_y[arr[i]]*10,home.item_location_x[arr[i]]*10};
+            canvas.drawLines(pts_test, pnt);
+        }
+
+      /*  pnt.setColor(Color.RED);
         pnt.setStrokeWidth(10);
         float[] pts_test={400,500,200,500};
         canvas.drawLines(pts_test, pnt);
@@ -98,7 +111,7 @@ public class DrawLineView extends View {
         pnt.setStrokeWidth(15);
         float[] pts2={500,300,500,400,500,700};
 
-        canvas.drawPoints(pts2, pnt);
+        canvas.drawPoints(pts2, pnt); */
     }
 
 }

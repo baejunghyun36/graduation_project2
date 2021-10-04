@@ -68,9 +68,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private int dw = 650;
     private int mx = 250;
     private int my = 350;
+  //  public static int opt[];
     private Optimal_Distance test ;
 
-
+    Optimal_Distance SubActivity2 = new Optimal_Distance().start();
+  //  public static int opt[] = SubActivity2.arr;
+    public int opt[] = SubActivity2.arr;
     private float x = nowX;
     private float y = nowY;
 
@@ -563,8 +566,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                 break;
             case R.id.btn3 :
-                Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-                int opt[] = SubActivity2.arr;
+           //     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
+          //      opt = SubActivity2.arr;
                 for(int i=0; i<home.Basket_index; i++){
                     arr += opt[i] + " ";
                 }
