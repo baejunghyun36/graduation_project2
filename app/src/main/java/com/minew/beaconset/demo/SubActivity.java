@@ -130,6 +130,23 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private String str1 = SubActivity.distance;
     private String str2 = SubActivity.location;
 
+//    삼각측량 변수
+
+    private float Ax = 0;//충헌
+    private float Ay = 10;
+    private float Bx = 10; //정현
+    private float By = 10;
+    private float Cx = 5; //교수
+    private float Cy = 0;
+
+    private float Da,Db,Dc, Mx,My,Mz;
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +189,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         tv4= findViewById(R.id.test4);
         tv5 = findViewById(R.id.test5);
 
+
+
+
+
         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
         btn2.setY(nowY);
         btn2.getLayoutParams().height = 123;
@@ -185,7 +206,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 while (!Thread.interrupted())
                     try
                     {
-                        Thread.sleep(1000);
+                        Thread.sleep(100);
                         runOnUiThread(new Runnable() // start actions in UI thread
                         {
 
@@ -211,10 +232,23 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             for(int i=0; i<4; i++){
                                                                 a[i] = sum_dis[i] / count;
                                                             }
+
+
+                                                            Da = a[2]*3.2f;
+                                                            Db = a[0]*3.2f;
+                                                            Dc = a[3]*3.2f;
+
+                                                            Mx = (Da*Da - Db*Db + Bx*Bx)/(2*Bx);
+                                                            My = ((Cx*Cx) + (Cy*Cy)+(Da*Da) -(Dc*Dc)-(2*Mx*Cx))/(2*Cy);
+
                                                             tv1.setText("정현이꺼 " + a[0]);
                                                             tv2.setText("은윤이꺼 " + a[1]);
-                                                            tv3.setText("충헌이꺼 " + a[2]);
+                                                            tv3.setText("충헌이꺼 " + a[2] + "   현재 위치 X : "+Mx + " "+ My);
                                                             tv4.setText("교수님꺼 " + a[3] + "                     X : "+ nowX + " Y : "+ nowY);
+
+
+
+
                                                             count = 0;
                                                             for(int i=0; i<4; i++){
                                                                 sum_dis[i] = 0;
