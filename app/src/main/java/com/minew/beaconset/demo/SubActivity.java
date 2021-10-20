@@ -62,7 +62,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float toY = 0;
     private int nowX=0, nowY = 0;
     private int cnt = Optimal_Distance.cnt;
-    private int add = 100;
+    private int add = 200;
     private int to_x = 0;
     private int to_y = 0;
 
@@ -110,6 +110,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
 
+//    final float rssi[] = subBeaconListAdapter.rssi;
     final float a[] = subBeaconListAdapter.i;
     private TextView tv1;
     private TextView tv2;
@@ -133,11 +134,14 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 //    삼각측량 변수
 
     private float Ax = 0;//충헌
-    private float Ay = 10;
+    private float Ay = 0;
     private float Bx = 10; //정현
-    private float By = 10;
+    private float By = 0;
     private float Cx = 5; //교수
-    private float Cy = 0;
+    private float Cy = 12;
+
+    private float lamda;
+    private float delta;
 
     private float Da,Db,Dc, Mx,My,Mz;
 
@@ -224,42 +228,56 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 {
                                                     @Override
                                                     public void run() {
-                                                        filtered[0] = (float) Kdis1.update(a[0]);
-                                                        filtered[1] = (float) Kdis2.update(a[1]);
-                                                        filtered[2] = (float) Kdis3.update(a[2]);
-                                                        filtered[3] = (float) Kdis4.update(a[3]);
-                                                        if(count == 5){
-                                                            for(int i=0; i<4; i++){
-                                                                a[i] = sum_dis[i] / count;
-                                                            }
+//                                                        filtered[0] = (float) Kdis1.update(a[0]);
+//                                                        filtered[1] = (float) Kdis2.update(a[1]);
+//                                                        filtered[2] = (float) Kdis3.update(a[2]);
+//                                                        filtered[3] = (float) Kdis4.update(a[3]);
+//                                                        if(count == 5){
+//                                                            for(int i=0; i<4; i++){
+//                                                                a[i] = sum_dis[i] / count;
+//                                                            }
+//
+//
+//
+//
+//
+//
+//
+//
+//                                                            count = 0;
+//                                                            for(int i=0; i<4; i++){
+//                                                                sum_dis[i] = 0;
+//                                                            }
+//                                                        }
+//                                                        else {
+//                                                            for(int i=0; i<4; i++){
+//                                                                sum_dis[i] += filtered[i];
+//                                                            }
+//                                                            count++;
+//                                                        }
 
 
-                                                            Da = a[2]*3.2f;
-                                                            Db = a[0]*3.2f;
-                                                            Dc = a[3]*3.2f;
-
-                                                            Mx = (Da*Da - Db*Db + Bx*Bx)/(2*Bx);
-                                                            My = ((Cx*Cx) + (Cy*Cy)+(Da*Da) -(Dc*Dc)-(2*Mx*Cx))/(2*Cy);
-
-                                                            tv1.setText("정현이꺼 " + a[0]);
-                                                            tv2.setText("은윤이꺼 " + a[1]);
-                                                            tv3.setText("충헌이꺼 " + a[2] + "   현재 위치 X : "+Mx + " "+ My);
-                                                            tv4.setText("교수님꺼 " + a[3] + "                     X : "+ nowX + " Y : "+ nowY);
 
 
 
+                                                        Da = a[2]; // 충헌
+                                                        Db = a[0]; // 정현
+                                                        Dc = a[3]; // 교수
+                                                        tv1.setText("정현이꺼 " + a[0]);
+                                                        tv2.setText("은윤이꺼 " + a[1]);
+                                                        tv3.setText("충헌이꺼 " + a[2] +"   현재 위치 X : "+Mx + " Y : "+ My);
+                                                        tv4.setText("교수님꺼 " + a[3]+"                     X : "+ nowX + " Y : "+ nowY);
 
-                                                            count = 0;
-                                                            for(int i=0; i<4; i++){
-                                                                sum_dis[i] = 0;
-                                                            }
-                                                        }
-                                                        else {
-                                                            for(int i=0; i<4; i++){
-                                                                sum_dis[i] += filtered[i];
-                                                            }
-                                                            count++;
-                                                        }
+
+//                                                        Mx = (Da*Da - Db*Db + Bx*Bx)/(2*Bx);
+//                                                        My = ((Cx*Cx) + (Cy*Cy)+(Da*Da) -(Dc*Dc)-(2*Mx*Cx))/(2*Cy);
+
+
+//                                                        lamda = Ax*Ax+Ay*Ay-Da*Da-Bx*Bx-By*By+Db*Db+((By-Ay)*(Da*Da-Dc*Dc-Ay*Ay+Cy*Cy+Cx*Cx-Ax*Ax))/(Cy-Ay);
+//                                                        delta = 2*((By-Ay)*(Cx-Ax)-(Bx-Ax)*(Cy-Ay));
+//
+//                                                        Mx=lamda*(Cy-Ay)/delta;
+//                                                        My=(Da*Da-Dc*Dc-Ay*Ay+Cy*Cy+Cx*Cx-Ax*Ax-2*(Cx-Ax)*Mx)/(2*(Cy-Ay));
 
                                                         // for(int i=0; i<cnt; i++
                                                         //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
@@ -378,16 +396,71 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         now_x=nowX;
                                         now_y =nowY;
 
-                                        //4구역
+                                        //a[0] 정현
+                                        //a[1] 은윤
+                                        //a[2] 충헌
+                                        //a[3] 교수
 
 
 
-                                        //1구역
-                                        if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
+
+
+
+                                        //5구역
+                                        if((a[0]>2&&a[0]<3)&&(a[1]>2&&a[1]<3)&&(a[2]>2&&a[2]<3)&&(a[3]>2&&a[3]<3)){
+                                            nowX=500;
+                                            nowY=600;
+                                        }
+                                        //8구역
+
+                                        else if(a[3]<=1.7&&a[1]<=1.7&&a[0]>1.7&&a[2]>1.7) {
+
+                                            nowX=500;
+                                            nowY=1190;
+//                                            if (nowX < mx && nowY > dw) {
+//                                                nowY = dw;
+//                                                nowX+=add;
+//                                            }
+//                                            if (nowX > mx && nowY >uw ) {
+//                                                nowX-=add;
+//                                                nowY = uw;
+//                                            }
+//                                            if (nowX < mx && nowY <= uw) {
+//                                                nowX+=add;
+//                                                nowY+=add;
+//                                            }
+//
+//                                            if (nowX > mx && nowY <= uw) {
+//                                                nowX-=add;
+//                                                nowY+=add;
+//                                            }
+//
+//                                            section=8;
+
+                                        }
+                                        //6구역
+                                        else if(a[3]<=1.7&&a[2]<=1.7&&a[1]>1.7&&a[4]>1.7) {
+
+                                            nowX = 990;
+                                            nowY = 600;
+
+                                        }
+
+
+                                            //4구역
+
+
+
+
+                                        //1구역 정현
+                                        else if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
+
+//
                                             if(nowX<lw&&nowY<uw){
                                                 nowX=lw;
                                                 nowY=uw;
                                             }
+
                                             if(nowX<lw&&nowY>uw){
                                                 nowX=lw;
                                                 nowY-=add;
@@ -396,23 +469,51 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 nowX-=add;
                                                 nowY=uw;
                                             }
+//
 
                                             nowX-=add;
                                             nowY-=add;
 
-
+                                            if(a[0]<0.3){
+                                                nowX=3;
+                                                nowY=3;
+                                            }
                                             section=1;
 
                                         }
 
-                                        //9구역
+                                        else if(a[3]<=1&&a[1]<=1&&a[2]>1&&a[0]>1) {
+                                            if (nowX < mx && nowY > dw) {
+                                                nowY = dw;
+                                                nowX+=add;
+                                            }
+                                            if (nowX > mx && nowY >uw ) {
+                                                nowX-=add;
+                                                nowY = uw;
+                                            }
+                                            if (nowX < mx && nowY <= uw) {
+                                                nowX+=add;
+                                                nowY+=add;
+                                            }
+
+                                            if (nowX > mx && nowY <= uw) {
+                                                nowX-=add;
+                                                nowY+=add;
+                                            }
+
+                                            section=8;
+
+                                        }
+
+
+                                        // 은윤 9구역
                                         else if(a[1]<a[0]&&a[1]<a[2]&&a[1]<a[3]){
 
                                             if(nowX>rw&&nowY>dw){
                                                 nowX=rw;
                                                 nowY=dw;
                                             }
-
+//
                                             if( nowX>rw&&nowY<=dw){
                                                 nowX=rw;
                                                 nowY+=add;
@@ -424,6 +525,13 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                             nowX+=add;
                                             nowY+=add;
+
+
+
+                                            if(a[1]<0.3){
+                                                nowX=990;
+                                                nowY=1190;
+                                            }
 
 
                                             section=9;
@@ -438,7 +546,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 nowX=rw;
                                                 nowY=uw;
                                             }
-
+//
                                             if( nowX<=rw&&nowY<uw){
                                                 nowX+=add;
                                                 nowY=uw;
@@ -450,6 +558,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                             nowX+=add;
                                             nowY-=add;
+
+                                            if(a[2]<0.3){
+                                                nowX=990;
+                                                nowY=3;
+                                            }
 
 
                                             section=3;
@@ -464,7 +577,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 nowX=lw;
                                                 nowY=dw;
                                             }
-
+//
                                             if(nowX<lw&&nowY<=dw){
                                                 nowX=lw;
                                                 nowY+=add;
@@ -478,6 +591,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                             nowX-=add;
                                             nowY+=add;
+                                            if(a[3]<0.3){
+                                                nowX=3;
+                                                nowY=1190;
+                                            }
 
 
                                             section =7;
@@ -522,62 +639,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         }
 
                                         //8구역
-                                        else if(a[3]<=1&&a[1]<=1&&a[2]>1&&a[0]>1) {
-                                            if (nowX < mx && nowY > dw) {
-                                                nowY = dw;
-                                                nowX+=add;
-                                            }
-                                            if (nowX > mx && nowY >uw ) {
-                                                nowX-=add;
-                                                nowY = uw;
-                                            }
-                                            if (nowX < mx && nowY <= uw) {
-                                                nowX+=add;
-                                                nowY+=add;
-                                            }
 
-                                            if (nowX > mx && nowY <= uw) {
-                                                nowX-=add;
-                                                nowY+=add;
-                                            }
 
-                                            section=8;
-
-                                        }
-
-                                        //중간구역
-//                                        else if(a[0]<=1.5&&a[2]<=1.5&&a[1]<=1.5&&a[3]<=1.5){
-//                                            if(nowX>=0&&nowX<=480&&nowY<=650&&nowY>=0){
-//
-//                                                if(section==1){
-//                                                    nowX++; nowY++;
-//                                                }
-//                                                else if(section==2){
-//                                                    nowY++;
-//                                                }
-//                                                else if(section==3){
-//                                                    nowX--; nowY++;
-//                                                }
-//                                                else if(section==4){
-//                                                    nowX++;
-//                                                }
-//                                                else if(section==6){
-//                                                    nowX--;
-//                                                }
-//                                                else if(section==7){
-//                                                    nowX++; nowY--;
-//                                                }
-//                                                else if(section==8){
-//                                                    nowY--;
-//                                                }
-//                                                else if(section==9){
-//                                                    nowX--; nowY--;
-//                                                }
-//
-//                                            }
-//
-//
-//                                        }
 
 
                                         if(nowX<3)nowX=3;
@@ -812,3 +875,38 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 }
+
+
+//중간구역
+//                                        else if(a[0]<=1.5&&a[2]<=1.5&&a[1]<=1.5&&a[3]<=1.5){
+//                                            if(nowX>=0&&nowX<=480&&nowY<=650&&nowY>=0){
+//
+//                                                if(section==1){
+//                                                    nowX++; nowY++;
+//                                                }
+//                                                else if(section==2){
+//                                                    nowY++;
+//                                                }
+//                                                else if(section==3){
+//                                                    nowX--; nowY++;
+//                                                }
+//                                                else if(section==4){
+//                                                    nowX++;
+//                                                }
+//                                                else if(section==6){
+//                                                    nowX--;
+//                                                }
+//                                                else if(section==7){
+//                                                    nowX++; nowY--;
+//                                                }
+//                                                else if(section==8){
+//                                                    nowY--;
+//                                                }
+//                                                else if(section==9){
+//                                                    nowX--; nowY--;
+//                                                }
+//
+//                                            }
+//
+//
+//                                        }
