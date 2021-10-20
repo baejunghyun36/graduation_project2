@@ -59,15 +59,15 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
         }
         else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56877){
             i[1] = mMinewBeacons.get(position).getDistance();
-            rssi[1] = mMinewBeacons.get(position).getRssi();
+//            rssi[1] = mMinewBeacons.get(position).getRssi();
         }
         else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56878){
             i[2]= mMinewBeacons.get(position).getDistance();
-            rssi[2] = mMinewBeacons.get(position).getRssi();
+//            rssi[2] = mMinewBeacons.get(position).getRssi();
         }
         else {
             i[3] = mMinewBeacons.get(position).getDistance();
-            rssi[3] = mMinewBeacons.get(position).getRssi();
+//            rssi[3] = mMinewBeacons.get(position).getRssi();
         }
 
         if (mOnItemClickLitener != null) {
