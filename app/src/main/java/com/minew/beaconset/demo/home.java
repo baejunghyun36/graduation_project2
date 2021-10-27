@@ -598,7 +598,7 @@ public class home extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.170.87/load.php";
+            String serverURL = "http://192.168.170.101/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
@@ -617,7 +617,6 @@ public class home extends AppCompatActivity {
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
