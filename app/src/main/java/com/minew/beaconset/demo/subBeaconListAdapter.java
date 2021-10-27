@@ -21,6 +21,7 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
 
     public static float[] i = new float[4];
     public static float[] rssi = new float[4];
+    public static int[] check = new int[4];
 
 
     public static String distance;
@@ -53,21 +54,32 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
         holder.setDataAndUi(mMinewBeacons.get(position));
 
         if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56388){
-            i[0] = mMinewBeacons.get(position).getDistance();;
-            rssi[0] = mMinewBeacons.get(position).getRssi();
+            i[0] = mMinewBeacons.get(position).getDistance();
+
+            if(i[0] ==0) check[0] =0;
+            else check[0] =1;
+            //   rssi[0] = mMinewBeacons.get(position).getRssi();
 
         }
         else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56877){
             i[1] = mMinewBeacons.get(position).getDistance();
+
+            if(i[1] ==0) check[1] =0;
+            else check[1] =1;
 //            rssi[1] = mMinewBeacons.get(position).getRssi();
         }
         else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56878){
-            i[2]= mMinewBeacons.get(position).getDistance();
+            i[2] = mMinewBeacons.get(position).getDistance();
+
+            if(i[2] ==0) check[2] =0;
+            else check[2] =1;
 //            rssi[2] = mMinewBeacons.get(position).getRssi();
         }
-        else {
+        else if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==55791){
             i[3] = mMinewBeacons.get(position).getDistance();
-//            rssi[3] = mMinewBeacons.get(position).getRssi();
+
+            if(i[3] ==0) check[3] =0;
+            else check[3] =1;
         }
 
         if (mOnItemClickLitener != null) {

@@ -119,6 +119,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private TextView tv5;
     private TextView item_id[] = new TextView[4];
     private TextView test_view;
+    private int check[] = subBeaconListAdapter.check;
 
     private float[] filtered = new float[4];
     private KalmanFilter Kdis1;
@@ -210,7 +211,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 while (!Thread.interrupted())
                     try
                     {
-                        Thread.sleep(1000);
+                        Thread.sleep(1500);
                         runOnUiThread(new Runnable() // start actions in UI thread
                         {
 
@@ -242,39 +243,48 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             else if (zoom_section==4){
                                                                 zoomView.zoomTo(1.8f,900 ,1100);
                                                             }
-
-
-
                                                             zoom_check=0;
                                                         }
 
 
+                                                        filtered[0] = (float) Kdis1.update(a[0]);
+                                                        filtered[1] = (float) Kdis2.update(a[1]);
+                                                        filtered[2] = (float) Kdis3.update(a[2]);
+                                                        filtered[3] = (float) Kdis4.update(a[3]);
+                                                        for(int i = 0; i<4; i++){
+                                                            if(filtered[i] == a[i]){
+                                                                check[i] = 0;
+                                                            }
+                                                            else check[i] = 1;
+                                                        }
 
+                                                        if(count == 8 ){
+                                                            for(int j=0; j<4; j++){
+                                                                a[j] = sum_dis[j] / count;
+                                                                //subBeaconListAdapter.i[j] = a[j];
+                                                            }
+                                                            count = 0;
+                                                            for(int i=0; i<4; i++){
+                                                                sum_dis[i] = 0;
+                                                            }
+                                                            tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
+                                                            tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
+                                                            tv3.setText("충헌이꺼 " + check[2] +"   현재 위치 X : "+Mx + " Y : "+ My + " "  +a[2]);
+                                                            tv4.setText("교수님꺼 " + check[3]+"                     X : "+ nowX + " Y : "+ nowY + " "  +a[3]);
 
+                                                        }
+                                                        else {
+                                                            for(int i=0; i<4; i++){
+                                                                if(check[i] != 0) {
+                                                                    sum_dis[i] += filtered[i];
+                                                                }
+                                                                else if(check[i] == 0) {
+                                                                    sum_dis[i] += 4;
+                                                                }
+                                                            }
+                                                            count++;
+                                                        }
 
-
-
-
-//                                                        a[0] = (float) Kdis1.update(a[0]);
-//                                                        a[1] = (float) Kdis2.update(a[1]);
-//                                                        a[2] = (float) Kdis3.update(a[2]);
-//                                                        a[3] = (float) Kdis4.update(a[3]);
-//                                                        if(count == 3){
-//                                                            for(int i=0; i<4; i++){
-//                                                                a[i] = sum_dis[i] / count;
-//                                                            }
-//                                                            count = 0;
-//                                                            for(int i=0; i<4; i++){
-//                                                                sum_dis[i] = 0;
-//                                                            }
-//                                                        }
-//                                                        else {
-//                                                            for(int i=0; i<4; i++){
-//                                                                sum_dis[i] += filtered[i];
-//                                                            }
-//                                                            count++;
-//                                                        }
-//
 
 
 
@@ -282,10 +292,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         Da = a[2]; // 충헌
                                                         Db = a[0]; // 정현
                                                         Dc = a[3]; // 교수
-                                                        tv1.setText("정현이꺼 " + a[0]);
-                                                        tv2.setText("은윤이꺼 " + a[1]);
-                                                        tv3.setText("충헌이꺼 " + a[2] +"   현재 위치 X : "+Mx + " Y : "+ My);
-                                                        tv4.setText("교수님꺼 " + a[3]+"                     X : "+ nowX + " Y : "+ nowY);
+//                                                        tv1.setText("정현이꺼 " + a[0]);
+//                                                        tv2.setText("은윤이꺼 " + a[1]);
+//                                                        tv3.setText("충헌이꺼 " + a[2] +"   현재 위치 X : "+Mx + " Y : "+ My);
+//                                                        tv4.setText("교수님꺼 " + a[3]+"                     X : "+ nowX + " Y : "+ nowY);
 
 
 //                                                        Mx = (Da*Da - Db*Db + Bx*Bx)/(2*Bx);
