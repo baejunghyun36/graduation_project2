@@ -195,47 +195,47 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        recyclerview = findViewById(R.id.recyclerView);
-        recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        List<ExpandableListAdapter.Item> data = new ArrayList<>();
-
-        ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
-        group1.invisibleChildren = new ArrayList<>();
-        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "한우"));
-        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "수입육"));
-        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "돼지고기"));
-        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "닭/오리고기"));
-        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계란"));
-
-
-        ExpandableListAdapter.Item group2 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "과일");
-        group2.invisibleChildren = new ArrayList<>();
-        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "사과"));
-        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "바나나"));
-        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "포도"));
-        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "키위"));
-
-        ExpandableListAdapter.Item group3 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "유제품/베이커리");
-        group3.invisibleChildren = new ArrayList<>();
-        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "우유"));
-        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "치즈"));
-        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "저지방우유"));
-        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "요플레"));
-
-        ExpandableListAdapter.Item group4 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "세제/욕실/청소");
-        group4.invisibleChildren = new ArrayList<>();
-        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "persil"));
-        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "다우니"));
-        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "습기제거"));
-        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "락스"));
-
-        data.add(group1);
-        data.add(group2);
-        data.add(group3);
-        data.add(group4);
-
-
-        recyclerview.setAdapter(new ExpandableListAdapter(data));
+//        recyclerview = findViewById(R.id.recyclerView);
+//        recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+//        List<ExpandableListAdapter.Item> data = new ArrayList<>();
+//
+//        ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
+//        group1.invisibleChildren = new ArrayList<>();
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "한우"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "수입육"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "돼지고기"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "닭/오리고기"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계란"));
+//
+//
+//        ExpandableListAdapter.Item group2 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "과일");
+//        group2.invisibleChildren = new ArrayList<>();
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "사과"));
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "바나나"));
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "포도"));
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "키위"));
+//
+//        ExpandableListAdapter.Item group3 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "유제품/베이커리");
+//        group3.invisibleChildren = new ArrayList<>();
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "우유"));
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "치즈"));
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "저지방우유"));
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "요플레"));
+//
+//        ExpandableListAdapter.Item group4 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "세제/욕실/청소");
+//        group4.invisibleChildren = new ArrayList<>();
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "persil"));
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "다우니"));
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "습기제거"));
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "락스"));
+//
+//        data.add(group1);
+//        data.add(group2);
+//        data.add(group3);
+//        data.add(group4);
+//
+//
+//        recyclerview.setAdapter(new ExpandableListAdapter(data));
 
 
 
