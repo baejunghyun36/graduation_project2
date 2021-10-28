@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -198,11 +199,15 @@ public class home extends AppCompatActivity {
                 if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
                     GetData task = new GetData();
                     task.execute(item_find.getText().toString());
+                    Intent intent = new Intent(home.this, SearchActivity.class);
+                    intent.putExtra("search_item", item_find.getText());
+                    startActivity(intent);
                 }
                 else {    // 검색창 Null일때
                     Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
                             Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
         btn_current.setOnClickListener(new View.OnClickListener(){
@@ -221,7 +226,6 @@ public class home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
         ImageView btn_open1 = (ImageView)findViewById(R.id.btn_open1);
