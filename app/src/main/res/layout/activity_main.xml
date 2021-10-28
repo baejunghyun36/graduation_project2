@@ -92,56 +92,304 @@
 
 
             <!--마트 정보 제공?용 수평 스크롤뷰-->
-            <HorizontalScrollView
+            <!--            <HorizontalScrollView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="100dp"-->
+            <!--                android:layout_marginTop="10dp">-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:orientation="horizontal">-->
+
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="horizontal" />-->
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="스크롤" />-->
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="할인정보" />-->
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="마트 정보1" />-->
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="마트 정보2" />-->
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="마트 정보3" />-->
+
+            <!--                    <Button-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:text="마트정보4" />-->
+            <!--                </LinearLayout>-->
+
+
+            <!--            </HorizontalScrollView>-->
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+
+                <EditText
+                    android:id="@+id/item2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:hint="물품 검색"
+                    android:textColor="#EF8181"
+                    android:textSize="20dp"></EditText>
+
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="0dp"
+                    android:text="검색" />
 
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="horizontal" />
+            </LinearLayout>
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="스크롤" />
+            <ScrollView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="할인정보" />
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="마트 정보1" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="마트 정보2" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="마트 정보3" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="마트정보4" />
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack1" />
+
+                            <Button
+                                android:id="@+id/BtnNum1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="152dp"
+                                android:text="새우깡" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack2" />
+
+                            <Button
+                                android:id="@+id/BtnNum2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="152dp"
+                                android:text="새우깡" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack3" />
+
+                            <Button
+                                android:id="@+id/BtnNum3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="152dp"
+                                android:text="새우깡" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack4" />
+
+                            <Button
+                                android:id="@+id/BtnNum4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="152dp"
+                                android:text="새우깡" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack5" />
+
+                            <Button
+                                android:id="@+id/BtnNum5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="152dp"
+                                android:text="새우깡" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack5" />
+
+                            <Button
+                                android:id="@+id/BtnNum6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="152dp"
+                                android:text="새우깡" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+
+
                 </LinearLayout>
 
 
-            </HorizontalScrollView>
+
+
+
+            </ScrollView>
 
             <Space
                 android:layout_width="wrap_content"
@@ -158,7 +406,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="1dp"
                 android:background="#A3D9F6"
                 android:scrollbarFadeDuration="0"
                 android:scrollbarSize="5dp"
@@ -168,137 +416,163 @@
 
             </android.support.v7.widget.RecyclerView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
 
-                <Button
-                    android:id="@+id/BtnNum1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="감자칩" />
 
-                <Button
-                    android:id="@+id/BtnNum2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="새우깡" />
 
-                <Button
-                    android:id="@+id/BtnNum3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="초코칩" />
 
-                <Button
-                    android:id="@+id/BtnNum4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="꼬북칩" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <!--  <ScrollView
+                  android:layout_width="match_parent"
+                  android:layout_height="50dp">
 
-                <Button
-                    android:id="@+id/BtnNum5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="5" />
+                  <ImageView
 
-                <Button
-                    android:id="@+id/BtnNum6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="6" />
+                      android:layout_width="100dp"
+                      android:layout_height="40dp"
+                      android:src="@drawable/choco" />
 
-                <Button
-                    android:id="@+id/BtnNum7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="7" />
+                  <ImageView
+                      android:layout_width="250dp"
+                      android:layout_height="50dp"
+                      android:layout_marginTop="10dp"
+                      android:src="@drawable/choco" />
 
-                <Button
-                    android:id="@+id/BtnNum8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="8" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+              </ScrollView>
+  -->
 
-                android:layout_marginBottom="5dp">
 
-                <Button
-                    android:id="@+id/BtnNum9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9" />
 
-                <Button
-                    android:id="@+id/BtnNum10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="10" />
 
-                <Button
-                    android:id="@+id/BtnNum11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="11" />
 
-                <Button
-                    android:id="@+id/BtnNum12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="12" />
-            </LinearLayout>
+
+
+            <!--     <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum1"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="감자칩" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum2"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="새우깡" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum3"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="초코칩" />-->
+
+
+            <!--         </LinearLayout>-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum5"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="5" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum6"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="6" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum7"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="7" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum8"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="8" />-->
+            <!--            </LinearLayout>-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+
+            <!--                android:layout_marginBottom="5dp">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum9"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="9" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum10"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="10" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum11"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="11" />-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/BtnNum12"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="12" />-->
+            <!--            </LinearLayout>-->
 
 
             <!--구분선-->
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:background="#4682B4" />
+            <!--  <View
+                  android:layout_width="wrap_content"
+                  android:layout_height="0.5dp"
+                  android:background="#4682B4" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp" />
+              <Space
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="30dp" />-->
 
 
             <!--접고 펼치기 -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"
-                tools:context=".MainActivity">
+            <!-- <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:paddingLeft="16dp"
+                 android:paddingTop="16dp"
+                 android:paddingRight="16dp"
+                 android:paddingBottom="16dp"
+                 tools:context=".MainActivity">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                 <android.support.v7.widget.RecyclerView
+                     android:id="@+id/recyclerView"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content" />
 
-            </RelativeLayout>
+             </RelativeLayout>-->
 
 
         </LinearLayout>
