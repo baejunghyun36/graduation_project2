@@ -25,6 +25,86 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="스마트"
+                        android:textSize="40dp"
+                        android:textColor="#98CAFF"
+                        android:textStyle="bold"
+                        android:shadowColor="#6D81EF"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="0.6"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="쇼핑"
+                        android:textSize="25dp"
+                        android:textColor="#98CAFF"
+                        android:shadowColor="#6D81EF"
+                        android:textStyle="bold"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="0.6"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    >
+
+                    <ImageView
+
+                        android:id="@+id/btn_move"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/loc"
+                        android:text="현위치"
+
+                        />
+                    <ImageButton
+                        android:id="@+id/btn_open1"
+                        android:layout_width="43dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/baseline_view_headline_black_24dp" />
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,42 +113,11 @@
                 android:orientation="horizontal">
 
 
-                <EditText
-                    android:id="@+id/item"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="물품 검색"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp"></EditText>
-
-                <Button
-                    android:id="@+id/btn_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="0dp"
-                    android:text="검색" />
 
 
-                <ImageButton
-                    android:id="@+id/btn_open1"
-                    android:layout_width="43dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/baseline_view_headline_black_24dp" />
 
 
-                <!--                <Button-->
-                <!--                    android:id="@+id/btn_open"-->
-                <!--                    android:layout_width="68dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginStart="200dp"-->
-                <!--                    android:layout_marginLeft="10dp"-->
-                <!--                    android:layout_marginTop="10dp"-->
-                <!--                    android:gravity="center"-->
-                <!--                    android:text="Menu" />-->
+
 
 
             </LinearLayout>
@@ -80,15 +129,29 @@
                 android:gravity="center">
 
 
-                <Button
-                    android:id="@+id/btn_move"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:text="SubActivity" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="과자"
+
+                    android:textAlignment="center"
+                    android:textSize="45dp"
+                    android:layout_marginTop="20dp">
+
+
+                </TextView>
+
+
+            </LinearLayout>
+
+
 
 
             <!--마트 정보 제공?용 수평 스크롤뷰-->
@@ -146,13 +209,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
 
                 <EditText
-                    android:id="@+id/item2"
+                    android:id="@+id/item"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -161,7 +224,7 @@
                     android:textSize="20dp"></EditText>
 
                 <Button
-                    android:id="@+id/btn_search1"
+                    android:id="@+id/btn_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -209,17 +272,20 @@
 
                             <Button
                                 android:id="@+id/BtnNum1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-
                                 android:layout_alignParentBottom="true"
-                                android:layout_marginRight="0dp"
-                                android:layout_marginBottom="152dp"
-                                android:text="새우깡" />
 
-                            <!--  android:layout_alignParentBottom="true"-->
-                            />
+                                android:layout_marginStart="3dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
+
+
 
                         </RelativeLayout>
 
@@ -238,14 +304,18 @@
 
                             <Button
                                 android:id="@+id/BtnNum2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-
                                 android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
                                 android:layout_marginRight="0dp"
-                                android:layout_marginBottom="152dp"
-                                android:text="새우깡" />
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
 
                             <!--  android:layout_alignParentBottom="true"-->
                             />
@@ -272,14 +342,18 @@
 
                             <Button
                                 android:id="@+id/BtnNum3"
-                                android:layout_width="wrap_content"
+                                android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-
                                 android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
                                 android:layout_marginRight="0dp"
-                                android:layout_marginBottom="152dp"
-                                android:text="새우깡" />
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
 
                             <!--  android:layout_alignParentBottom="true"-->
                             />
@@ -301,14 +375,18 @@
 
                             <Button
                                 android:id="@+id/BtnNum4"
-                                android:layout_width="wrap_content"
+                                android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-
                                 android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
                                 android:layout_marginRight="0dp"
-                                android:layout_marginBottom="152dp"
-                                android:text="새우깡" />
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
 
                             <!--  android:layout_alignParentBottom="true"-->
                             />
@@ -336,14 +414,18 @@
 
                             <Button
                                 android:id="@+id/BtnNum5"
-                                android:layout_width="wrap_content"
+                                android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-
                                 android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
                                 android:layout_marginRight="0dp"
-                                android:layout_marginBottom="152dp"
-                                android:text="새우깡" />
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
 
                             <!--  android:layout_alignParentBottom="true"-->
                             />
@@ -364,14 +446,89 @@
 
                             <Button
                                 android:id="@+id/BtnNum6"
-                                android:layout_width="wrap_content"
+                                android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-
                                 android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
                                 android:layout_marginRight="0dp"
-                                android:layout_marginBottom="152dp"
-                                android:text="새우깡" />
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/snack5" />
+
+                            <Button
+                                android:id="@+id/BtnNum7"
+                                android:layout_width="67dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+                                android:src="@drawable/snack5" />
+
+                            <Button
+                                android:id="@+id/BtnNum8"
+                                android:layout_width="67dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
 
                             <!--  android:layout_alignParentBottom="true"-->
                             />

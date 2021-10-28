@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private View drawerView;
-
-    private Button  btn_move, btn_search;
+    private ImageView btn_move;
+    private Button  btn_search;
 
     public static int Basket_index;
     private static String TAG = "phpquerytest";
