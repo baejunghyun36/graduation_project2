@@ -188,6 +188,7 @@ public class home extends AppCompatActivity {
         btn_move.setColorFilter(Color.parseColor("#6492C3"));
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                Basket_index = 0;
                 GetData task = new GetData();
                 task.execute("");
             }
@@ -197,9 +198,11 @@ public class home extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
+                    Basket_index = 0;
+                    flag = 1;
                     GetData task = new GetData();
                     task.execute(item_find.getText().toString());
-                    flag = 1;
+                  //  flag = 0;
                 }
                 else {    // 검색창 Null일때
                     Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
@@ -598,6 +601,7 @@ public class home extends AppCompatActivity {
                 Intent intent = new Intent(home.this, SubActivity.class);
                 startActivity(intent);
             }
+            flag = 0;
         }
         @Override
         protected String doInBackground(String... params) {
