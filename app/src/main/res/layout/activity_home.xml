@@ -112,28 +112,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
+                android:weightSum="4"
+                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
 
                 <EditText
                     android:id="@+id/item"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/border"
                     android:gravity="center"
                     android:hint="물품 검색"
-                    android:textColor="#EF8181"
                     android:textSize="20dp"></EditText>
 
                 <Button
                     android:id="@+id/btn_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="0dp"
-                    android:text="검색" />
+                    android:layout_weight="1"
+                    android:background="@drawable/button_background"
+                    android:text="검색"
+                    android:textColor="#fff" />
 
 
             </LinearLayout>
+
 
 
             <LinearLayout
@@ -141,234 +148,454 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:orientation="horizontal"
-
+                android:weightSum="4"
                 >
 
-                <ImageView
 
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="60dp"
-                    android:src="@drawable/photo" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/best" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="BEST" />
+                </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/BtnNum2"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
 
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
+                    <ImageView
+                        android:id="@+id/BtnNum2"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/snack" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="과자" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:src="@drawable/meat" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="정육" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:src="@drawable/fruits" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="과일" />
+                </LinearLayout>
 
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
 
-                android:orientation="horizontal">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp"
-                    android:text="BEST" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-
-                    android:text="과자" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="55dp"
-                    android:text="과일" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="55dp"
-                    android:layout_marginTop="1dp"
-                    android:text="정육" />
-            </LinearLayout>
+            //-----------------------------------------
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:orientation="horizontal"
-
+                android:weightSum="4"
                 >
 
-                <ImageView
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/snack" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="BEST" />
+                </LinearLayout>
 
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="60dp"
-                    android:src="@drawable/photo" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
 
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/snack" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="과자" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:src="@drawable/meat" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="정육" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:src="@drawable/fruits" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="BEST" />
+                </LinearLayout>
 
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="73dp"
-                    android:text="반찬" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="53dp"
-
-                    android:text="분식" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:text="생활용품" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="1dp"
-                    android:text="일회용품" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-
-                >
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="60dp"
-                    android:src="@drawable/photo" />
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
-
-                <ImageView
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/photo" />
 
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
 
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="54dp"
-                    android:text="아이스크림" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-
-                    android:text="헤어" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="47dp"
-                    android:text="밀키트" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="47dp"
-                    android:layout_marginTop="1dp"
-                    android:text="정육" />
-            </LinearLayout>
 
             <!--접고 펼치기 -->
             <!--구분선-->
+
             <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:background="#4682B4" />
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#979797"
+                android:layout_marginVertical="10dp"/>
 
-            <Space
-                android:layout_width="wrap_content"
+
+            <!--마트 정보 제공?용 수평 스크롤뷰-->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_background"
+                        android:textColor="#fff"
+                        android:layout_margin="3dp"
+                        android:text="스크롤" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_background"
+                        android:textColor="#fff"
+                        android:layout_margin="3dp"
+                        android:text="할인정보" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_background"
+                        android:textColor="#fff"
+                        android:layout_margin="3dp"
+                        android:text="마트 정보1" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="마트 정보2" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="마트 정보3" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="마트정보4" />
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+            <!--마트 정보 제공?용 수평 스크롤뷰-->
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp" />
+                android:text=" * 인기상품 *" />
 
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                   <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                       android:weightSum="5"
+                        android:layout_marginHorizontal="10dp">
+
+                       <ImageView
+                           android:layout_width="match_parent"
+                           android:layout_height="130dp"
+                           android:layout_weight="4"
+                           android:src="@drawable/sawoo" />
+
+                       <LinearLayout
+                           android:layout_width="100dp"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal"
+                           android:layout_weight="1"
+                           android:gravity="center_vertical"
+                           android:weightSum="2">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="새우깡" />
+
+                       <Button
+                           android:layout_width="wrap_content"
+                           android:layout_height="30dp"
+                           android:background="@drawable/button_background"
+                           android:textColor="#fff"
+                           android:layout_weight="1"
+                           android:layout_margin="3dp"
+                           android:text="담기" />
+                       </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="5"
+                        android:layout_marginHorizontal="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_weight="4"
+                            android:src="@drawable/sawoo" />
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:weightSum="2">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:gravity="center_horizontal"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="새우깡" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:background="@drawable/button_background"
+                                android:textColor="#fff"
+                                android:layout_weight="1"
+                                android:layout_margin="3dp"
+                                android:text="담기" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="5"
+                        android:layout_marginHorizontal="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_weight="4"
+                            android:src="@drawable/sawoo" />
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:weightSum="2">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:gravity="center_horizontal"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="새우깡" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:background="@drawable/button_background"
+                                android:textColor="#fff"
+                                android:layout_weight="1"
+                                android:layout_margin="3dp"
+                                android:text="담기" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="5"
+                        android:layout_marginHorizontal="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_weight="4"
+                            android:src="@drawable/sawoo" />
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:weightSum="2">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:gravity="center_horizontal"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="새우깡" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:background="@drawable/button_background"
+                                android:textColor="#fff"
+                                android:layout_weight="1"
+                                android:layout_margin="3dp"
+                                android:text="담기" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="5"
+                        android:layout_marginHorizontal="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_weight="4"
+                            android:src="@drawable/sawoo" />
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:weightSum="2">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:gravity="center_horizontal"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="새우깡" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:background="@drawable/button_background"
+                                android:textColor="#fff"
+                                android:layout_weight="1"
+                                android:layout_margin="3dp"
+                                android:text="담기" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
 
             <!--접고 펼치기 -->
             <RelativeLayout
@@ -393,6 +620,7 @@
 
                 </android.support.v7.widget.RecyclerView>
             </RelativeLayout>
+
 
             <TextView
                 android:id="@+id/parking_info2"
@@ -422,4 +650,3 @@
 
 
 </LinearLayout>
-
