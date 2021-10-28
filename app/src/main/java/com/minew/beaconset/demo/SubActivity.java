@@ -200,8 +200,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
         btn2.setY(nowY);
-        btn2.getLayoutParams().height = 123;
-        btn2.getLayoutParams().width = 123;
+        //btn2.getLayoutParams().height = 123;
+        //btn2.getLayoutParams().width = 123;
         (new Thread(new Runnable()
         {
 
@@ -243,6 +243,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             else if (zoom_section==4){
                                                                 zoomView.zoomTo(1.8f,900 ,1100);
                                                             }
+
+                                                            btn2.setScaleX((float)0.5);
+                                                            btn2.setScaleY((float)0.5);
                                                             zoom_check=0;
                                                         }
 
@@ -390,7 +393,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         for(int i = 0; i < home.Basket_index; i++){
             if(item_x[i]>1200)  item_x[i] = 1200;
             if(item_y[i]>1000)  item_y[i]=1000;
-            createTextView(item_y[i]*10,item_x[i]*10,Integer.toString(home.id[i]));
+            createTextView(item_y[i],item_x[i],Integer.toString(home.id[i]));
         }
 
         screenWidth = point.x;

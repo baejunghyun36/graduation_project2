@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/map1" />
+            android:src="@drawable/final_map" />
 
 
 
@@ -33,11 +33,11 @@
             tools:ignore="MissingClass" />
 
         <ImageView
-            android:adjustViewBounds="true"
             android:id="@+id/btn2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@android:drawable/btn_star_big_on" />
+            android:src="@drawable/loc" />
+
 
 
         <TextView
