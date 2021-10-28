@@ -76,16 +76,16 @@ public class Optimal_Distance extends AppCompatActivity {
             }
         }
 
-        section[0][0]=10;
-        section[0][1]=10;
+        section[0][0]=89;
+        section[0][1]=89;
         section[1][0]= 25;
-        section[1][1]= 25;
-        section[2][0]= 25;
-        section[2][1]= 75;
-        section[3][0]= 75;
-        section[3][1]= 25;
+        section[1][1]= 30;
+        section[2][0]= 75;
+        section[2][1]= 30;
+        section[3][0]= 25;
+        section[3][1]= 90;
         section[4][0]= 75;
-        section[4][1]= 75;
+        section[4][1]= 90;
 
         for (int i = 0; i < section_N; i++) {
             int now_x = section[i][0];
@@ -98,7 +98,7 @@ public class Optimal_Distance extends AppCompatActivity {
 
             for (int j = 0; j < section_N; j++) if (i != j) res[i][j] = dis[section[j][0]][section[j][1]];
 
-            to_finish[i] = dis[height-1][width-1];
+            to_finish[i] = dis[height-1][3];
 
             for (int k = 0; k < height; k++) {
                 for (int j = 0; j < width; j++) {
@@ -163,8 +163,8 @@ public class Optimal_Distance extends AppCompatActivity {
 
             //현위치
             if(result_array[q]==0) {
-                start[0][0] = 10;
-                start[0][1] = 10;
+                start[0][0] = section[0][0];
+                start[0][1] = section[0][1];
 
             }
 

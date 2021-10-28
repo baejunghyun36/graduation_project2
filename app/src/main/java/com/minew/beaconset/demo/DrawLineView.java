@@ -40,6 +40,10 @@ public class DrawLineView extends View {
             int y = home.item_location_y[Optimal_Distance.arr[i]-1]*10;
             float[] pts_test={x,y,home.item_location_x[Optimal_Distance.arr[i+1]-1]*10,home.item_location_y[Optimal_Distance.arr[i+1]-1]*10};
             canvas.drawLines(pts_test, pnt);
+            if(i==home.Basket_index-2){
+                float[] pts_test2={home.item_location_x[Optimal_Distance.arr[i+1]-1]*10,home.item_location_y[Optimal_Distance.arr[i+1]-1]*10,120,1400};
+                canvas.drawLines(pts_test2,pnt);
+            }
         }
 
     }
