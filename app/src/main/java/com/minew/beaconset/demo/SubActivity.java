@@ -254,12 +254,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         filtered[1] = (float) Kdis2.update(a[1]);
                                                         filtered[2] = (float) Kdis3.update(a[2]);
                                                         filtered[3] = (float) Kdis4.update(a[3]);
-                                                        for(int i = 0; i<4; i++){
-                                                            if(filtered[i] == a[i]){
-                                                                check[i] = 0;
-                                                            }
-                                                            else check[i] = 1;
-                                                        }
+
 
                                                         if(count == 8 ){
                                                             for(int j=0; j<4; j++){
@@ -278,12 +273,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         }
                                                         else {
                                                             for(int i=0; i<4; i++){
-                                                                if(check[i] != 0) {
                                                                     sum_dis[i] += filtered[i];
-                                                                }
-                                                                else if(check[i] == 0) {
-                                                                    sum_dis[i] += 4;
-                                                                }
                                                             }
                                                             count++;
                                                         }

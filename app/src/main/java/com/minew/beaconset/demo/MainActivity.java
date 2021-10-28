@@ -138,16 +138,9 @@ public class MainActivity extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
-                    GetData task = new GetData();  // DB UPLOAD
-                    task.execute(item_find.getText().toString());
-              //      Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-          //          startActivity(intent);
-                }
-                else {    // 검색창 Null일때
-                    Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
-                            Toast.LENGTH_SHORT).show();
-                }
+                GetData task = new GetData();  // DB UPLOAD
+                task.execute("");
+
             }
         });
         btn_current.setOnClickListener(new View.OnClickListener(){
@@ -297,9 +290,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-         //       GetData task = new GetData();
-      //          String tmp = B.getText().toString();
-       //         task.execute(tmp);
+                //       GetData task = new GetData();
+                //          String tmp = B.getText().toString();
+                //         task.execute(tmp);
 
 
                 ItemData itemData = new ItemData(iv,B.getText().toString()+"");
@@ -326,40 +319,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-/*
-    public void onClickShowAlert(View view, final Button B, final int iv) {
-        AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
+    /*
+        public void onClickShowAlert(View view, final Button B, final int iv) {
+            AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
 
-        myAlertBuilder.setTitle("장바구니 버튼");
-        myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
-        //myAlertBuilder.setView(R.drawable.choco).show();
+            myAlertBuilder.setTitle("장바구니 버튼");
+            myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
+            //myAlertBuilder.setView(R.drawable.choco).show();
 
-        final Button pushItem = B;
-        // Yes Button or No Button
-        myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog,int which){
-                GetData task = new GetData();
-                String tmp = B.getText().toString();
-                task.execute(tmp);
-                ItemData itemData = new ItemData(R.drawable.turtle,pushItem.getText().toString()+"");
-                arrayList.add(itemData);    // 해당 아이템 추가
-                itemAdapter.notifyDataSetChanged(); //새로고침
+            final Button pushItem = B;
+            // Yes Button or No Button
+            myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog,int which){
+                    GetData task = new GetData();
+                    String tmp = B.getText().toString();
+                    task.execute(tmp);
+                    ItemData itemData = new ItemData(R.drawable.turtle,pushItem.getText().toString()+"");
+                    arrayList.add(itemData);    // 해당 아이템 추가
+                    itemAdapter.notifyDataSetChanged(); //새로고침
 
-                Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        myAlertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(),"취소되었습니다!",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        myAlertBuilder.show();
-    }
+                    Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            myAlertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getApplicationContext(),"취소되었습니다!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            myAlertBuilder.show();
+        }
 
- */
+     */
     DrawerLayout.DrawerListener listener=new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -564,14 +557,12 @@ public class MainActivity extends AppCompatActivity {
                     item_location_y[Basket_index] = Integer.parseInt(y);
                     id[Basket_index] = Item_id;
                     Basket_index = Basket_index+1;
-        //            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-           //         startActivity(intent);
+
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-            Basket_index = Basket_index +1;
+            Intent intent = new Intent(MainActivity.this, SubActivity.class);
             startActivity(intent);
         }
         @Override

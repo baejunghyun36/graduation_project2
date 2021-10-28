@@ -19,10 +19,12 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        String search_item = intent.getStringExtra("search_item");
         setContentView(R.layout.activity_search);
 
         SearchingItem =  findViewById(R.id.tv_searching);
-        SearchingItem.setText(id[Last_num-1]);
+        SearchingItem.setText(home.name[0]);
 
         Button btn_inCart = findViewById(R.id.btn_inCart);
         Button direct_optimal = findViewById(R.id.btn_direct_optimal);
@@ -35,12 +37,16 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
+        /*
         btn_inCart.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
 
             }
         });
+
+
         direct_optimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,5 +56,6 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+       */
     }
 }

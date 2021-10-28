@@ -58,7 +58,7 @@ public class home extends AppCompatActivity {
 
     public static Context context_main;
     public String str="주차한 정보가 없습니다";
-
+    public int flag = 0;
     private int cnt_check=0;
     public static int Basket_index=0;
     private static String TAG = "phpquerytest";
@@ -199,9 +199,7 @@ public class home extends AppCompatActivity {
                 if ( item_find.getText().toString().length() != 0 ) { //검색창 Null 아닐때
                     GetData task = new GetData();
                     task.execute(item_find.getText().toString());
-                    Intent intent = new Intent(home.this, SearchActivity.class);
-                    intent.putExtra("search_item", item_find.getText());
-                    startActivity(intent);
+                    flag = 1;
                 }
                 else {    // 검색창 Null일때
                     Toast.makeText(getApplicationContext(),"검색어를 입력해주세요",
@@ -579,30 +577,36 @@ public class home extends AppCompatActivity {
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
-                 //   String item_name = item.getString(TAG_NAME);
+                    String item_name = item.getString(TAG_NAME);
                     String x = item.getString(TAG_X);
                     String y = item.getString(TAG_Y);
                     int Item_id = Integer.parseInt(item.getString(TAG_id));
-                    //     rest[Basket_index] = address;
                     item_location_x[Basket_index] = Integer.parseInt(x);
                     item_location_y[Basket_index] = Integer.parseInt(y);
-               //     name[Basket_index] = item_name;
+                    name[Basket_index] = item_name;
                     id[Basket_index] = Item_id;
                     Basket_index++;
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            Intent intent = new Intent(home.this, SubActivity.class);
-            startActivity(intent);
+            if(flag == 1) {
+                Intent intent = new Intent(home.this, SearchActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(home.this, SubActivity.class);
+                startActivity(intent);
+            }
         }
         @Override
         protected String doInBackground(String... params) {
-
+            String temp = "load";
+            if(flag == 1) temp = "query";
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.15/load.php";
+            String serverURL = "http://192.168.0.15/"+temp+".php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
