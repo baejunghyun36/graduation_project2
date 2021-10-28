@@ -67,6 +67,7 @@ public class home extends AppCompatActivity {
     public static int[] item_location_y = new int[40];
     public static int id[] = new int[40];
     private static final String TAG_JSON = "webnautes";
+    private static final String TAG_NAME = "name";
     private static final String TAG_ADDRESS = "rest";
     private static final String TAG_id = "id";
     private static final String TAG_X = "x";
@@ -574,13 +575,14 @@ public class home extends AppCompatActivity {
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
-                    //     String address = item.getString(TAG_ADDRESS);
+                 //   String item_name = item.getString(TAG_NAME);
                     String x = item.getString(TAG_X);
                     String y = item.getString(TAG_Y);
                     int Item_id = Integer.parseInt(item.getString(TAG_id));
                     //     rest[Basket_index] = address;
                     item_location_x[Basket_index] = Integer.parseInt(x);
                     item_location_y[Basket_index] = Integer.parseInt(y);
+               //     name[Basket_index] = item_name;
                     id[Basket_index] = Item_id;
                     Basket_index++;
                 }
@@ -589,8 +591,6 @@ public class home extends AppCompatActivity {
             }
             Intent intent = new Intent(home.this, SubActivity.class);
             startActivity(intent);
-            //  Intent intent = new Intent(home.this, SearchActivity.class);
-            //  startActivity(intent);
         }
         @Override
         protected String doInBackground(String... params) {

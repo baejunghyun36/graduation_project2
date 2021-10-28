@@ -393,7 +393,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         for(int i = 0; i < home.Basket_index; i++){
             if(item_x[i]>1200)  item_x[i] = 1200;
             if(item_y[i]>1000)  item_y[i]=1000;
-            createTextView(item_y[i],item_x[i],Integer.toString(home.id[i]));
+            createTextView(item_x[i]*10,item_y[i]*10,Integer.toString(home.id[i]));
         }
 
         screenWidth = point.x;
