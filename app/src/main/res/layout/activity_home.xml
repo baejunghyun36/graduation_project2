@@ -194,6 +194,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1">
                     <ImageView
+                        android:id="@+id/BtnNum3"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:src="@drawable/meat" />
@@ -210,6 +211,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1">
                     <ImageView
+                        android:id="@+id/BtnNum4"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:src="@drawable/fruits" />

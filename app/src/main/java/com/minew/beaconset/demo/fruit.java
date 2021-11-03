@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class fruit extends AppCompatActivity {
     private TextView tv_id, tv_pass;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_fruit);
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         String userPass = intent.getStringExtra("userPass");
         final String userName = intent.getStringExtra("userName");
 
-        custom_dialog = new Dialog(MainActivity.this);       // Dialog 초기화
+        custom_dialog = new Dialog(fruit.this);       // Dialog 초기화
         custom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
         custom_dialog.setContentView(R.layout.custom_dialog);   //커스텀 다이얼로그 연결
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
+                Intent intent = new Intent(fruit.this, SubActivity.class);
                 startActivity(intent);
             }
         });
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         btn_current.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
+                Intent intent = new Intent(fruit.this, SubActivity.class);
                 startActivity(intent);
             }
         });
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                Intent intent = new Intent(MainActivity.this, mypages.class);
+                Intent intent = new Intent(fruit.this, mypages.class);
                 intent.putExtra("userName",userName);
                 startActivity(intent);
             }
@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
                 mpDialog.show();
                 mMinewBeaconManager.stopScan();
                 MinewBeacon minewBeacon = mAdapter.getData(position);
-                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(MainActivity.this, minewBeacon);
+                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(fruit.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
                 minewBeaconConnection.connect();
             }
@@ -452,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
             switch (state) {
                 case BeaconStatus_Connected:
                     mpDialog.dismiss();
-                    Intent intent = new Intent(MainActivity.this, DetilActivity.class);
+                    Intent intent = new Intent(fruit.this, DetilActivity.class);
                     intent.putExtra("mac", connection.setting.getMacAddress());
                     startActivity(intent);
                     break;
@@ -491,7 +491,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void dialogshow() {
-        mpDialog = new ProgressDialog(MainActivity.this);
+        mpDialog = new ProgressDialog(fruit.this);
         mpDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mpDialog.setTitle(null);//
         mpDialog.setIcon(null);//
@@ -534,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = ProgressDialog.show(MainActivity.this,
+            progressDialog = ProgressDialog.show(fruit.this,
                     "Please Wait", null, true, true);
         }
         @Override
@@ -562,7 +562,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            Intent intent = new Intent(MainActivity.this, SubActivity.class);
+            Intent intent = new Intent(fruit.this, SubActivity.class);
             startActivity(intent);
         }
         @Override

@@ -15,6 +15,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".demo.fruit"
+            android:exported="true" />
+        <activity
+            android:name=".demo.Meat"
+            android:exported="true" />
+        <activity
             android:name=".demo.Start_page"
             android:exported="true" />
         <activity

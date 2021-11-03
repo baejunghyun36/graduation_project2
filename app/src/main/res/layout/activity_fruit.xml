@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".demo.MainActivity">
+    tools:context=".demo.fruit">
 
 
     <android.support.v4.widget.DrawerLayout
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="과자"
+                    android:text="과일"
 
                     android:textAlignment="center"
                     android:textSize="45dp"
@@ -266,7 +266,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack1" />
+                                android:src="@drawable/f1" />
 
                             <Button
                                 android:id="@+id/BtnNum1"
@@ -298,7 +298,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack2" />
+                                android:src="@drawable/f2" />
 
                             <Button
                                 android:id="@+id/BtnNum2"
@@ -336,7 +336,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack3" />
+                                android:src="@drawable/f3" />
 
                             <Button
                                 android:id="@+id/BtnNum3"
@@ -369,7 +369,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack4" />
+                                android:src="@drawable/f4" />
 
                             <Button
                                 android:id="@+id/BtnNum4"
@@ -408,7 +408,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/f5" />
 
                             <Button
                                 android:id="@+id/BtnNum5"
@@ -440,7 +440,7 @@
                             <ImageView
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/f6" />
 
                             <Button
                                 android:id="@+id/BtnNum6"
@@ -479,7 +479,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/f7" />
 
                             <Button
                                 android:id="@+id/BtnNum7"
@@ -511,10 +511,81 @@
                             <ImageView
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/f8" />
 
                             <Button
                                 android:id="@+id/BtnNum8"
+                                android:layout_width="67dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+
+                                android:src="@drawable/f9" />
+
+                            <Button
+                                android:id="@+id/BtnNum9"
+                                android:layout_width="67dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+
+                                android:layout_marginStart="3dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_background"
+                                android:text="담기"
+                                android:textColor="#fff" />
+
+                            <!--  android:layout_alignParentBottom="true"-->
+                            />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+                                android:src="@drawable/f10" />
+
+                            <Button
+                                android:id="@+id/BtnNum10"
                                 android:layout_width="67dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"

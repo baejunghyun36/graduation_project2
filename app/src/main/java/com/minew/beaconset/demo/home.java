@@ -78,6 +78,8 @@ public class home extends AppCompatActivity {
 
     private Button btn_search;
     private ImageView btnnum2;
+    private ImageView btnnum3;
+    private ImageView btnnum4;
     private DrawerLayout drawerLayout;
     private View drawerView;
     private Button btn_current, btn_my_page;
@@ -114,6 +116,8 @@ public class home extends AppCompatActivity {
         btn_search = findViewById(R.id.btn_search);
         item_find = (EditText)findViewById(R.id.item) ;
         btnnum2 = findViewById(R.id.BtnNum2);
+        btnnum3 = findViewById(R.id.BtnNum3);
+        btnnum4 = findViewById(R.id.BtnNum4);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer );
         btn_current = findViewById(R.id.btn_current_location);
@@ -165,7 +169,6 @@ public class home extends AppCompatActivity {
                                                             String parking_info3 = "000005";
                                                             countDown(parking_info3);
                                                         }
-
 
                                                     }
                                                 });
@@ -242,6 +245,18 @@ public class home extends AppCompatActivity {
         btnnum2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(home.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnnum3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(home.this, Meat.class);
+                startActivity(intent);
+            }
+        });
+        btnnum4.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(home.this, fruit.class);
                 startActivity(intent);
             }
         });
@@ -397,13 +412,6 @@ public class home extends AppCompatActivity {
             }
         }.start();
     }
-
-
-
-
-
-
-
 
 
 
@@ -610,7 +618,7 @@ public class home extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.15/"+temp+".php";
+            String serverURL = "http://192.168.0.146/"+temp+".php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
