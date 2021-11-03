@@ -47,7 +47,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class SubActivity extends AppCompatActivity implements View.OnClickListener {
+public class CurrentLoc extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "AnimationActivity";
     private LinearLayout ll1;
@@ -57,11 +57,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float screenWidth;
     private float screenHeight;
     private int section =0;
-    public static String arr = "";
     private float toX = 0, fromY = 0;
     private float toY = 0;
     private int nowX=0, nowY = 0;
-    private int cnt = Optimal_Distance.cnt;
     private int add = 170;
     private int to_x = 0;
     private int to_y = 0;
@@ -73,34 +71,21 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private int mx = 500;
     private int my = 600;
 
-    //  public static int opt[];
-    private Optimal_Distance test ;
 
-    Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-    //  public static int opt[] = SubActivity2.arr;
-    public int opt[] = SubActivity2.arr;
     private float x = nowX;
     private float y = nowY;
 
     public static int now_x = 300;
     public static int now_y = 300;
-    public static int [] item_x = MainActivity.item_location_x;
-    public static int [] item_y = MainActivity.item_location_y;
-/*    private float nowx = Optimal_Distance.nowx;
-    private float nowy = Optimal_Distance.nowy;*/
 
-    /////////////////////////
-    //LinearLayout linearView;
-    LinearLayout linearView;
     FrameLayout frameView;
 
     int[] pos=new int[4];
 
     public static TextView tv_sub;
-    private TextView dis_result;
-    BeaconListAdapter SubActivity = new BeaconListAdapter();
 
-    private TextView tv_id, tv_pass;
+
+
     private RecyclerView       mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
 
@@ -110,14 +95,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     public static MinewBeacon    clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
 
-    //    final float rssi[] = subBeaconListAdapter.rssi;
     final float a[] = subBeaconListAdapter.i;
     private TextView tv1;
     private TextView tv2;
     private TextView tv3;
     private TextView tv4;
-    private TextView tv5;
-    private TextView item_id[] = new TextView[4];
+
     private TextView test_view;
     private int check[] = subBeaconListAdapter.check;
 
@@ -129,10 +112,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     private float[] sum_dis = new float[4];
     private int count = 0;
 
-    private String str1 = SubActivity.distance;
-    private String str2 = SubActivity.location;
 
-//    삼각측량 변수
 
     private float Ax = 0;//충헌
     private float Ay = 0;
@@ -158,8 +138,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
-        View v = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.zoom_item, null, false);
+        setContentView(R.layout.activity_current);
+        View v = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.zoom_item2, null, false);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         final ZoomView zoomView = new ZoomView(this);
@@ -169,7 +149,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         zoomView.setMaxZoom(4f); // 줌 Max 배율 설정  1f 로 설정하면 줌 안됩니다.
         zoomView.setMiniMapCaption("Mini Map Test"); //미니 맵 내용
         zoomView.setMiniMapCaptionSize(20); // 미니 맵 내용 글씨 크기 설정
-        zoomView.zoomTo(1.7f,0,0);
+        zoomView.zoomTo(1,0,0);
 
         RelativeLayout container = (RelativeLayout) findViewById(R.id.container1);
         container.addView(zoomView);
@@ -195,13 +175,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         tv2= findViewById(R.id.test2);
         tv3= findViewById(R.id.test3);
         tv4= findViewById(R.id.test4);
-        tv5 = findViewById(R.id.test5);
+
 
 
         btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
         btn2.setY(nowY);
-        //btn2.getLayoutParams().height = 123;
-        //btn2.getLayoutParams().width = 123;
+
         (new Thread(new Runnable()
         {
 
@@ -267,7 +246,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             }
                                                             tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
                                                             tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
-                                                            tv3.setText("충헌이꺼 " + check[2] +"   현재 위치 X : "+Mx + " Y : "+ My + " "  +a[2]);
+                                                            tv3.setText("충헌이꺼 " + check[2] +"   현재 위치 rgdg : "+Mx + " Y : "+ My + " "  +a[2]);
                                                             tv4.setText("교수님꺼 " + check[3]+"                     X : "+ nowX + " Y : "+ nowY + " "  +a[3]);
 
                                                         }
@@ -305,8 +284,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
                                                         // );
                                                         //  tv5.setText(Optimal_Distance.result_array[0]+ " " + Optimal_Distance.result_array[1]+ " " + Optimal_Distance.result_array[2]+ " " + Optimal_Distance.result_array[3]+ " " );
-                                                        tv_sub = findViewById(R.id.tv_sub);
-                                                        tv_sub.setText(Integer.toString(MainActivity.item_location_x[Optimal_Distance.arr[0]]*10) + " " + Integer.toString(MainActivity.item_location_y[Optimal_Distance.arr[0]]*10) );
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
@@ -326,28 +303,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         })).start();
     }
 
-    private void createTextView(float x, float y, String txt){
-        //(float x, float y, String txt):인자
-
-        TextView textViewNm = new TextView(getApplicationContext());
-        textViewNm.setText(txt);
-        textViewNm.setTextSize(10);
-        textViewNm.setTextColor(Color.parseColor("#CC0066"));
-        textViewNm.setId(0);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.leftMargin=(int)x;
-        params.topMargin=(int)y;
-
-        textViewNm.setLayoutParams(params);
-        textViewNm.setBackgroundColor(Color.rgb(0,255, 0));
-        //textViewNm.setText(txt);
-        //linearView=findViewById(R.id.mapView);
-        //linearView.addView(textViewNm);
-        frameView = findViewById(R.id.frameView);
-        frameView.addView(textViewNm);
-
-    }
 
     private void init(View v){
         ll1 = findViewById(R.id.ll1);
@@ -368,23 +323,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
         Log.e(TAG, "Width : " + point.x + " , Height : " + point.y);
 
-        // 각 아이템의 위치에 해당 index
-
-        //createTextView(100, 0, "(100,0)");
-        //createTextView(-200, 100, "(-200,100)");
-        //createTextView(500, 500, "(540,300)");
-        //createTextView(linearView.getWidth()/2, linearView.getHeight()/2, "mid");
 
         test_view.setX(0);
         test_view.setY(0);
         test_view.setText("(0,0)");
 
 
-        for(int i = 0; i < MainActivity.Basket_index; i++){
-            if(item_x[i]>1200)  item_x[i] = 1200;
-            if(item_y[i]>1000)  item_y[i]=1000;
-            createTextView(item_x[i]*10,item_y[i]*10,Integer.toString(MainActivity.id[i]));
-        }
         screenWidth = point.x;
         screenHeight = point.y;
     }
@@ -421,10 +365,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                         now_x = nowX;
                                         now_y = nowY;
 
-                                        //a[0] 정현
-                                        //a[1] 은윤
-                                        //a[2] 충헌
-                                        //a[3] 교수
+
 
                                         //5구역
                                         if((a[0]+a[3]-a[2]-a[1]>-0.5)&&a[0]+a[3]-a[2]-a[1 ]<0.5){
@@ -746,8 +687,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
 
 
-                              /*          if(toX==500)nowX+=41;
-                                        else nowX-=41;*/
 
                                     }
                                 });
@@ -761,14 +700,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
 
                 break;
-            case R.id.btn3 :
-                //     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
-                //      opt = SubActivity2.arr;
-                for(int i=0; i<MainActivity.Basket_index; i++){
-                    arr += opt[i] + " ";
-                }
-                tv5.setText(arr);
-                break;
+
             default:
                 break;
         }
@@ -840,7 +772,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 mMinewBeaconManager.stopScan();
                 //connect to beacon
                 MinewBeacon minewBeacon = mAdapter.getData(position);
-                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(SubActivity.this, minewBeacon);
+                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(CurrentLoc.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
                 minewBeaconConnection.connect();
             }
@@ -856,7 +788,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
             switch (state) {
                 case BeaconStatus_Connected:
                     mpDialog.dismiss();
-                    Intent intent = new Intent(SubActivity.this, DetilActivity.class);
+                    Intent intent = new Intent(CurrentLoc.this, DetilActivity.class);
                     intent.putExtra("mac", connection.setting.getMacAddress());
                     startActivity(intent);
                     break;
@@ -893,7 +825,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     protected void dialogshow() {
-        mpDialog = new ProgressDialog(SubActivity.this);
+        mpDialog = new ProgressDialog(CurrentLoc.this);
         mpDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mpDialog.setTitle(null);//
         mpDialog.setIcon(null);//

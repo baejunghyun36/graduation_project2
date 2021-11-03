@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".demo.CurrentLoc"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="목적지"
+        android:textSize="10dp" />
+
+
+    <TextView
+        android:id="@+id/test1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hi"
+        android:textSize="10dp" />
+
+
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="hi"
+        />
+
+
+    <TextView
+        android:id="@+id/test3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="hi"
+        />
+    <TextView
+        android:id="@+id/test4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="hi"
+        />
+    <TextView
+        android:id="@+id/test5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x,y" />
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/hi"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="1"-->
+    <!--        android:textSize="20dp"/>-->
+
+    <!--아래 RelativeLayout의 height를 wrap_content로 하면
+    해당 태그 아래 내용들이 출력되지 않음.
+    임시방편으로 일단 height 특정 값으로 설정-->
+    <RelativeLayout
+        android:id="@+id/container1"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:animationCache="true"
+        android:clipChildren="false">
+    </RelativeLayout>
+
+    <!--구분선-->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="#4682B4" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animationCache="true"
+        android:clipChildren="false">
+
+        <!--        <com.github.chrisbanes.photoview.PhotoView-->
+        <!--            android:id="@+id/photoView"-->
+        <!--            android:layout_width="400dp"-->
+        <!--            android:layout_height="376dp"-->
+        <!--            android:background="@android:color/white" />-->
+
+
+
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="현재 내 위치" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="btn3" />
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sub_recyeler"
+        android:layout_width="match_parent"
+        android:layout_height="338dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

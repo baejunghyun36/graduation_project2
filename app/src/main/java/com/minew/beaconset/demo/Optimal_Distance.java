@@ -9,10 +9,10 @@ public class Optimal_Distance extends AppCompatActivity {
 
 
 
-    public static int[] item_x = home.item_location_x;
-    public static int[] item_y = home.item_location_y;
-    public static int[] item_id = home.id;
-    public static int N = home.Basket_index+1;
+    public static int[] item_x = MainActivity.item_location_x;
+    public static int[] item_y = MainActivity.item_location_y;
+    public static int[] item_id = MainActivity.id;
+    public static int N = MainActivity.Basket_index+1;
 
     public static String path[] = new String[20];
 
@@ -61,7 +61,7 @@ public class Optimal_Distance extends AppCompatActivity {
 
     public static int section_res[] = new int[60];
     static int section_N = 5;
-    static int start[][] = new int[1][2];
+    public static int start[][] = new int[1][2];
     static int count_x= 100;
     static int count_y=100;
 

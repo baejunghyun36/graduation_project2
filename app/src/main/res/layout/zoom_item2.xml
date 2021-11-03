@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mapView"
+    >
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameView"
+        >
+
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/final_map" />
+
+
+        <ImageView
+            android:id="@+id/btn2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/loc" />
+
+
+
+        <TextView
+            android:id="@+id/print_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303F9F"
+            android:textStyle="bold" />
+
+
+
+        <!--    <ScrollView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_weight="0"-->
+        <!--        android:orientation="vertical"-->
+
+        <!--        >-->
+
+        <!--    <HorizontalScrollView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_weight="0"-->
+        <!--        android:orientation="vertical"-->
+        <!--        >-->
+        <!--    </HorizontalScrollView>-->
+        <!--    </ScrollView>-->
+    </FrameLayout>
+</LinearLayout>
