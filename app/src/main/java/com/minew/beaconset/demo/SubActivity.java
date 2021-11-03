@@ -169,7 +169,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         zoomView.setMaxZoom(4f); // 줌 Max 배율 설정  1f 로 설정하면 줌 안됩니다.
         zoomView.setMiniMapCaption("Mini Map Test"); //미니 맵 내용
         zoomView.setMiniMapCaptionSize(20); // 미니 맵 내용 글씨 크기 설정
-        zoomView.zoomTo(1.7f,0,0);
+        zoomView.zoomTo(1,0,0);
 
         RelativeLayout container = (RelativeLayout) findViewById(R.id.container1);
         container.addView(zoomView);

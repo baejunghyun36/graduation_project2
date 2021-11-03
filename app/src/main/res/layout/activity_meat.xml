@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".demo.MainActivity">
+    tools:context=".demo.Meat">
 
 
     <android.support.v4.widget.DrawerLayout
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="과자"
+                    android:text="정육"
 
                     android:textAlignment="center"
                     android:textSize="45dp"
@@ -243,13 +243,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-
-
-
-
-
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -262,11 +255,18 @@
                             >
 
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:text="목살"
+                                android:textAlignment="center" />
+
                             <ImageView
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack1" />
+                                android:src="@drawable/m1" />
 
                             <Button
                                 android:id="@+id/BtnNum1"
@@ -297,8 +297,7 @@
                             <ImageView
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
-
-                                android:src="@drawable/snack2" />
+                                android:src="@drawable/m2" />
 
                             <Button
                                 android:id="@+id/BtnNum2"
@@ -306,7 +305,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentBottom="true"
-
                                 android:layout_marginStart="3dp"
                                 android:layout_marginRight="0dp"
                                 android:layout_marginBottom="3dp"
@@ -336,7 +334,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack3" />
+                                android:src="@drawable/m3" />
 
                             <Button
                                 android:id="@+id/BtnNum3"
@@ -369,7 +367,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack4" />
+                                android:src="@drawable/m4" />
 
                             <Button
                                 android:id="@+id/BtnNum4"
@@ -408,7 +406,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/m5" />
 
                             <Button
                                 android:id="@+id/BtnNum5"
@@ -440,7 +438,7 @@
                             <ImageView
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/m6" />
 
                             <Button
                                 android:id="@+id/BtnNum6"
@@ -479,7 +477,7 @@
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
 
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/m7" />
 
                             <Button
                                 android:id="@+id/BtnNum7"
@@ -511,7 +509,7 @@
                             <ImageView
                                 android:layout_width="200dp"
                                 android:layout_height="200dp"
-                                android:src="@drawable/snack5" />
+                                android:src="@drawable/m8" />
 
                             <Button
                                 android:id="@+id/BtnNum8"
