@@ -34,15 +34,9 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
 
-
-
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.main_item, null);
-
-
-
 
         return new MyViewHolder(view);
     }

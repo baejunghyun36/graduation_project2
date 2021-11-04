@@ -5,53 +5,62 @@
     android:layout_height="match_parent"
     android:layout_gravity="end"
     android:id="@+id/drawer"
-    android:background="#EBE4F8"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     >
 
 
     <Button
         android:id="@+id/btn_close"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/button_background"
+        android:text="메뉴닫기"
+        android:textColor="#fff"
 
-
-        android:text="메뉴닫기" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_current_location"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="현재 내 위치" />
-
-
+        android:background="@drawable/button_background"
+        android:text="담은 물품 경로검색"
+        android:textColor="#fff"
+        android:textStyle="bold" />
 
 
     <Button
         android:id="@+id/btn_my_page"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="마이페이지" />
+        android:background="@drawable/button_background"
+        android:text="마이페이지"
+        android:textColor="#fff"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="아이디"
-        android:textColor="#3F51B5"
-        android:textSize="20sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:text="아이디"-->
+<!--        android:textColor="#3F51B5"-->
+<!--        android:textSize="20sp" />-->
 
-    <TextView
-        android:id="@+id/tv_pass"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="비밀번호"
-        android:textColor="#3F51B5"
-        android:textSize="20sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_pass"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="비밀번호"-->
+<!--        android:textColor="#3F51B5"-->
+<!--        android:textSize="20sp" />-->
 
 </LinearLayout>
