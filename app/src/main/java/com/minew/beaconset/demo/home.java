@@ -603,9 +603,17 @@ public class home extends AppCompatActivity {
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            Intent intent = new Intent(home.this, SearchActivity.class);
-            intent.putExtra("Searching", item_find.getText().toString());
-            startActivity(intent);
+            if(id[Basket_index] != 0) {
+                name[Basket_index] = " ";
+                id[Basket_index] = 0;
+                Intent intent = new Intent(home.this, SearchActivity.class);
+                intent.putExtra("Searching", item_find.getText().toString());
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"없는 물품입니다.",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
         @Override
         protected String doInBackground(String... params) {
