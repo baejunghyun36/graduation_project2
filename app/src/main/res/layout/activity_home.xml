@@ -159,6 +159,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1">
                     <ImageView
+                        android:id="@+id/BtnNum1"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:src="@drawable/best" />
@@ -373,18 +374,14 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" * 인기상품 *" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#979797"
-                android:layout_marginVertical="10dp"/>
+                android:text="\n * 인기상품 *" />
+
 
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp">
+                android:layout_marginVertical="1dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -619,19 +616,13 @@
             <TextView
                 android:id="@+id/parking_info2"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="확인용"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-
-
-
-
-
         </LinearLayout>
 
 

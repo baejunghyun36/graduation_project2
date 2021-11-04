@@ -93,8 +93,8 @@ public class fruit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruit);
-        tv_id = findViewById(R.id.tv_id);
-        tv_pass = findViewById(R.id.tv_pass);
+       // tv_id = findViewById(R.id.tv_id);
+       // tv_pass = findViewById(R.id.tv_pass);
 
         Intent intent = getIntent();
         final String userID = intent.getStringExtra("userID");
@@ -105,8 +105,8 @@ public class fruit extends AppCompatActivity {
         custom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
         custom_dialog.setContentView(R.layout.custom_dialog);   //커스텀 다이얼로그 연결
 
-        tv_id.setText(userID);
-        tv_pass.setText(userPass);
+      //  tv_id.setText(userID);
+      //  tv_pass.setText(userPass);
 
         btn_current = findViewById(R.id.btn_current_location);
         btn_my_page = findViewById(R.id.btn_my_page);

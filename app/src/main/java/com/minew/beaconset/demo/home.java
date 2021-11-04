@@ -77,6 +77,7 @@ public class home extends AppCompatActivity {
     private ImageView btn_move;
 
     private Button btn_search;
+    private ImageView btnnum1;
     private ImageView btnnum2;
     private ImageView btnnum3;
     private ImageView btnnum4;
@@ -115,6 +116,7 @@ public class home extends AppCompatActivity {
 
         btn_search = findViewById(R.id.btn_search);
         item_find = (EditText)findViewById(R.id.item) ;
+        btnnum1  = findViewById(R.id.BtnNum1);
         btnnum2 = findViewById(R.id.BtnNum2);
         btnnum3 = findViewById(R.id.BtnNum3);
         btnnum4 = findViewById(R.id.BtnNum4);
@@ -236,6 +238,14 @@ public class home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(drawerView);
+            }
+        });
+
+
+        btnnum1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(home.this, Best.class);
+                startActivity(intent);
             }
         });
 
