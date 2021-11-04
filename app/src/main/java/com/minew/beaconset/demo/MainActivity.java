@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView btn_move;
     private Button  btn_search;
 
-    private static int search_complete = 0;
-    public static String basket[] = new String[30];
+    public static int search_complete = 0;
+    public static String basket[] = new String[40];
     public static int Basket_index = 0;
     private static String TAG = "phpquerytest";
     public static String rest[] = new String[10];
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static int[] item_location_x2 = new int[40];
     public static int[] item_location_y2 = new int[40];
-    public static int id[] = new int[10];
+    public static int id[] = new int[40];
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ADDRESS = "rest";
     private static final String TAG_NAME = "name";
@@ -94,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
+    public TextView[] tvs = new TextView[12];
+    public String[] item_names = new String[]{"새우깡", "포테토칩", "꼬깔콘", "바나나킥", "썬칩", "칸쵸", "빈츠", "촉촉한 초코칩"};
+
 
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
@@ -125,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
         items[1] = findViewById(R.id.BtnNum2);
         items[2] = findViewById(R.id.BtnNum3);
         items[3] = findViewById(R.id.BtnNum4);
+        items[4] = findViewById(R.id.BtnNum5);
+        items[5] = findViewById(R.id.BtnNum6);
+        items[6] = findViewById(R.id.BtnNum7);
+        items[7] = findViewById(R.id.BtnNum8);
+
+
 
 
 
@@ -175,30 +185,50 @@ public class MainActivity extends AppCompatActivity {
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){    // 감자
-                items[0].setText("새우깡");
-                showDialog(items[0], R.drawable.potato);
+            public void onClick(View v){
+                showDialog(item_names[0], R.drawable.potato);
             }
         });
         items[1].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){    // 새우
-                items[1].setText("포테토칩");
-                showDialog(items[1], R.drawable.shrimp);
+            public void onClick(View v){
+                showDialog(item_names[1], R.drawable.shrimp);
             }
         });
         items[2].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){    //초코
-                items[2].setText("꼬깔콘");
-                showDialog(items[2], R.drawable.choco);
+            public void onClick(View v){
+                showDialog(item_names[2], R.drawable.choco);
             }
         });
         items[3].setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){    // 꼬북북
-                items[3].setText("바나나킥");
-                showDialog(items[3], R.drawable.turtle);
+            public void onClick(View v){
+                showDialog(item_names[3], R.drawable.turtle);
+            }
+        });
+        items[4].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[4], R.drawable.turtle);
+            }
+        });
+        items[5].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[5], R.drawable.turtle);
+            }
+        });
+        items[6].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[6], R.drawable.turtle);
+            }
+        });
+        items[7].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[7], R.drawable.turtle);
             }
         });
 
@@ -243,9 +273,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // custom_dialog 디자인
-    public void showDialog(final Button B, final int iv){
+    public void showDialog(final String B, final int iv){
         //버튼 글씨랑 이미지뷰 띄울거야..
-        String item_name = B.getText().toString();
+        String item_name = B;
         TextView tv_item = custom_dialog.findViewById(R.id.item);
         tv_item.setText(item_name);
         ImageView iv_item = custom_dialog.findViewById(R.id.item_image);
@@ -259,11 +289,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String tmp = B.getText().toString();
+                String tmp = B;
                 basket[Basket_index++] = tmp;
 
 
-                ItemData itemData = new ItemData(iv,B.getText().toString()+"");
+                ItemData itemData = new ItemData(iv,B);
                 arrayList.add(itemData);    // 해당 아이템 추가
                 itemAdapter.notifyDataSetChanged(); //새로고침
 

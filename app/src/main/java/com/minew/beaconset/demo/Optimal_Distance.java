@@ -71,8 +71,8 @@ public class Optimal_Distance extends AppCompatActivity {
             }
         }
 
-        section[0][0]=SubActivity.pr_x/10;
-        section[0][1]=SubActivity.pr_y/10;
+        section[0][0]=89;//SubActivity.pr_x/10;
+        section[0][1]=89;//SubActivity.pr_y/10;
         section[1][0]= 25;
         section[1][1]= 30;
         section[2][0]= 75;

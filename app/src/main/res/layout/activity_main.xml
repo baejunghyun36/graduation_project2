@@ -207,27 +207,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
+                android:weightSum="4"
+                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
 
                 <EditText
                     android:id="@+id/item"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/border"
                     android:gravity="center"
                     android:hint="물품 검색"
-                    android:textColor="#EF8181"
                     android:textSize="20dp"></EditText>
 
                 <Button
                     android:id="@+id/btn_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="0dp"
-                    android:text="검색" />
+                    android:layout_weight="1"
+                    android:background="@drawable/button_background"
+                    android:text="검색"
+                    android:textColor="#fff" />
 
 
             </LinearLayout>
@@ -263,7 +269,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:id="@+id/tv1"
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_alignParentBottom="true"

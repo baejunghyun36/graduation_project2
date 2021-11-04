@@ -61,21 +61,26 @@ public class Meat extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
     public Dialog custom_dialog; // 커스텀 다이얼로그
-
+    public static String basket[] = MainActivity.basket;
     private DrawerLayout drawerLayout;
     private View drawerView;
     private ImageView btn_move;
     private Button  btn_search;
 
-    public static int Basket_index;
+    public static int search_complete = MainActivity.search_complete;
+    //public static int Basket_index = MainActivity.Basket_index;
     private static String TAG = "phpquerytest";
-    public static String rest[] = new String[10];
-    public static String name[] = new String[10];
-    public static int[] item_location_x = new int[20];
-    public static int[] item_location_y = new int[20];
-    public static String id[] = new String[10];
+    public static String name[] = MainActivity.name;
+    public static int[] item_location_x = MainActivity.item_location_x;
+    public static int[] item_location_y = MainActivity.item_location_y;
+
+    public static int[] item_location_x2 = MainActivity.item_location_x2;
+    public static int[] item_location_y2 = MainActivity.item_location_y2;
+
+    private static final String TAG_NAME = "name";
+
+    public static int id[] = MainActivity.id;
     private static final String TAG_JSON = "webnautes";
-    private static final String TAG_ADDRESS = "rest";
     private static final String TAG_id = "id";
     private static final String TAG_X = "x";
     private static final String TAG_Y = "y";
@@ -84,6 +89,8 @@ public class Meat extends AppCompatActivity {
 
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
+    public String[] item_names = new String[]{"목살", "삼겹살", "항정살", "갈비", "꽃등심", "부채살", "앞다리", "뒷다리"};
+
 
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
@@ -93,8 +100,6 @@ public class Meat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meat);
-      //  tv_id = findViewById(R.id.tv_id);
-       // tv_pass = findViewById(R.id.tv_pass);
 
         Intent intent = getIntent();
         final String userID = intent.getStringExtra("userID");
@@ -115,6 +120,10 @@ public class Meat extends AppCompatActivity {
         items[1] = findViewById(R.id.BtnNum2);
         items[2] = findViewById(R.id.BtnNum3);
         items[3] = findViewById(R.id.BtnNum4);
+        items[4] = findViewById(R.id.BtnNum5);
+        items[5] = findViewById(R.id.BtnNum6);
+        items[6] = findViewById(R.id.BtnNum7);
+        items[7] = findViewById(R.id.BtnNum8);
 
 
 
@@ -146,8 +155,10 @@ public class Meat extends AppCompatActivity {
         btn_current.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Meat.this, SubActivity.class);
-                startActivity(intent);
+                for(int i  = 0; i < MainActivity.Basket_index; i++){
+                    GetData task = new GetData();
+                    task.execute(basket[i]);
+                }
             }
         });
         btn_my_page.setOnClickListener(new View.OnClickListener(){
@@ -164,76 +175,51 @@ public class Meat extends AppCompatActivity {
         items[0].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 감자
-                showDialog(items[0], R.drawable.potato);
+                showDialog(item_names[0], R.drawable.potato);
             }
         });
         items[1].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 새우
-                showDialog(items[1], R.drawable.shrimp);
+                showDialog(item_names[1], R.drawable.shrimp);
             }
         });
         items[2].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    //초코
-                showDialog(items[2], R.drawable.choco);
+                showDialog(item_names[2], R.drawable.choco);
             }
         });
         items[3].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 꼬북북
-                showDialog(items[3], R.drawable.turtle);
+                showDialog(item_names[3], R.drawable.turtle);
             }
         });
-
-
-//        recyclerview = findViewById(R.id.recyclerView);
-//        recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-//        List<ExpandableListAdapter.Item> data = new ArrayList<>();
-//
-//        ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
-//        group1.invisibleChildren = new ArrayList<>();
-//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "한우"));
-//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "수입육"));
-//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "돼지고기"));
-//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "닭/오리고기"));
-//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계란"));
-//
-//
-//        ExpandableListAdapter.Item group2 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "과일");
-//        group2.invisibleChildren = new ArrayList<>();
-//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "사과"));
-//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "바나나"));
-//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "포도"));
-//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "키위"));
-//
-//        ExpandableListAdapter.Item group3 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "유제품/베이커리");
-//        group3.invisibleChildren = new ArrayList<>();
-//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "우유"));
-//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "치즈"));
-//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "저지방우유"));
-//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "요플레"));
-//
-//        ExpandableListAdapter.Item group4 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "세제/욕실/청소");
-//        group4.invisibleChildren = new ArrayList<>();
-//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "persil"));
-//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "다우니"));
-//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "습기제거"));
-//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "락스"));
-//
-//        data.add(group1);
-//        data.add(group2);
-//        data.add(group3);
-//        data.add(group4);
-//
-//
-//        recyclerview.setAdapter(new ExpandableListAdapter(data));
-
-
-
-
-
-
+        items[4].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[4], R.drawable.turtle);
+            }
+        });
+        items[5].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[5], R.drawable.turtle);
+            }
+        });
+        items[6].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[6], R.drawable.turtle);
+            }
+        });
+        items[7].setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showDialog(item_names[7], R.drawable.turtle);
+            }
+        });
         initView();
         initManager();
         checkBluetooth();
@@ -273,9 +259,9 @@ public class Meat extends AppCompatActivity {
     }
 
     // custom_dialog 디자인
-    public void showDialog(final Button B, final int iv){
+    public void showDialog(final String B, final int iv){
         //버튼 글씨랑 이미지뷰 띄울거야..
-        String item_name = B.getText().toString();
+        String item_name = B;
         TextView tv_item = custom_dialog.findViewById(R.id.item);
         tv_item.setText(item_name);
         ImageView iv_item = custom_dialog.findViewById(R.id.item_image);
@@ -289,12 +275,11 @@ public class Meat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //       GetData task = new GetData();
-                //          String tmp = B.getText().toString();
-                //         task.execute(tmp);
+                String tmp = B;
+                MainActivity.basket[MainActivity.Basket_index++] = tmp;
 
 
-                ItemData itemData = new ItemData(iv,B.getText().toString()+"");
+                ItemData itemData = new ItemData(iv,B);
                 arrayList.add(itemData);    // 해당 아이템 추가
                 itemAdapter.notifyDataSetChanged(); //새로고침
 
@@ -318,40 +303,6 @@ public class Meat extends AppCompatActivity {
             }
         });
     }
-    /*
-        public void onClickShowAlert(View view, final Button B, final int iv) {
-            AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
-
-            myAlertBuilder.setTitle("장바구니 버튼");
-            myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
-            //myAlertBuilder.setView(R.drawable.choco).show();
-
-            final Button pushItem = B;
-            // Yes Button or No Button
-            myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dialog,int which){
-                    GetData task = new GetData();
-                    String tmp = B.getText().toString();
-                    task.execute(tmp);
-                    ItemData itemData = new ItemData(R.drawable.turtle,pushItem.getText().toString()+"");
-                    arrayList.add(itemData);    // 해당 아이템 추가
-                    itemAdapter.notifyDataSetChanged(); //새로고침
-
-                    Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-            myAlertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getApplicationContext(),"취소되었습니다!",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-            myAlertBuilder.show();
-        }
-
-     */
     DrawerLayout.DrawerListener listener=new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -548,22 +499,26 @@ public class Meat extends AppCompatActivity {
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
-                    String address = item.getString(TAG_ADDRESS);
+                    String item_name = item.getString(TAG_NAME);
                     String x = item.getString(TAG_X);
                     String y = item.getString(TAG_Y);
-                    String Item_id = item.getString(TAG_id);
-                    rest[Basket_index] = address;
-                    item_location_x[Basket_index] = Integer.parseInt(x);
-                    item_location_y[Basket_index] = Integer.parseInt(y);
-                    id[Basket_index] = Item_id;
-                    Basket_index = Basket_index+1;
+                    int Item_id = Integer.parseInt(item.getString(TAG_id));
+                    MainActivity.item_location_x[MainActivity.search_complete] = Integer.parseInt(x);
+                    MainActivity.item_location_y[MainActivity.search_complete] = Integer.parseInt(y);
+                    MainActivity.item_location_x2[Item_id] = Integer.parseInt(x);
+                    MainActivity.item_location_y2[Item_id] = Integer.parseInt(y);
+                    MainActivity.id[MainActivity.search_complete] = Item_id;
+                    MainActivity.name[MainActivity.search_complete] = item_name;
+                    MainActivity.search_complete++;
 
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            Intent intent = new Intent(Meat.this, SubActivity.class);
-            startActivity(intent);
+            if(MainActivity.search_complete == MainActivity.Basket_index) {
+                Intent intent = new Intent(Meat.this, SubActivity.class);
+                startActivity(intent);
+            }
         }
         @Override
         protected String doInBackground(String... params) {
@@ -571,7 +526,7 @@ public class Meat extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/load.php";
+            String serverURL = "http://192.168.0.146/query.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

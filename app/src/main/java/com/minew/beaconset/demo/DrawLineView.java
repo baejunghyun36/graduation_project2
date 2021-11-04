@@ -33,7 +33,7 @@ public class DrawLineView extends View {
         pnt.setColor(Color.BLACK);
         pnt.setStrokeWidth(15);
 
-        float[] pts_test2={SubActivity.pr_x,SubActivity.pr_y,MainActivity.item_location_x2[Optimal_Distance.arr[0]]*10,MainActivity.item_location_y2[Optimal_Distance.arr[0]]*10};
+        float[] pts_test2={890,1200,MainActivity.item_location_x2[Optimal_Distance.arr[0]]*10,MainActivity.item_location_y2[Optimal_Distance.arr[0]]*10};
         canvas.drawLines(pts_test2, pnt);
         if(MainActivity.Basket_index == 1){
             float[] pts_test3 = {MainActivity.item_location_x2[Optimal_Distance.arr[0]] * 10, MainActivity.item_location_y2[Optimal_Distance.arr[0]] * 10, 120, 1400};
