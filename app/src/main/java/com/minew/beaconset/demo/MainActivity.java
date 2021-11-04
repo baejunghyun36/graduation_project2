@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
     public static int[] item_location_x = new int[40];
     public static int[] item_location_y = new int[40];
 
+    private long backKeyPressedTime = 0;
+    // 첫 번째 뒤로 가기 버튼을 누를 때 표시
+    private Toast toast;
+
     public static int[] item_location_x2 = new int[40];
     public static int[] item_location_y2 = new int[40];
     public static int id[] = new int[10];
@@ -298,7 +302,23 @@ public class MainActivity extends AppCompatActivity {
         public void onDrawerStateChanged(int newState) {
         }
     };
-
+        @Override
+        public void onBackPressed() {
+            if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
+                backKeyPressedTime = System.currentTimeMillis();
+                toast = Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG);
+                toast.show();
+                return;
+            }
+            // 마지막으로 뒤로 가기 버튼을 눌렀던 시간에 2.5초를 더해 현재 시간과 비교 후
+            // 마지막으로 뒤로 가기 버튼을 눌렀던 시간이 2.5초가 지나지 않았으면 종료
+            if (System.currentTimeMillis() <= backKeyPressedTime + 2500) {
+                finish();
+                toast.cancel();
+                toast = Toast.makeText(this,"이용해 주셔서 감사합니다.",Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
     private void initView() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mAdapter = new BeaconListAdapter();

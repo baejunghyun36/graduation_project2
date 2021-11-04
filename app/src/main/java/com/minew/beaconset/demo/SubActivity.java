@@ -79,11 +79,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     Optimal_Distance SubActivity2 = new Optimal_Distance().start();
     //  public static int opt[] = SubActivity2.arr;
     public int opt[] = SubActivity2.arr;
-    private float x = nowX;
-    private float y = nowY;
 
-    public static int now_x = 300;
-    public static int now_y = 300;
+    public static int now_x = CurrentLoc.now_x;
+    public static int now_y = CurrentLoc.now_y;
+    public static int pr_x = CurrentLoc.now_x;
+    public static int pr_y = CurrentLoc.now_y;
+
     public static int [] item_x = MainActivity.item_location_x;
     public static int [] item_y = MainActivity.item_location_y;
 /*    private float nowx = Optimal_Distance.nowx;
@@ -198,8 +199,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         tv5 = findViewById(R.id.test5);
 
 
-        btn2.setX(nowX);  //이미지 초기 값 -> 정 가운데
-        btn2.setY(nowY);
+        btn2.setX(now_x);  //이미지 초기 값 -> 정 가운데
+        btn2.setY(now_y);
         //btn2.getLayoutParams().height = 123;
         //btn2.getLayoutParams().width = 123;
         (new Thread(new Runnable()

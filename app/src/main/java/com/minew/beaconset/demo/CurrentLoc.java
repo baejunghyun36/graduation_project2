@@ -49,6 +49,10 @@ import java.util.List;
 
 public class CurrentLoc extends AppCompatActivity implements View.OnClickListener {
 
+    private long backKeyPressedTime = 0;
+    // 첫 번째 뒤로 가기 버튼을 누를 때 표시
+    private Toast toast;
+
     private String TAG = "AnimationActivity";
     private LinearLayout ll1;
     private Button btn1;
@@ -59,7 +63,7 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
     private int section =0;
     private float toX = 0, fromY = 0;
     private float toY = 0;
-    private int nowX=0, nowY = 0;
+    public static int nowX =0, nowY = 0;
     private int add = 170;
     private int to_x = 0;
     private int to_y = 0;
@@ -246,7 +250,7 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                             }
                                                             tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
                                                             tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
-                                                            tv3.setText("충헌이꺼 " + check[2] +"   현재 위치 rgdg : "+Mx + " Y : "+ My + " "  +a[2]);
+                                                            tv3.setText("충헌이꺼 " + check[2] +"   현재 위치 X : "+Mx + " Y : "+ My + " "  +a[2]);
                                                             tv4.setText("교수님꺼 " + check[3]+"                     X : "+ nowX + " Y : "+ nowY + " "  +a[3]);
 
                                                         }
@@ -703,6 +707,21 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
 
             default:
                 break;
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG);
+            toast.show();
+            return;
+        }
+        // 마지막으로 뒤로 가기 버튼을 눌렀던 시간에 2.5초를 더해 현재 시간과 비교 후
+        // 마지막으로 뒤로 가기 버튼을 눌렀던 시간이 2.5초가 지나지 않았으면 종료
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2500) {
+            finish();
+            toast.cancel();
         }
     }
 
