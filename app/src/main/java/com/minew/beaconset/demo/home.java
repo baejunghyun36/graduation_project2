@@ -596,36 +596,24 @@ public class home extends AppCompatActivity {
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
                     String item_name = item.getString(TAG_NAME);
-                    String x = item.getString(TAG_X);
-                    String y = item.getString(TAG_Y);
                     int Item_id = Integer.parseInt(item.getString(TAG_id));
-                    item_location_x[Basket_index] = Integer.parseInt(x);
-                    item_location_y[Basket_index] = Integer.parseInt(y);
                     name[Basket_index] = item_name;
                     id[Basket_index] = Item_id;
-                    Basket_index++;
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            if(flag == 1) {
-                Intent intent = new Intent(home.this, SearchActivity.class);
-                startActivity(intent);
-            }
-            else {
-                Intent intent = new Intent(home.this, CurrentLoc.class);
-                startActivity(intent);
-            }
-            flag = 0;
+            Intent intent = new Intent(home.this, SearchActivity.class);
+            intent.putExtra("Searching", item_find.getText().toString());
+            startActivity(intent);
         }
         @Override
         protected String doInBackground(String... params) {
-            String temp = "load";
-            if(flag == 1) temp = "query";
+
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/"+temp+".php";
+            String serverURL = "http://192.168.0.146/query.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
