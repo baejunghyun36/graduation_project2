@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class Best extends AppCompatActivity {
     private TextView tv_id, tv_pass;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
@@ -67,21 +67,15 @@ public class MainActivity extends AppCompatActivity {
     private ImageView btn_move;
     private Button  btn_search;
 
-    private static int search_complete = 0;
-    public static String basket[] = new String[30];
-    public static int Basket_index = 0;
+    public static int Basket_index;
     private static String TAG = "phpquerytest";
     public static String rest[] = new String[10];
-    public static String name[] = new String[40];
-    public static int[] item_location_x = new int[40];
-    public static int[] item_location_y = new int[40];
-
-    public static int[] item_location_x2 = new int[40];
-    public static int[] item_location_y2 = new int[40];
-    public static int id[] = new int[10];
+    public static String name[] = new String[10];
+    public static int[] item_location_x = new int[20];
+    public static int[] item_location_y = new int[20];
+    public static String id[] = new String[10];
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ADDRESS = "rest";
-    private static final String TAG_NAME = "name";
     private static final String TAG_id = "id";
     private static final String TAG_X = "x";
     private static final String TAG_Y = "y";
@@ -98,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //tv_id = findViewById(R.id.tv_id);
+        setContentView(R.layout.activity_best);
+       // tv_id = findViewById(R.id.tv_id);
         //tv_pass = findViewById(R.id.tv_pass);
 
         Intent intent = getIntent();
@@ -107,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
         String userPass = intent.getStringExtra("userPass");
         final String userName = intent.getStringExtra("userName");
 
-        custom_dialog = new Dialog(MainActivity.this);       // Dialog 초기화
+        custom_dialog = new Dialog(Best.this);       // Dialog 초기화
         custom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
         custom_dialog.setContentView(R.layout.custom_dialog);   //커스텀 다이얼로그 연결
 
-     //   tv_id.setText(userID);
+       // tv_id.setText(userID);
       //  tv_pass.setText(userPass);
 
         btn_current = findViewById(R.id.btn_current_location);
@@ -136,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, CurrentLoc.class);
+                Intent intent = new Intent(Best.this, SubActivity.class);
                 startActivity(intent);
             }
         });
@@ -152,17 +146,15 @@ public class MainActivity extends AppCompatActivity {
         btn_current.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                for(int i  = 0; i < Basket_index; i++){
-                    GetData task = new GetData();
-                    task.execute(basket[i]);
-                }
+                Intent intent = new Intent(Best.this, SubActivity.class);
+                startActivity(intent);
             }
         });
         btn_my_page.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
 
-                Intent intent = new Intent(MainActivity.this, mypages.class);
+                Intent intent = new Intent(Best.this, mypages.class);
                 intent.putExtra("userName",userName);
                 startActivity(intent);
             }
@@ -172,31 +164,73 @@ public class MainActivity extends AppCompatActivity {
         items[0].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 감자
-                items[0].setText("새우깡");
                 showDialog(items[0], R.drawable.potato);
             }
         });
         items[1].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 새우
-                items[1].setText("포테토칩");
                 showDialog(items[1], R.drawable.shrimp);
             }
         });
         items[2].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    //초코
-                items[2].setText("꼬깔콘");
                 showDialog(items[2], R.drawable.choco);
             }
         });
         items[3].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){    // 꼬북북
-                items[3].setText("바나나킥");
                 showDialog(items[3], R.drawable.turtle);
             }
         });
+
+
+//        recyclerview = findViewById(R.id.recyclerView);
+//        recyclerview.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+//        List<ExpandableListAdapter.Item> data = new ArrayList<>();
+//
+//        ExpandableListAdapter.Item group1 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "정육/계란");
+//        group1.invisibleChildren = new ArrayList<>();
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "한우"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "수입육"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "돼지고기"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "닭/오리고기"));
+//        group1.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계란"));
+//
+//
+//        ExpandableListAdapter.Item group2 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "과일");
+//        group2.invisibleChildren = new ArrayList<>();
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "사과"));
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "바나나"));
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "포도"));
+//        group2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "키위"));
+//
+//        ExpandableListAdapter.Item group3 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "유제품/베이커리");
+//        group3.invisibleChildren = new ArrayList<>();
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "우유"));
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "치즈"));
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "저지방우유"));
+//        group3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "요플레"));
+//
+//        ExpandableListAdapter.Item group4 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "세제/욕실/청소");
+//        group4.invisibleChildren = new ArrayList<>();
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "persil"));
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "다우니"));
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "습기제거"));
+//        group4.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "락스"));
+//
+//        data.add(group1);
+//        data.add(group2);
+//        data.add(group3);
+//        data.add(group4);
+//
+//
+//        recyclerview.setAdapter(new ExpandableListAdapter(data));
+
+
+
 
 
 
@@ -255,8 +289,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String tmp = B.getText().toString();
-                basket[Basket_index++] = tmp;
+                //       GetData task = new GetData();
+                //          String tmp = B.getText().toString();
+                //         task.execute(tmp);
 
 
                 ItemData itemData = new ItemData(iv,B.getText().toString()+"");
@@ -283,7 +318,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+        public void onClickShowAlert(View view, final Button B, final int iv) {
+            AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this);
 
+            myAlertBuilder.setTitle("장바구니 버튼");
+            myAlertBuilder.setMessage(B.getText().toString()+"을(를) 장바구니에 담으시겠어요?");
+            //myAlertBuilder.setView(R.drawable.choco).show();
+
+            final Button pushItem = B;
+            // Yes Button or No Button
+            myAlertBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog,int which){
+                    GetData task = new GetData();
+                    String tmp = B.getText().toString();
+                    task.execute(tmp);
+                    ItemData itemData = new ItemData(R.drawable.turtle,pushItem.getText().toString()+"");
+                    arrayList.add(itemData);    // 해당 아이템 추가
+                    itemAdapter.notifyDataSetChanged(); //새로고침
+
+                    Toast.makeText(getApplicationContext(),"장바구니에 담았습니다!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            myAlertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getApplicationContext(),"취소되었습니다!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            myAlertBuilder.show();
+        }
+
+     */
     DrawerLayout.DrawerListener listener=new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -369,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
                 mpDialog.show();
                 mMinewBeaconManager.stopScan();
                 MinewBeacon minewBeacon = mAdapter.getData(position);
-                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(MainActivity.this, minewBeacon);
+                MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(Best.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
                 minewBeaconConnection.connect();
             }
@@ -384,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
             switch (state) {
                 case BeaconStatus_Connected:
                     mpDialog.dismiss();
-                    Intent intent = new Intent(MainActivity.this, DetilActivity.class);
+                    Intent intent = new Intent(Best.this, DetilActivity.class);
                     intent.putExtra("mac", connection.setting.getMacAddress());
                     startActivity(intent);
                     break;
@@ -423,7 +491,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void dialogshow() {
-        mpDialog = new ProgressDialog(MainActivity.this);
+        mpDialog = new ProgressDialog(Best.this);
         mpDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mpDialog.setTitle(null);//
         mpDialog.setIcon(null);//
@@ -466,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = ProgressDialog.show(MainActivity.this,
+            progressDialog = ProgressDialog.show(Best.this,
                     "Please Wait", null, true, true);
         }
         @Override
@@ -480,26 +548,22 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
                 for(int i=0;i<jsonArray.length();i++){
                     JSONObject item = jsonArray.getJSONObject(i);
-                    String item_name = item.getString(TAG_NAME);
+                    String address = item.getString(TAG_ADDRESS);
                     String x = item.getString(TAG_X);
                     String y = item.getString(TAG_Y);
-                    int Item_id = Integer.parseInt(item.getString(TAG_id));
-                    item_location_x[search_complete] = Integer.parseInt(x);
-                    item_location_y[search_complete] = Integer.parseInt(y);
-                    item_location_x2[Item_id] = Integer.parseInt(x);
-                    item_location_y2[Item_id] = Integer.parseInt(y);
-                    id[search_complete] = Item_id;
-                    name[search_complete] = item_name;
-                    search_complete++;
+                    String Item_id = item.getString(TAG_id);
+                    rest[Basket_index] = address;
+                    item_location_x[Basket_index] = Integer.parseInt(x);
+                    item_location_y[Basket_index] = Integer.parseInt(y);
+                    id[Basket_index] = Item_id;
+                    Basket_index = Basket_index+1;
 
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
             }
-            if(search_complete == Basket_index) {
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Best.this, SubActivity.class);
+            startActivity(intent);
         }
         @Override
         protected String doInBackground(String... params) {
@@ -507,7 +571,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query.php";
+            String serverURL = "http://192.168.0.146/load.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
