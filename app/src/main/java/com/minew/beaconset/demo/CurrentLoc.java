@@ -64,17 +64,16 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
     private float toX = 0, fromY = 0;
     private float toY = 0;
     public static int nowX =0, nowY = 0;
-    private int add = 170;
+    private int add = 80;
     private int to_x = 0;
     private int to_y = 0;
 
-    private int lw = 3;
-    private int rw = 980;
-    private int uw = 3;
-    private int dw = 1180;
-    private int mx = 500;
-    private int my = 600;
-
+    private int lw = 600;
+    private int rw = 950;
+    private int uw = 650;
+    private int dw = 1080;
+    private int mx = 750;
+    private int my = 900;
 
     private float x = nowX;
     private float y = nowY;
@@ -87,8 +86,6 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
     int[] pos=new int[4];
 
     public static TextView tv_sub;
-
-
 
     private RecyclerView       mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
@@ -215,16 +212,16 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
 
                                                         if(zoom_check==1){
                                                             if(zoom_section==1){
-                                                                zoomView.zoomTo(1.8f,0,0);
+                                                                zoomView.zoomTo(1.8f,800,1100);
                                                             }
                                                             else if(zoom_section==2){
-                                                                zoomView.zoomTo(1.8f,900,0);
+                                                                zoomView.zoomTo(1.8f,800,1100);
                                                             }
                                                             else if(zoom_section==3){
-                                                                zoomView.zoomTo(1.8f,0,1000);
+                                                                zoomView.zoomTo(1.8f,800,1100);
                                                             }
                                                             else if (zoom_section==4){
-                                                                zoomView.zoomTo(1.8f,900 ,1100);
+                                                                zoomView.zoomTo(1.8f,800 ,1100);
                                                             }
 
                                                             btn2.setScaleX((float)0.5);
@@ -232,42 +229,43 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                             zoom_check=0;
                                                         }
 
-
-                                                        filtered[0] = (float) Kdis1.update(a[0]);
-                                                        filtered[1] = (float) Kdis2.update(a[1]);
-                                                        filtered[2] = (float) Kdis3.update(a[2]);
-                                                        filtered[3] = (float) Kdis4.update(a[3]);
-
-
-                                                        if(count == 8 ){
-                                                            for(int j=0; j<4; j++){
-                                                                a[j] = sum_dis[j] / count;
-                                                                //subBeaconListAdapter.i[j] = a[j];
-                                                            }
-                                                            count = 0;
-                                                            for(int i=0; i<4; i++){
-                                                                sum_dis[i] = 0;
-                                                            }
-                                                            tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
-                                                            tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
-                                                            tv3.setText("충헌이꺼 " + check[2] +"   현재 위치 X : "+Mx + " Y : "+ My + " "  +a[2]);
-                                                            tv4.setText("교수님꺼 " + check[3]+"                     X : "+ nowX + " Y : "+ nowY + " "  +a[3]);
-
-                                                        }
-                                                        else {
-                                                            for(int i=0; i<4; i++){
-                                                                sum_dis[i] += filtered[i];
-                                                            }
-                                                            count++;
-                                                        }
+                                                        tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
+                                                        tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
+                                                        tv3.setText("충헌이꺼 " + check[2] +" " +a[2]+ "   현재 위치 X : "+Mx + " Y : "+ My + " "  );
+                                                        tv4.setText("교수님꺼 " + check[3]+ " "  +a[3]+ "                     X : "+ nowX + " Y : "+ nowY );
 
 
-
-
-
-                                                        Da = a[2]; // 충헌
-                                                        Db = a[0]; // 정현
-                                                        Dc = a[3]; // 교수
+//                                                        filtered[0] = (float) Kdis1.update(a[0]);
+//                                                        filtered[1] = (float) Kdis2.update(a[1]);
+//                                                        filtered[2] = (float) Kdis3.update(a[2]);
+//                                                        filtered[3] = (float) Kdis4.update(a[3]);
+//
+//
+//                                                        if(count == 8 ){
+//                                                            for(int j=0; j<4; j++){
+//                                                                a[j] = sum_dis[j] / count;
+//                                                                //subBeaconListAdapter.i[j] = a[j];
+//                                                            }
+//                                                            count = 0;
+//                                                            for(int i=0; i<4; i++){
+//                                                                sum_dis[i] = 0;
+//                                                            }
+//                                                            tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
+//                                                            tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
+//                                                            tv3.setText("충헌이꺼 " + check[2] +" " +a[2]+ "   현재 위치 X : "+Mx + " Y : "+ My + " "  );
+//                                                            tv4.setText("교수님꺼 " + check[3]+ " "  +a[3]+ "                     X : "+ nowX + " Y : "+ nowY );
+//
+//                                                        }
+//                                                        else {
+//                                                            for(int i=0; i<4; i++){
+//                                                                sum_dis[i] += filtered[i];
+//                                                            }
+//                                                            count++;
+//                                                        }
+//
+//                                                        Db = a[0]; // 정현
+//                                                        Da = a[2]; // 충헌
+//                                                        Dc = a[3]; // 교수
 //                                                        tv1.setText("정현이꺼 " + a[0]);
 //                                                        tv2.setText("은윤이꺼 " + a[1]);
 //                                                        tv3.setText("충헌이꺼 " + a[2] +"   현재 위치 X : "+Mx + " Y : "+ My);
@@ -368,36 +366,46 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
 
                                         now_x = nowX;
                                         now_y = nowY;
-
+                                     /*  a[0] = 정현
+                                        a[1]=은윤
+                                        a[2]= 충헌
+                                        a[3]= 교수*/
 
 
                                         //5구역
-                                        if((a[0]+a[3]-a[2]-a[1]>-0.5)&&a[0]+a[3]-a[2]-a[1 ]<0.5){
-                                            if(nowX<500&&nowY<600){
+                                        if((a[0]+a[3]-a[2]-a[1]>-0.4)&&a[0]+a[3]-a[2]-a[1 ]<0.4){
+
+                                            if(nowX<mx&&nowY<my){
+
                                                 nowX+=add;
                                                 nowY+=add;
-                                                if(nowX>500)nowX=500;
-                                                if(nowY>600)nowY=600;
+                                                if(nowX>mx)nowX=mx;
+                                                if(nowY>my)nowY=my;
                                             }
-                                            else  if(nowX>=500&&nowY<600){
+
+
+                                            else  if(nowX>=mx&&nowY<my){
                                                 nowX-=add;
                                                 nowY+=add;
-                                                if(nowX<500)nowX=500;
-                                                if(nowY>600)nowY=600;
+                                                if(nowX<mx)nowX=mx;
+                                                if(nowY>my)nowY=my;
                                             }
-                                            else if(nowX<500&&nowY>=600){
+                                            else if(nowX<mx&&nowY>=my){
                                                 nowX+=add;
                                                 nowY-=add;
-                                                if(nowX>500)nowX=500;
-                                                if(nowY<600)nowY=600;
+                                                if(nowX>mx)nowX=mx;
+                                                if(nowY<my)nowY=my;
                                             }
-                                            else if(nowX>=500&&nowY>=600){
+
+                                            else if(nowX>=500&&nowY>=650){
                                                 nowX-=add;
                                                 nowY-=add;
                                                 if(nowX<500)nowX=500;
                                                 if(nowY<600)nowY=600;
                                             }
+
                                         }
+
 
                                         //2구역
                                         if(a[0]>0.5&&a[2]>0.5&&a[0]<=1&&a[2]<=1&&a[1]>3&&a[3]>3){
@@ -417,66 +425,12 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                             section=2;
                                         }
 
-
-
-
-
-                                        //8구역
-                                 /*        if(a[3]<=1.7&&a[1]<=1.7&&a[0]>1.7&&a[2]>1.7) {
-
-                                            nowX = 500;
-                                            nowY = 1190;
-                                            if (nowX < mx && nowY > dw) {
-                                                nowY = dw;
-                                                nowX += add;
-                                            }
-                                            if (nowX > mx && nowY > uw) {
-                                                nowX -= add;
-                                                nowY = uw;
-                                            }
-                                            if (nowX < mx && nowY <= uw) {
-                                                nowX += add;
-                                                nowY += add;
-                                            }
-
-                                            if (nowX > mx && nowY <= uw) {
-                                                nowX -= add;
-                                                nowY += add;
-                                            }
-
-                                            section = 8;
-                                        }
-*/
-
-
-                                        //6구역
-                                       /* if(a[2]<=1.1&&a[1]<=1.1&&(a[1]>1.1||a[3]>1.1)){
-                                            if(nowX<=rw&&nowY<my){
-                                                nowY+=add; nowX+=add;
-                                            }
-                                            if(nowX<=rw&&nowY>my){
-                                                nowX+=add; nowY-=add;
-                                            }
-                                            if(nowX>rw&&nowY>my){
-                                                nowX=rw; nowY-=add;
-                                            }
-                                            if(nowX>rw&&nowY<my){
-                                                nowX=rw; nowY+=add;
-                                            }
-
-                                            section=6;
-                                        }*/
-
-
-
-                                        //1구역 정현
+                                        //1구역
                                         else if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
-
                                             if(nowX<lw&&nowY<uw){
                                                 nowX=lw;
                                                 nowY=uw;
                                             }
-
                                             if(nowX<lw&&nowY>uw){
                                                 nowX=lw;
                                                 nowY-=add;
@@ -486,19 +440,13 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 nowY=uw;
                                             }
 
-
                                             nowX-=add;
                                             nowY-=add;
 
-
                                             if(a[0]<0.3){
-                                                nowX=3;
-                                                nowY=3;
-
-
+                                                nowX=500;
+                                                nowY=650;
                                             }
-
-
                                             section=1;
 
                                         }
@@ -518,23 +466,14 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 nowY-=add;
                                                 nowX=rw;
                                             }
-
                                             nowX+=add;
                                             nowY-=add;
 
-
-
                                             if(a[2]<0.3){
-                                                nowX=990;
-                                                nowY=3;
-
-
+                                                nowX=950;
+                                                nowY=650;
                                             }
-
-
-
                                             section=3;
-
                                         }
 
                                         //7구역
@@ -554,22 +493,15 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 nowX-=add;
                                                 nowY=dw;
                                             }
-
-
                                             nowX-=add;
                                             nowY+=add;
 
-
-
-
                                             if(a[3]<0.3){
-                                                nowX=3;
+                                                nowX=500;
                                                 nowY=1190;
 
 
                                             }
-
-
 
                                             section =7;
 
@@ -595,36 +527,22 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                             nowY+=add;
 
                                             if(a[1]<0.3){
-
-                                                nowX=990;
-                                                nowY=1190;
-
+                                                nowX=950;
+                                                nowY=1150;
                                             }
 
-
-
                                             section=9;
-
                                         }
 
 
-
-
-
-
-                                        if(nowX<3)nowX=3;
-                                        if(nowY<3)nowY=3;
+                                        if(nowX<500)nowX=500;
+                                        if(nowY<650)nowY=650;
                                         if(nowX>rw)nowX=rw;
                                         if(nowY>dw)nowY=dw;
 
-
-
-
                                         to_x = nowX;
                                         to_y = nowY;
-
-
-                                        if(nowX<500&&nowY<600){
+                                        if(nowX<=500&&nowY<=600){
                                             zoom_section=1;
                                             if(zoom_section==zoom_prev_section){
                                                 zoom_check=0;
@@ -633,7 +551,7 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 zoom_check=1;
                                             }
                                         }
-                                        else if(nowX>500&&nowY<600){
+                                        else if(nowX>500&&nowY<=600){
                                             zoom_section=2;
                                             if(zoom_section==zoom_prev_section){
                                                 zoom_check=0;
@@ -642,7 +560,7 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 zoom_check=1;
                                             }
                                         }
-                                        else if(nowX<500&&nowY>=600){
+                                        else if(nowX<=500&&nowY>600){
                                             zoom_section=3;
                                             if(zoom_section==zoom_prev_section){
                                                 zoom_check=0;
@@ -651,7 +569,7 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 zoom_check=1;
                                             }
                                         }
-                                        else if(nowX>500&&nowY>=600){
+                                        else if(nowX>500&&nowY>600){
                                             zoom_section=4;
                                             if(zoom_section==zoom_prev_section){
                                                 zoom_check=0;
@@ -660,8 +578,6 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
                                                 zoom_check=1;
                                             }
                                         }
-
-
 
 
                                         TranslateAnimation animation = new TranslateAnimation(now_x,to_x, now_y, to_y);

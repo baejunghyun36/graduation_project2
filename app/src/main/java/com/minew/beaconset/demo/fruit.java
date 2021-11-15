@@ -78,7 +78,9 @@ public class fruit extends AppCompatActivity {
     public static int[] item_location_y2 = MainActivity.item_location_y2;
 
     private static final String TAG_NAME = "name";
-
+    private Button menu_1;
+    private Button menu_2;
+    private Button menu_3;
     public static int id[] = MainActivity.id;
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_id = "id";
@@ -124,7 +126,9 @@ public class fruit extends AppCompatActivity {
         items[5] = findViewById(R.id.BtnNum6);
         items[6] = findViewById(R.id.BtnNum7);
         items[7] = findViewById(R.id.BtnNum8);
-
+        menu_1 = findViewById(R.id.menu_1);
+        menu_2 = findViewById(R.id.menu_2);
+        menu_3 = findViewById(R.id.menu_3);
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
@@ -167,6 +171,25 @@ public class fruit extends AppCompatActivity {
 
                 Intent intent = new Intent(fruit.this, mypages.class);
                 intent.putExtra("userName",userName);
+                startActivity(intent);
+            }
+        });
+
+        menu_1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(fruit.this, Best.class);
+                startActivity(intent);
+            }
+        });
+        menu_2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(fruit.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        menu_3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(fruit.this, Meat.class);
                 startActivity(intent);
             }
         });
@@ -526,7 +549,7 @@ public class fruit extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query.php";
+            String serverURL = "http://192.168.170.129/query.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

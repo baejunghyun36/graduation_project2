@@ -129,6 +129,39 @@
 
 
             </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                >
+
+                <Button
+                    android:id="@+id/menu_1"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Best"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/menu_2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="정육"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/menu_3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="과일"
+                    >
+                </Button>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
