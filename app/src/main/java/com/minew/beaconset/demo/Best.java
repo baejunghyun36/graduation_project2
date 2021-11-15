@@ -66,6 +66,9 @@ public class Best extends AppCompatActivity {
     private View drawerView;
     private ImageView btn_move;
     private Button  btn_search;
+    private Button menu_1;
+    private Button menu_2;
+    private Button menu_3;
 
     public static int search_complete = MainActivity.search_complete;
     //public static int Basket_index = MainActivity.Basket_index;
@@ -116,6 +119,10 @@ public class Best extends AppCompatActivity {
         btn_current = findViewById(R.id.btn_current_location);
         btn_my_page = findViewById(R.id.btn_my_page);
         btn_search = findViewById(R.id.btn_search);
+        menu_1 = findViewById(R.id.menu_1);
+        menu_2 = findViewById(R.id.menu_2);
+        menu_3 = findViewById(R.id.menu_3);
+
         items[0] = findViewById(R.id.BtnNum1);
         items[1] = findViewById(R.id.BtnNum2);
         items[2] = findViewById(R.id.BtnNum3);
@@ -167,6 +174,25 @@ public class Best extends AppCompatActivity {
 
                 Intent intent = new Intent(Best.this, mypages.class);
                 intent.putExtra("userName",userName);
+                startActivity(intent);
+            }
+        });
+
+        menu_1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Best.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        menu_2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Best.this, Meat.class);
+                startActivity(intent);
+            }
+        });
+        menu_3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Best.this, fruit.class);
                 startActivity(intent);
             }
         });
@@ -526,7 +552,7 @@ public class Best extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query.php";
+            String serverURL = "http://192.168.170.129/query.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

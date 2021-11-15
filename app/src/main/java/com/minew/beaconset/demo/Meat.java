@@ -66,7 +66,9 @@ public class Meat extends AppCompatActivity {
     private View drawerView;
     private ImageView btn_move;
     private Button  btn_search;
-
+    private Button menu_1;
+    private Button menu_2;
+    private Button menu_3;
     public static int search_complete = MainActivity.search_complete;
     //public static int Basket_index = MainActivity.Basket_index;
     private static String TAG = "phpquerytest";
@@ -124,7 +126,9 @@ public class Meat extends AppCompatActivity {
         items[5] = findViewById(R.id.BtnNum6);
         items[6] = findViewById(R.id.BtnNum7);
         items[7] = findViewById(R.id.BtnNum8);
-
+        menu_1 = findViewById(R.id.menu_1);
+        menu_2 = findViewById(R.id.menu_2);
+        menu_3 = findViewById(R.id.menu_3);
 
 
         recyclerView=(RecyclerView)findViewById(R.id.rv);   //여기서 cartList를 불러올 수 없는건가
@@ -167,6 +171,25 @@ public class Meat extends AppCompatActivity {
 
                 Intent intent = new Intent(Meat.this, mypages.class);
                 intent.putExtra("userName",userName);
+                startActivity(intent);
+            }
+        });
+
+        menu_1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Meat.this, Best.class);
+                startActivity(intent);
+            }
+        });
+        menu_2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Meat.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        menu_3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Meat.this, fruit.class);
                 startActivity(intent);
             }
         });
@@ -526,7 +549,7 @@ public class Meat extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query.php";
+            String serverURL = "http://192.168.170.129/query.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

@@ -92,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG_Y = "y";
     String mJsonString;
     EditText item_find;
-
+    private Button menu_1;
+    private Button menu_2;
+    private Button menu_3;
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
     public TextView[] tvs = new TextView[12];
@@ -134,7 +136,9 @@ public class MainActivity extends AppCompatActivity {
         items[6] = findViewById(R.id.BtnNum7);
         items[7] = findViewById(R.id.BtnNum8);
 
-
+        menu_1 = findViewById(R.id.menu_1);
+        menu_2 = findViewById(R.id.menu_2);
+        menu_3 = findViewById(R.id.menu_3);
 
 
 
@@ -181,6 +185,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        menu_1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, Best.class);
+                startActivity(intent);
+            }
+        });
+        menu_2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, Meat.class);
+                startActivity(intent);
+            }
+        });
+        menu_3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, fruit.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         // item 버튼이랑 팝업 연결
         items[0].setOnClickListener(new View.OnClickListener(){
@@ -557,7 +582,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.0.146/query.php";
+            String serverURL = "http://192.168.170.129/query.php";
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 
