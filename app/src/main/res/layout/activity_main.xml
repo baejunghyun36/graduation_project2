@@ -142,8 +142,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button_background"
+                    android:textColor="@android:color/background_light"
                     android:text="Best"
-                    android:textColor="@android:color/background_light"></Button>
+                    ></Button>
                 <Button
                     android:id="@+id/menu_2"
                     android:layout_marginLeft="10dp"

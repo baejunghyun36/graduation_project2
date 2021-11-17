@@ -136,6 +136,8 @@
 
                 <Button
                     android:id="@+id/menu_1"
+                    android:background="@drawable/button_background"
+                    android:textColor="@android:color/background_light"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -145,6 +147,8 @@
                 <Button
                     android:id="@+id/menu_2"
                     android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_background"
+                    android:textColor="@android:color/background_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="과자"
@@ -153,6 +157,8 @@
                 <Button
                     android:id="@+id/menu_3"
                     android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_background"
+                    android:textColor="@android:color/background_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="과일"

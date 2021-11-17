@@ -61,7 +61,6 @@ public class Meat extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 2;
     private RecyclerView recyclerview;
     public Dialog custom_dialog; // 커스텀 다이얼로그
-    public static String basket[] = MainActivity.basket;
     private DrawerLayout drawerLayout;
     private View drawerView;
     private ImageView btn_move;
@@ -72,7 +71,6 @@ public class Meat extends AppCompatActivity {
     public static int search_complete = MainActivity.search_complete;
     //public static int Basket_index = MainActivity.Basket_index;
     private static String TAG = "phpquerytest";
-    public static String name[] = MainActivity.name;
     public static int[] item_location_x = MainActivity.item_location_x;
     public static int[] item_location_y = MainActivity.item_location_y;
 
@@ -80,7 +78,8 @@ public class Meat extends AppCompatActivity {
     public static int[] item_location_y2 = MainActivity.item_location_y2;
 
     private static final String TAG_NAME = "name";
-
+    public static String basket[] = MainActivity.basket;
+    public static String name[] = MainActivity.name;
     public static int id[] = MainActivity.id;
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_id = "id";
