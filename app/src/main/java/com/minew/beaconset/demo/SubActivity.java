@@ -192,11 +192,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         Kdis3 = new KalmanFilter(0.0f);
         Kdis4 = new KalmanFilter(0.0f);
 
-        tv1= findViewById(R.id.test1);
-        tv2= findViewById(R.id.test2);
-        tv3= findViewById(R.id.test3);
-        tv4= findViewById(R.id.test4);
-        tv5 = findViewById(R.id.test5);
 
 
         btn2.setX(830);  //이미지 초기 값 -> 정 가운데
@@ -251,10 +246,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         }
 
 
-                                                        tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
+                                                    /*    tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
                                                         tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
                                                         tv3.setText("충헌이꺼 " + check[2] +" " +a[2]+ "   현재 위치 X : "+Mx + " Y : "+ My + " "  );
-                                                        tv4.setText("교수님꺼 " + check[3]+ " "  +a[3]+ "                     X : "+ nowX + " Y : "+ nowY );
+                                                        tv4.setText("교수님꺼 " + check[3]+ " "  +a[3]+ "                     X : "+ nowX + " Y : "+ nowY ); */
 
 //
 //                                                        filtered[0] = (float) Kdis1.update(a[0]);
@@ -311,8 +306,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                         //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
                                                         // );
                                                         //  tv5.setText(Optimal_Distance.result_array[0]+ " " + Optimal_Distance.result_array[1]+ " " + Optimal_Distance.result_array[2]+ " " + Optimal_Distance.result_array[3]+ " " );
-                                                        tv_sub = findViewById(R.id.tv_sub);
-                                                        tv_sub.setText(Integer.toString(MainActivity.item_location_x[Optimal_Distance.arr[0]]*10) + " " + Integer.toString(MainActivity.item_location_y[Optimal_Distance.arr[0]]*10) );
+                                                       // tv_sub = findViewById(R.id.tv_sub);
+                                                      //  tv_sub.setText(Integer.toString(MainActivity.item_location_x[Optimal_Distance.arr[0]]*10) + " " + Integer.toString(MainActivity.item_location_y[Optimal_Distance.arr[0]]*10) );
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
@@ -389,12 +384,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         for(int i = 0; i < MainActivity.Basket_index; i++){
             if(item_x[i]>1200)  item_x[i] = 1200;
             if(item_y[i]>1000)  item_y[i]=1000;
-            createTextView(item_x[i]*10,item_y[i]*10,Integer.toString(MainActivity.id[i]));
+            createTextView(item_x[i]*10,item_y[i]*10,(MainActivity.name[MainActivity.id[i]]));
         }
         screenWidth = point.x;
         screenHeight = point.y;
     }
-
     @Override
     public void onClick(View view) {
 

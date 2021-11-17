@@ -9,50 +9,28 @@
     >
 
 
-    <TextView
-        android:id="@+id/tv_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="목적지"
-        android:textSize="10dp" />
 
-
-    <TextView
-        android:id="@+id/test1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hi"
-        android:textSize="10dp" />
-
-
-    <TextView
-        android:id="@+id/test2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="hi"
-        />
-
-
-    <TextView
-        android:id="@+id/test3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="hi"
-        />
-    <TextView
-        android:id="@+id/test4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="hi"
-        />
     <TextView
         android:id="@+id/test5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="x,y" />
+        android:text="                              " />
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                              " />
+    <TextView
+        android:id="@+id/test3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                              " />
+    <TextView
+        android:id="@+id/test4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                              " />
+
 
 
     <!--    <TextView-->
@@ -65,15 +43,15 @@
     <!--아래 RelativeLayout의 height를 wrap_content로 하면
     해당 태그 아래 내용들이 출력되지 않음.
     임시방편으로 일단 height 특정 값으로 설정-->
+
+    <!--구분선-->
     <RelativeLayout
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:animationCache="true"
-        android:clipChildren="false">
-    </RelativeLayout>
+        android:clipChildren="false"></RelativeLayout>
 
-    <!--구분선-->
     <View
         android:layout_width="wrap_content"
         android:layout_height="2dp"

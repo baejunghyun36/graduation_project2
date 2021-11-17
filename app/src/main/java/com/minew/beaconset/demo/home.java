@@ -56,6 +56,7 @@ import java.util.List;
 
 public class home extends AppCompatActivity {
 
+    public static String commonURL = "http://192.168.170.129/query.php";
     public static Context context_main;
     public String str="주차한 정보가 없습니다";
     public int flag = 0;
@@ -621,7 +622,7 @@ public class home extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.170.129/query.php";
+            String serverURL = commonURL;
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

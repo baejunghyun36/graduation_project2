@@ -564,7 +564,7 @@ public class MainActivity extends AppCompatActivity {
                     item_location_x2[Item_id] = Integer.parseInt(x);
                     item_location_y2[Item_id] = Integer.parseInt(y);
                     id[search_complete] = Item_id;
-                    name[search_complete] = item_name;
+                    name[Item_id] = item_name;
                     search_complete++;
 
                 }
@@ -582,7 +582,7 @@ public class MainActivity extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.170.129/query.php";
+            String serverURL = home.commonURL;
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

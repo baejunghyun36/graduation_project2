@@ -534,8 +534,9 @@ public class Best extends AppCompatActivity {
                     MainActivity.item_location_x2[Item_id] = Integer.parseInt(x);
                     MainActivity.item_location_y2[Item_id] = Integer.parseInt(y);
                     MainActivity.id[MainActivity.search_complete] = Item_id;
-                    MainActivity.name[MainActivity.search_complete] = item_name;
+                    MainActivity.name[Item_id] = item_name;
                     MainActivity.search_complete++;
+
 
                 }
             } catch (JSONException e) {
@@ -552,7 +553,7 @@ public class Best extends AppCompatActivity {
             String searchKeyword1 = params[0];
             String searchKeyword2 = params[0];
 
-            String serverURL = "http://192.168.170.129/query.php";
+            String serverURL = home.commonURL;
             String postParameters = "country=" + searchKeyword1 + "&name=" + searchKeyword2;
             try {
 

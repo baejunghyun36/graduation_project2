@@ -172,10 +172,6 @@ public class CurrentLoc extends AppCompatActivity implements View.OnClickListene
         Kdis3 = new KalmanFilter(0.0f);
         Kdis4 = new KalmanFilter(0.0f);
 
-        tv1= findViewById(R.id.test1);
-        tv2= findViewById(R.id.test2);
-        tv3= findViewById(R.id.test3);
-        tv4= findViewById(R.id.test4);
 
 
 

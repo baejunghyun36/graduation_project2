@@ -8,52 +8,26 @@
     tools:context=".demo.CurrentLoc"
     >
 
-
-    <TextView
-        android:id="@+id/tv_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="목적지"
-        android:textSize="10dp" />
-
-
-    <TextView
-        android:id="@+id/test1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hi"
-        android:textSize="10dp" />
-
-
-    <TextView
-        android:id="@+id/test2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="hi"
-        />
-
-
-    <TextView
-        android:id="@+id/test3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="hi"
-        />
-    <TextView
-        android:id="@+id/test4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="hi"
-        />
     <TextView
         android:id="@+id/test5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="x,y" />
-
+        android:text="                              " />
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                              " />
+    <TextView
+        android:id="@+id/test3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                              " />
+    <TextView
+        android:id="@+id/test4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                              " />
 
     <!--    <TextView-->
     <!--        android:id="@+id/hi"-->
