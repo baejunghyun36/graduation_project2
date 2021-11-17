@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
     public TextView[] tvs = new TextView[12];
-    public String[] item_names = new String[]{"새우깡", "포테토칩", "꼬깔콘", "바나나킥", "썬칩", "칸쵸", "빈츠", "촉촉한 초코칩"};
+    public String[] item_names = new String[]{"새우깡", "포테토칩", "꼬깔콘", "바나나킥", "썬칩", "칸쵸", "빈츠", "초코칩"};
 
 
     public static ArrayList<ItemData> arrayList;

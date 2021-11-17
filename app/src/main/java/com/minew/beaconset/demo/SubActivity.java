@@ -191,8 +191,12 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         Kdis2= new KalmanFilter(0.0f);
         Kdis3 = new KalmanFilter(0.0f);
         Kdis4 = new KalmanFilter(0.0f);
-
-
+        tv5 = findViewById(R.id.sequenceView);
+        for(int i=0; i<MainActivity.Basket_index; i++){
+            arr += MainActivity.name[opt[i]] + " -> ";
+        }
+        arr += "계산대";
+        tv5.setText(arr);
 
         btn2.setX(830);  //이미지 초기 값 -> 정 가운데
         btn2.setY(1100);

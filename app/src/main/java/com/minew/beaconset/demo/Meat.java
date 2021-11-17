@@ -91,7 +91,7 @@ public class Meat extends AppCompatActivity {
 
     private Button btn_current, btn_my_page;
     public Button[] items = new Button[12]; // 아이템 버튼 배열
-    public String[] item_names = new String[]{"목살", "삼겹살", "항정살", "갈비", "꽃등심", "부채살", "앞다리", "뒷다리"};
+    public String[] item_names = new String[]{"목살", "삼겹살", "항정살", "갈비", "꽃등심", "부채살", "앞다리살", "뒷다리살"};
 
 
     public static ArrayList<ItemData> arrayList;
