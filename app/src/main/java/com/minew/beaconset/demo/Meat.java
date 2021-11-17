@@ -94,6 +94,8 @@ public class Meat extends AppCompatActivity {
     public String[] item_names = new String[]{"목살", "삼겹살", "항정살", "갈비", "꽃등심", "부채살", "앞다리살", "뒷다리살"};
 
 
+
+
     public static ArrayList<ItemData> arrayList;
     public static ItemAdapter itemAdapter;
     public static RecyclerView recyclerView;

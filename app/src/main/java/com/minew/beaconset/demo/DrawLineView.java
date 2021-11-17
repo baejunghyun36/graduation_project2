@@ -36,7 +36,7 @@ public class DrawLineView extends View {
         float[] pts_test2={890,1200,MainActivity.item_location_x2[Optimal_Distance.arr[0]]*10,MainActivity.item_location_y2[Optimal_Distance.arr[0]]*10};
         canvas.drawLines(pts_test2, pnt);
         if(MainActivity.Basket_index == 1){
-            float[] pts_test3 = {MainActivity.item_location_x2[Optimal_Distance.arr[0]] * 10, MainActivity.item_location_y2[Optimal_Distance.arr[0]] * 10, 120, 1400};
+            float[] pts_test3 = {MainActivity.item_location_x2[Optimal_Distance.arr[0]] * 10, MainActivity.item_location_y2[Optimal_Distance.arr[0]] * 10, 10, 800};
             canvas.drawLines(pts_test3, pnt);
         }
         for(int i=0; i < MainActivity.Basket_index-1; i++){
@@ -45,7 +45,7 @@ public class DrawLineView extends View {
             float[] pts_test={x,y,MainActivity.item_location_x2[Optimal_Distance.arr[i+1]]*10,MainActivity.item_location_y2[Optimal_Distance.arr[i+1]]*10};
             canvas.drawLines(pts_test, pnt);
             if(i==MainActivity.Basket_index-2){
-                float[] pts_test3={MainActivity.item_location_x2[Optimal_Distance.arr[i+1]]*10,MainActivity.item_location_y2[Optimal_Distance.arr[i+1]]*10,120,1400};
+                float[] pts_test3={MainActivity.item_location_x2[Optimal_Distance.arr[i+1]]*10,MainActivity.item_location_y2[Optimal_Distance.arr[i+1]]*10,10,800};
                 canvas.drawLines(pts_test3,pnt);
             }
         }

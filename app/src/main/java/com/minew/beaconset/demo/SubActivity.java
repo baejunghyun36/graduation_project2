@@ -389,6 +389,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
             if(item_x[i]>1200)  item_x[i] = 1200;
             if(item_y[i]>1000)  item_y[i]=1000;
             createTextView(item_x[i]*10,item_y[i]*10,(MainActivity.name[MainActivity.id[i]]));
+            if(i == MainActivity.Basket_index-1) createTextView(0,800,"계산대");
         }
         screenWidth = point.x;
         screenHeight = point.y;
