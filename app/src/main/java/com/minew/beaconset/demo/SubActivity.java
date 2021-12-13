@@ -248,70 +248,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                             btn2.setScaleY((float)0.5);
                                                             zoom_check=0;
                                                         }
-
-
-                                                    /*    tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
-                                                        tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
-                                                        tv3.setText("충헌이꺼 " + check[2] +" " +a[2]+ "   현재 위치 X : "+Mx + " Y : "+ My + " "  );
-                                                        tv4.setText("교수님꺼 " + check[3]+ " "  +a[3]+ "                     X : "+ nowX + " Y : "+ nowY ); */
-
-//
-//                                                        filtered[0] = (float) Kdis1.update(a[0]);
-//                                                        filtered[1] = (float) Kdis2.update(a[1]);
-//                                                        filtered[2] = (float) Kdis3.update(a[2]);
-//                                                        filtered[3] = (float) Kdis4.update(a[3]);
-//
-//
-//                                                        if(count == 8 ){
-//                                                            for(int j=0; j<4; j++){
-//                                                                a[j] = sum_dis[j] / count;
-//                                                                //subBeaconListAdapter.i[j] = a[j];
-//                                                            }
-//                                                            count = 0;
-//                                                            for(int i=0; i<4; i++){
-//                                                                sum_dis[i] = 0;
-//                                                            }
-//
-//                                                            tv1.setText("정현이꺼 " + check[0] + " "  +a[0]);
-//                                                            tv2.setText("은윤이꺼 " + check[1]+ " "  +a[1]);
-//                                                            tv3.setText("충헌이꺼 " + check[2] +" " +a[2]+ "   현재 위치 X : "+Mx + " Y : "+ My + " "  );
-//                                                            tv4.setText("교수님꺼 " + check[3]+ " "  +a[3]+ "                     X : "+ nowX + " Y : "+ nowY );
-//
-//
-//                                                        }
-//                                                        else {
-//                                                            for(int i=0; i<4; i++){
-//                                                                sum_dis[i] += filtered[i];
-//                                                            }
-//                                                            count++;
-//                                                        }
-//
-//
-//                                                        Da = a[2]; // 충헌
-//                                                        Db = a[0]; // 정현
-//                                                        Dc = a[3]; // 교수
-//                                                        tv1.setText("정현이꺼 " + a[0]);
-//                                                        tv2.setText("은윤이꺼 " + a[1]);
-//                                                        tv3.setText("충헌이꺼 " + a[2] +"   현재 위치 X : "+Mx + " Y : "+ My);
-//                                                        tv4.setText("교수님꺼 " + a[3]+"                     X : "+ nowX + " Y : "+ nowY);
-
-
-//                                                        Mx = (Da*Da - Db*Db + Bx*Bx)/(2*Bx);
-//                                                        My = ((Cx*Cx) + (Cy*Cy)+(Da*Da) -(Dc*Dc)-(2*Mx*Cx))/(2*Cy);
-
-
-//                                                        lamda = Ax*Ax+Ay*Ay-Da*Da-Bx*Bx-By*By+Db*Db+((By-Ay)*(Da*Da-Dc*Dc-Ay*Ay+Cy*Cy+Cx*Cx-Ax*Ax))/(Cy-Ay);
-//                                                        delta = 2*((By-Ay)*(Cx-Ax)-(Bx-Ax)*(Cy-Ay));
-//
-//                                                        Mx=lamda*(Cy-Ay)/delta;
-//                                                        My=(Da*Da-Dc*Dc-Ay*Ay+Cy*Cy+Cx*Cx-Ax*Ax-2*(Cx-Ax)*Mx)/(2*(Cy-Ay));
-
-                                                        // for(int i=0; i<cnt; i++
-                                                        //+"x:"+linearView.getWidth()+" y:"+linearView.getHeight()
-                                                        // );
-                                                        //  tv5.setText(Optimal_Distance.result_array[0]+ " " + Optimal_Distance.result_array[1]+ " " + Optimal_Distance.result_array[2]+ " " + Optimal_Distance.result_array[3]+ " " );
-                                                       // tv_sub = findViewById(R.id.tv_sub);
-                                                      //  tv_sub.setText(Integer.toString(MainActivity.item_location_x[Optimal_Distance.arr[0]]*10) + " " + Integer.toString(MainActivity.item_location_y[Optimal_Distance.arr[0]]*10) );
                                                     }
                                                 });
                                             } catch (InterruptedException e) {
@@ -373,13 +309,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
         Log.e(TAG, "Width : " + point.x + " , Height : " + point.y);
 
-        // 각 아이템의 위치에 해당 index
-
-        //createTextView(100, 0, "(100,0)");
-        //createTextView(-200, 100, "(-200,100)");
-        //createTextView(500, 500, "(540,300)");
-        //createTextView(linearView.getWidth()/2, linearView.getHeight()/2, "mid");
-
         test_view.setX(0);
         test_view.setY(0);
         test_view.setText("(0,0)");
@@ -421,27 +350,18 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                     {
 
                                         zoom_prev_section=zoom_section;
-
-
                                         now_x = nowX;
                                         now_y = nowY;
-                                     /*  a[0] = 정현
-                                        a[1]=은윤
-                                        a[2]= 충헌
-                                        a[3]= 교수*/
+
                                         //5구역
                                         if((a[0]+a[3]-a[2]-a[1]>-0.4)&&a[0]+a[3]-a[2]-a[1 ]<0.4){
-
                                             if(nowX<mx&&nowY<my){
-
                                                 nowX+=add;
                                                 nowY+=add;
                                                 if(nowX>mx)nowX=mx;
                                                 if(nowY>my)nowY=my;
                                             }
-
-
-                                            else  if(nowX>=mx&&nowY<my){
+                                            else if(nowX>=mx&&nowY<my){
                                                 nowX-=add;
                                                 nowY+=add;
                                                 if(nowX<mx)nowX=mx;
@@ -453,7 +373,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 if(nowX>mx)nowX=mx;
                                                 if(nowY<my)nowY=my;
                                             }
-
                                             else if(nowX>=500&&nowY>=650){
                                                 nowX-=add;
                                                 nowY-=add;
@@ -462,10 +381,8 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
 
                                         }
-
-
                                         //2구역
-                                        if(a[0]>0.5&&a[2]>0.5&&a[0]<=1&&a[2]<=1&&a[1]>3&&a[3]>3){
+                                        else if(a[0]>0.5&&a[2]>0.5&&a[0]<=1&&a[2]<=1&&a[1]>3&&a[3]>3){
                                             if(nowX<mx&&nowY<uw){
                                                 nowY=uw; nowX+=add;
                                             }
@@ -481,6 +398,56 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
                                             section=2;
                                         }
+                                        //4구역
+                                        else if(a[0]>0.5&&a[3]>0.5&&a[0]<=1&&a[3]<=1&&a[2]>3&&a[3]>3){
+                                            if(nowX<lw&&nowY<my){
+                                                nowX=lw; nowY+=add;
+                                            }
+                                            if(nowX<lw&&nowY>my){
+                                                nowX=lw;;  nowY-=add;
+                                            }
+                                            if(nowX>lw&&nowY<my){
+                                                nowX-=add;  nowY+=add;
+                                            }
+                                            if(nowX>lw&&nowY>my){
+                                                nowX-=add;  nowY-=add;
+                                            }
+                                            section=4;
+                                        }
+                                        //6구역
+                                        else if(a[2]>0.5&&a[1]>0.5&&a[2]<=1&&a[1]<=1&&a[0]>3&&a[3]>3){
+                                            if(nowX<rw&&nowY<my){
+                                                nowX+=add; nowY+=add;
+                                            }
+                                            if(nowX<rw&&nowY>my){
+                                                nowX+=add; nowY-=add;
+                                            }
+                                            if(nowX>rw&&nowY<my){
+                                                nowX=rw; nowY+=add;
+                                            }
+                                            if(nowX>rw&&nowY<my){
+                                                nowX=rw; nowY-=add;
+                                            }
+                                            section=6;
+                                        }
+
+                                        //8구역
+                                        else if(a[1]>0.5&&a[3]>0.5&&a[1]<=1&&a[3]<=1&&a[0]>3&&a[2]>3){
+                                            if(nowX<mx&&nowY<dw){
+                                                nowX+=add; nowY+=add;
+                                            }
+                                            if(nowX<mx&&nowY>dw){
+                                                nowX+=add; nowY=dw;
+                                            }
+                                            if(nowX>mx&&nowY<dw){
+                                                nowX-=add; nowY+=add;
+                                            }
+                                            if(nowX>mx&&nowY>dw){
+                                                nowX-=add; nowY=dw;
+                                            }
+                                            section=6;
+                                        }
+
 
                                         //1구역
                                         else if(a[0]<a[1]&&a[0]<a[2]&&a[0]<a[3]){
@@ -556,15 +523,11 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             if(a[3]<0.3){
                                                 nowX=500;
                                                 nowY=1190;
-
-
                                             }
-
                                             section =7;
-
                                         }
 
-                                        // 은윤 9구역
+                                        // 9구역
                                         else if(a[1]<a[0]&&a[1]<a[2]&&a[1]<a[3]){
 
                                             if(nowX>rw&&nowY>dw){
@@ -579,26 +542,20 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                                 nowY=dw;
                                                 nowX+=add;
                                             }
-
                                             nowX+=add;
                                             nowY+=add;
-
                                             if(a[1]<0.3){
                                                 nowX=950;
                                                 nowY=1150;
                                             }
-
                                             section=9;
                                         }
 
-
-                                        if(nowX<500)nowX=500;
-                                        if(nowY<650)nowY=650;
-                                        if(nowX>rw)nowX=rw;
-                                        if(nowY>dw)nowY=dw;
-
                                         to_x = nowX;
                                         to_y = nowY;
+
+                                        //zoom section
+
                                         if(nowX<=500&&nowY<=600){
                                             zoom_section=1;
                                             if(zoom_section==zoom_prev_section){
@@ -661,9 +618,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
                                         });
                                         //btn2.startAnimation(animation);
-
-
-
 
                                     }
                                 });
