@@ -260,7 +260,6 @@ public class Optimal_Distance extends AppCompatActivity {
             //C구역
             else if(result_array[q]==3) {
 
-
                 section_C[0][0] = start[0][0];
                 section_C[0][1] = start[0][1];
 
@@ -284,13 +283,10 @@ public class Optimal_Distance extends AppCompatActivity {
                         else if (result_array[q+1]==4)to_finish[i]=dis[60][40];
                     }
 
-
-
                     for (int k = 0; k < height; k++) {
                         for (int j = 0; j < width; j++) {
                             dis[k][j] = 0;
                             check[k][j] = 0;
-
                         }
                     }
                 }
@@ -322,9 +318,7 @@ public class Optimal_Distance extends AppCompatActivity {
                     int now_y = section_D[i][1];
                     queue_x.offer(now_x);
                     queue_y.offer(now_y);
-
                     bfs();
-
                     for (int j = 1; j < d_ind; j++) if (i != j) res[i][j] = dis[section_D[j][0]][section_D[j][1]];
 
                     if(q==4)to_finish[i]=dis[count_x][count_y];
@@ -392,8 +386,6 @@ public class Optimal_Distance extends AppCompatActivity {
 
 
     private static void tspabc(int node, int costSum, int count, int n ){
-
-
 
         visited[node] = 1;
         items[count - 1] = node;

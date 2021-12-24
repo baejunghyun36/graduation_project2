@@ -232,13 +232,13 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
                                                         if(zoom_check==1){
                                                             if(zoom_section==1){
-                                                                zoomView.zoomTo(1.8f,800,1100);
+                                                                zoomView.zoomTo(1.8f,100,100);
                                                             }
                                                             else if(zoom_section==2){
-                                                                zoomView.zoomTo(1.8f,800,1100);
+                                                                zoomView.zoomTo(1.8f,700,100);
                                                             }
                                                             else if(zoom_section==3){
-                                                                zoomView.zoomTo(1.8f,800,1100);
+                                                                zoomView.zoomTo(1.8f,100,1100);
                                                             }
                                                             else if (zoom_section==4){
                                                                 zoomView.zoomTo(1.8f,800 ,1100);
