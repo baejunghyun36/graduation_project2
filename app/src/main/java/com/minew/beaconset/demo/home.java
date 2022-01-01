@@ -58,7 +58,7 @@ public class home extends AppCompatActivity {
 
     public static String commonURL = "http://192.168.170.129/query.php";
     public static Context context_main;
-    public String str="주차한 정보가 없습니다";
+    public String str="주차한 정보가 없습니다"; //마이페이지에 저장할 문자열
     public int flag = 0;
     private int cnt_check=0;
     public static int Basket_index=0;
@@ -87,7 +87,6 @@ public class home extends AppCompatActivity {
     private Button btn_current, btn_my_page;
     EditText item_find;
     private Context context;
-    //parking
     private RecyclerView mRecycle;
     private MinewBeaconManager mMinewBeaconManager;
     private subBeaconListAdapter  mAdapter;
@@ -95,9 +94,8 @@ public class home extends AppCompatActivity {
     private ProgressDialog mpDialog;
     public static MinewBeacon clickBeacon;
     private static final int REQUEST_ENABLE_BT = 2;
-    final float a[] = subBeaconListAdapter.i;
+    float a[] = subBeaconListAdapter.i;
     public static int check;
-
     private TextView parking_info2;
     public Dialog custom_parking; // 커스텀 다이얼로그
     public Dialog custom_count;
@@ -164,7 +162,6 @@ public class home extends AppCompatActivity {
                                                 {
                                                     @Override
                                                     public void run() {
-
                                                         parking_info2.setText(a[0] + " " + a[1] + " " + a[2] + " " + a[3]);
 
                                                         if((a[0]>0||a[1]>0||a[2]>0||a[3]>0)&&(cnt_check==0)){

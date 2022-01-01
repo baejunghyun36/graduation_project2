@@ -60,7 +60,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     public static String arr = "";
     private float toX = 0, fromY = 0;
     private float toY = 0;
-    private int nowX=0, nowY = 0;
+    public static int nowX=0, nowY = 0;
     private int cnt = Optimal_Distance.cnt;
     private int add = 80;
     private int to_x = 0;
@@ -80,10 +80,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     //  public static int opt[] = SubActivity2.arr;
     public int opt[] = SubActivity2.arr;
 
-    public static int now_x = CurrentLoc.now_x;
-    public static int now_y = CurrentLoc.now_y;
-    public static int pr_x = CurrentLoc.now_x;
-    public static int pr_y = CurrentLoc.now_y;
+    public static int now_x=0;
+    public static int now_y=0;
+
+
 
     public static int [] item_x = MainActivity.item_location_x;
     public static int [] item_y = MainActivity.item_location_y;
@@ -269,7 +269,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
 
     private void createTextView(float x, float y, String txt){
         //(float x, float y, String txt):인자
-
         TextView textViewNm = new TextView(getApplicationContext());
         textViewNm.setText(txt);
         textViewNm.setTextSize(10);
@@ -295,25 +294,17 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
-
-
         test_view = v.findViewById(R.id.print_test);
-
         btn1.setOnClickListener((View.OnClickListener) this);
         btn2.setOnClickListener((View.OnClickListener) this);
         btn3.setOnClickListener((View.OnClickListener) this);
-
         Display display = getWindowManager().getDefaultDisplay();
         Point point = new Point();
         display.getSize(point);
-
         Log.e(TAG, "Width : " + point.x + " , Height : " + point.y);
-
         test_view.setX(0);
         test_view.setY(0);
         test_view.setText("(0,0)");
-
-
         for(int i = 0; i < MainActivity.Basket_index; i++){
             if(item_x[i]>1200)  item_x[i] = 1200;
             if(item_y[i]>1000)  item_y[i]=1000;
@@ -381,6 +372,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                                             }
 
                                         }
+                                        //2구역
                                         //2구역
                                         else if(a[0]>0.5&&a[2]>0.5&&a[0]<=1&&a[2]<=1&&a[1]>3&&a[3]>3){
                                             if(nowX<mx&&nowY<uw){
@@ -628,8 +620,6 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                             }
                     }
                 })).start();
-
-
                 break;
 
             default:

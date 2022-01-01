@@ -56,8 +56,8 @@ public class subBeaconListAdapter extends RecyclerView.Adapter<subBeaconListAdap
         if(Float.parseFloat(mMinewBeacons.get(position).getMinor())==56388){
             i[0] = mMinewBeacons.get(position).getDistance();
 
-            if(i[0] ==0) check[0] =0;
-            else check[0] =1;
+            if(i[0] ==0) check[0] =0; //비콘 거리값 못받고 있음
+            else check[0] =1; //비콘 거리값 받고 있다는거
             //   rssi[0] = mMinewBeacons.get(position).getRssi();
 
         }

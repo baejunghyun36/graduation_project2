@@ -566,7 +566,6 @@ public class MainActivity extends AppCompatActivity {
                     id[search_complete] = Item_id;
                     name[Item_id] = item_name;
                     search_complete++;
-
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
